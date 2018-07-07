@@ -20,7 +20,7 @@ class AddGoodController extends Controller
             abort(500);
         }
 
-        $stock = (((Characteristic::select('stock')->where('id', $request->good_id)->get())->toArray())[0])['stock'];
+        $stock = (((Characteristic::select('stock')->where('goods_id', $request->good_id)->get())->toArray())[0])['stock'];
         if ($stock < ($request->good_count)) {
             abort(500);
         }

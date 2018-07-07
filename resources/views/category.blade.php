@@ -30,17 +30,17 @@
                 </div>
             @endif
             @if(session('success'))
-            <div id="SeccuessMessage">
-                <div class="alert alert-success">
-                    {{ __('validation.other.Product successfully added to your cart') }}
+                <div id="SeccuessMessage">
+                    <div class="alert alert-success">
+                        {{ __('validation.other.Product successfully added to your cart') }}
+                    </div>
                 </div>
-            </div>
             @endif
             <table>
                 <tr>
                     @foreach($goods as $key)
                         <td style="padding: 50px !important;">
-                            <div>
+                            <div onmouseover="SaleText({{$key->id}})" onmouseout="HideSaleText({{$key->id}})">
                                 <div>
                                     <img src="{{asset('images/offer.png')}}" alt=" "
                                          class="img-responsive"/>
@@ -54,7 +54,16 @@
                                                             alt="Loading..."
                                                             class="img-responsive"/></a>
                                                 <p>{{$key->name}} {{($key->weight)}}</p>
-                                                <h4>${{$key->price}} <span>${{$key->price}}</span></h4>
+                                                <br>
+                                                <h5>{{$key->price}}$</h5>
+                                                @if($key->sale)
+                                                    <span id="{{'#precName'.$key->id}}"
+                                                          style="opacity: 0;"><b>@lang('validation.other.Sale')</b>: {{ ($key->sale)->name }}</span>
+                                                    <span id="{{'#prec'.$key->id}}"
+                                                          style="opacity: 0;"><b>({{ ($key->sale)->percentages }}%)</b></span>
+                                                @endif
+
+
                                             </div>
                                             <div class="snipcart-details">
                                                 <table style="padding:0px !important">
@@ -104,9 +113,13 @@
                                                                                                         </div>
                                                                                                     @endif
                                                                                                     <div class="alert alert-info">
-                                                                                                        <span>{{$key->price.'$'}}
-                                                                                                            <i class="fa fa-exchange"
-                                                                                                               style="color:#4169E0"></i> {{$key->weight}}@lang('validation.weight.'.$key->weight_type)</span>
+                                                                                                        @if($key->sale)
+                                                                                                            <span>{{ (($key->price)-((($key->price)/100)*(($key->sale)->percentages))).'$'}}
+                                                                                                                @else
+                                                                                                                    <span>{{$key->price.'$'}}
+                                                                                                                        @endif
+                                                                                                                        <i class="fa fa-exchange"
+                                                                                                                           style="color:#4169E0"></i> {{$key->weight}}@lang('validation.weight.'.$key->weight_type)</span>
                                                                                                     </div>
                                                                                                 </td>
                                                                                             </tr>

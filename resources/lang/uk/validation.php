@@ -52,7 +52,8 @@ return [
         'Privacy Policy'              => 'Політика конфіденційності',
         'Branded Foods'               => 'Фірмові Продукти',
         'policy info'                 => 'Інформація про політику',
-        'information'                 => 'Інформація'
+        'information'                 => 'Інформація',
+        'Categories'=>'Категорії'
 
 
     ],
@@ -139,6 +140,7 @@ return [
         'Add to card'                                                                                                  => 'Покласти в корзину',
         'Product successfully added to your cart'                                                                      => 'Товар успішно добавлено до вашого кошику!',
     'Available'=>'Доступно',
+        'Sale'=>'Скидка',
     ],
 
     'goods'  => [

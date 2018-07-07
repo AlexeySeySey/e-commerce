@@ -18,7 +18,7 @@ class CategoryController extends Controller
         $image = (((Categories::select('image')->where('id', $id)->get())->toArray())[0])["image"];
 
         $goods = Good::with('categorie', 'characteristic', 'sale')->where('categories_id',
-            $id)->orderBy('updated_at','desc')->distinct()->paginate(8);
+            $id)->orderBy('updated_at','desc')->distinct()->paginate(6);
 
 
         return view('category', [

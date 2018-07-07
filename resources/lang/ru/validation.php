@@ -54,7 +54,8 @@ return [
         'Privacy Policy'              => 'Политика Конфиденциальности',
         'Branded Foods'               => 'Фирменные Продукты',
         'policy info'                 => 'Информация о политике',
-        'information'                 => 'Информация'
+        'information'                 => 'Информация',
+        'Categories'=>'Категории'
 
 
     ],
@@ -141,6 +142,7 @@ return [
         'Add to card'                                                                                                  => 'Положить в корзину',
         'Product successfully added to your cart'                                                                      => 'Товар успешно добавлен в корзину!',
 'Available'=>'Доступно',
+        'Sale'=>'Знижка',
         ],
 
     'goods'  => [

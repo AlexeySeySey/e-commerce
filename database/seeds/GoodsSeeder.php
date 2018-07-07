@@ -11,6 +11,6 @@ class GoodsSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Good',5)->create();
+        factory('App\Good',60)->create();
     }
 }

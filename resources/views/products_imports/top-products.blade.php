@@ -1,445 +1,225 @@
 <div class="w3ls_w3l_banner_nav_right_grid">
     <h3>{{ __('validation.sections.'.'Popular Brands') }}</h3>
     <div class="w3ls_w3l_banner_nav_right_grid1">
-        <h6>food</h6>
-        <div class="col-md-3 w3ls_w3l_banner_left">
-            <div class="hover14 column">
-                <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                    <div class="agile_top_brand_left_grid_pos">
-                        <img src="images/offer.png" alt=" " class="img-responsive" />
-                    </div>
-                    <div class="agile_top_brand_left_grid1">
-                        <figure>
-                            <div class="snipcart-item block">
-                                <div class="snipcart-thumb">
-                                    <a href="{{ route('single') }}"><img src="images/5.png" alt=" " class="img-responsive" /></a>
-                                    <p>knorr instant soup (100 gm)</p>
-                                    <h4>$3.00 <span>$5.00</span></h4>
-                                </div>
-                                <div class="snipcart-details">
-                                    <form action="#" method="post">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="knorr instant soup" />
-                                            <input type="hidden" name="amount" value="3.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
+        <table>
+            <tr>
+                @foreach($goods as $key)
+                    <td style="padding: 50px !important;">
+                        <div onmouseover="SaleText({{$key->id}})" onmouseout="HideSaleText({{$key->id}})">
+                            <div>
+                                <img src="{{asset('images/offer.png')}}" alt=" "
+                                     class="img-responsive"/>
                             </div>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 w3ls_w3l_banner_left">
-            <div class="hover14 column">
-                <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                    <div class="agile_top_brand_left_grid_pos">
-                        <img src="images/offer.png" alt=" " class="img-responsive" />
-                    </div>
-                    <div class="agile_top_brand_left_grid1">
-                        <figure>
-                            <div class="snipcart-item block">
-                                <div class="snipcart-thumb">
-                                    <a href="{{ route('single') }}"><img src="images/6.png" alt=" " class="img-responsive" /></a>
-                                    <p>chings noodles (75 gm)</p>
-                                    <h4>$5.00 <span>$8.00</span></h4>
-                                </div>
-                                <div class="snipcart-details">
-                                    <form action="#" method="post">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="chings noodles" />
-                                            <input type="hidden" name="amount" value="5.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
+                            <div>
+                                <figure>
+                                    <div class="snipcart-item block">
+                                        <div class="snipcart-thumb">
+                                            <a href="#"><img
+                                                        src="{{asset('images/'.$key->image)}}"
+                                                        alt="Loading..."
+                                                        class="img-responsive"/></a>
+                                            <p>{{$key->name}} {{($key->weight)}}</p>
+                                            <br>
+                                            <h5>{{$key->price}}$</h5>
+                                            @if($key->sale)
+                                                <span id="{{'#precName'.$key->id}}"
+                                                      style="opacity: 0;"><b>@lang('validation.other.Sale')</b>: {{ ($key->sale)->name }}</span>
+                                                <span id="{{'#prec'.$key->id}}"
+                                                      style="opacity: 0;"><b>({{ ($key->sale)->percentages }}%)</b></span>
+                                            @endif
+
+
+                                        </div>
+                                        <div class="snipcart-details">
+                                            <table style="padding:0px !important">
+                                                <tr style="padding:0px !important">
+                                                    <td style="padding-right:5px !important; padding-top:0px !important; padding-bottom: 0px !important; padding-left: 0px !important;">
+                                                        <button class="btn btn-primary" data-toggle="modal"
+                                                                data-target="{{'#add'.$key->id}}">{{__('validation.other.Add to card')}}</button>
+                                                        <div class="modal fade" id="{{'add'.$key->id}}"
+                                                             tabindex="-1" role="dialog"
+                                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"
+                                                                            id="exampleModalLabel">{{ ucfirst($key->name) }}</h5>
+                                                                        <button style="padding-right: 200px !important;"
+                                                                                type="button" class="close"
+                                                                                data-dismiss="modal"
+                                                                                aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <table>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <table>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <h5>@lang('validation.other.Name')
+                                                                                                    : </h5>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <span>{{$key->name}}</span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr style="height: 100px;"></tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                @if((($key->characteristic)->stock==0)||(($key->characteristic)->stock==null))
+                                                                                                    <div class="alert alert-danger">
+                                                                                                        @lang('validation.other.No products available')
+                                                                                                    </div>
+                                                                                                @else
+                                                                                                    <div class="alert alert-success">
+                                                                                                        {{__('validation.other.Available').': '.($key->characteristic)->stock}}
+                                                                                                    </div>
+                                                                                                @endif
+                                                                                                <div class="alert alert-info">
+                                                                                                    @if($key->sale)
+                                                                                                        <span>{{ (($key->price)-((($key->price)/100)*(($key->sale)->percentages))).'$'}}
+                                                                                                            @else
+                                                                                                                <span>{{$key->price.'$'}}
+                                                                                                                    @endif
+                                                                                                                    <i class="fa fa-exchange"
+                                                                                                                       style="color:#4169E0"></i> {{$key->weight}}@lang('validation.weight.'.$key->weight_type)</span>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </table>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div style="margin-left: 500px;">
+                                                                                        <form method="POST"
+                                                                                              action="{{URL::to('/addToCart')}}">
+                                                                                            @csrf
+                                                                                            <input type="number"
+                                                                                                   name="good_count"
+                                                                                                   min="1"
+                                                                                                   max="{{ ($key->characteristic)->stock }}"
+                                                                                                   placeholder="0"
+                                                                                                   required
+                                                                                                   id="good-count"
+                                                                                                   oninput="sumProducts(this,{{$key->price}},{{$key->id}})">
+                                                                                            <button type="reset"
+                                                                                                    class="btn btn-danger">
+                                                                                                x
+                                                                                            </button>
+                                                                                            <br>
+                                                                                            <table>
+                                                                                                <tr>
+                                                                                                    <td>
+                                                                                                        <input type="submit"
+                                                                                                               class="btn btn-primary"
+                                                                                                               value="{{__('validation.other.Add to card')}}">
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                            <span id="{{'#goodCount'.$key->id}}"
+                                                                                                                  class="alert alert-success"></span>
+                                                                                                        <input type="hidden"
+                                                                                                               name="good_id"
+                                                                                                               value="{{$key->id}}">
+                                                                                                        <input type="hidden"
+                                                                                                               name="good_count"
+                                                                                                               id="gcount"
+                                                                                                               value="">
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
+                                                                    <div class="modal-footer"
+                                                                         style="padding-right: 200px !important;">
+                                                                        <button type="button"
+                                                                                class="btn btn-secondary"
+                                                                                data-dismiss="modal">@lang('validation.other.Close')</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td style="padding:0px !important">
+                                                        <input type="hidden" value="{{$key->id}}" id="code">
+                                                        <button type="button" class="btn btn-primary"
+                                                                data-toggle="modal"
+                                                                data-target="{{'.bd-example-modal-lg'.$key->id}}">
+                                                            <b>?</b>
+                                                        </button>
+                                                        <div class="{{'modal fade bd-example-modal-lg'.$key->id}}"
+                                                             tabindex="-1" role="dialog"
+                                                             aria-labelledby="myLargeModalLabel"
+                                                             aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <table class="table table-hover"
+                                                                           style="max-width: 200px;">
+                                                                        <tr>
+                                                                            <td>
+                                                                                №
+                                                                                {{ ($key->characteristic)->id }}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{__('validation.other.'.'Stock')}}
+                                                                                {{ ($key->characteristic)->stock }}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{__('validation.other.'.'Producer')}}
+                                                                                {{ ($key->characteristic)->producer }}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{__('validation.other.'.'Address')}}
+                                                                                {{ ($key->characteristic)->address }}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{__('validation.other.'.'Produced')}}
+                                                                                {{ ($key->characteristic)->produced }}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{__('validation.other.'.'Expiration')}}
+                                                                                {{ ($key->characteristic)->expiration }}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{__('validation.other.'.'Phone')}}
+                                                                                {{ ($key->characteristic)->phone }}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{__('validation.other.'.'Mail')}}
+                                                                                {{ ($key->characteristic)->mail }}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{__('validation.other.'.'Arrival')}}
+                                                                                {{ ($key->characteristic)->arrival }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </figure>
                             </div>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 w3ls_w3l_banner_left">
-            <div class="hover14 column">
-                <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                    <div class="agile_top_brand_left_grid_pos">
-                        <img src="images/offer.png" alt=" " class="img-responsive" />
-                    </div>
-                    <div class="agile_top_brand_left_grid1">
-                        <figure>
-                            <div class="snipcart-item block">
-                                <div class="snipcart-thumb">
-                                    <a href="{{ route('single') }}"><img src="images/7.png" alt=" " class="img-responsive" /></a>
-                                    <p>lahsun sev (150 gm)</p>
-                                    <h4>$3.00 <span>$5.00</span></h4>
-                                </div>
-                                <div class="snipcart-details">
-                                    <form action="#" method="post">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="lahsun sev" />
-                                            <input type="hidden" name="amount" value="3.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </div>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 w3ls_w3l_banner_left">
-            <div class="hover14 column">
-                <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                    <div class="agile_top_brand_left_grid_pos">
-                        <img src="images/offer.png" alt=" " class="img-responsive" />
-                    </div>
-                    <div class="agile_top_brand_left_grid1">
-                        <figure>
-                            <div class="snipcart-item block">
-                                <div class="snipcart-thumb">
-                                    <a href="{{ route('single') }}"><img src="images/8.png" alt=" " class="img-responsive" /></a>
-                                    <p>premium bake rusk (300 gm)</p>
-                                    <h4>$5.00 <span>$7.00</span></h4>
-                                </div>
-                                <div class="snipcart-details">
-                                    <form action="#" method="post">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="premium bake rusk" />
-                                            <input type="hidden" name="amount" value="5.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </div>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        </div>
+                    </td>
+                    @if($loop->iteration%3==0)
+            </tr>
+            <tr>
+                @endif
+                @endforeach
+            </tr>
+        </table>
         <div class="clearfix"> </div>
     </div>
-    <div class="w3ls_w3l_banner_nav_right_grid1">
-        <h6>vegetables & fruits</h6>
-        <div class="col-md-3 w3ls_w3l_banner_left">
-            <div class="hover14 column">
-                <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                    <div class="agile_top_brand_left_grid_pos">
-                        <img src="images/offer.png" alt=" " class="img-responsive" />
-                    </div>
-                    <div class="agile_top_brand_left_grid1">
-                        <figure>
-                            <div class="snipcart-item block">
-                                <div class="snipcart-thumb">
-                                    <a href="{{ route('single') }}"><img src="images/9.png" alt=" " class="img-responsive" /></a>
-                                    <p>fresh spinach (palak)</p>
-                                    <h4>$2.00 <span>$3.00</span></h4>
-                                </div>
-                                <div class="snipcart-details">
-                                    <form action="#" method="post">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="fresh spinach" />
-                                            <input type="hidden" name="amount" value="2.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </div>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 w3ls_w3l_banner_left">
-            <div class="hover14 column">
-                <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                    <div class="agile_top_brand_left_grid_pos">
-                        <img src="images/offer.png" alt=" " class="img-responsive" />
-                    </div>
-                    <div class="agile_top_brand_left_grid1">
-                        <figure>
-                            <div class="snipcart-item block">
-                                <div class="snipcart-thumb">
-                                    <a href="{{ route('single') }}"><img src="images/10.png" alt=" " class="img-responsive" /></a>
-                                    <p>fresh mango dasheri (1 kg)</p>
-                                    <h4>$5.00 <span>$8.00</span></h4>
-                                </div>
-                                <div class="snipcart-details">
-                                    <form action="#" method="post">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="fresh mango dasheri" />
-                                            <input type="hidden" name="amount" value="5.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </div>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 w3ls_w3l_banner_left">
-            <div class="hover14 column">
-                <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                    <div class="tag"><img src="images/tag.png" alt=" " class="img-responsive" /></div>
-                    <div class="agile_top_brand_left_grid1">
-                        <figure>
-                            <div class="snipcart-item block">
-                                <div class="snipcart-thumb">
-                                    <a href="{{ route('single') }}"><img src="images/11.png" alt=" " class="img-responsive" /></a>
-                                    <p>fresh apple red (1 kg)</p>
-                                    <h4>$6.00 <span>$8.00</span></h4>
-                                </div>
-                                <div class="snipcart-details">
-                                    <form action="#" method="post">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="fresh apple red" />
-                                            <input type="hidden" name="amount" value="6.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </div>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 w3ls_w3l_banner_left">
-            <div class="hover14 column">
-                <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                    <div class="agile_top_brand_left_grid_pos">
-                        <img src="images/offer.png" alt=" " class="img-responsive" />
-                    </div>
-                    <div class="agile_top_brand_left_grid1">
-                        <figure>
-                            <div class="snipcart-item block">
-                                <div class="snipcart-thumb">
-                                    <a href="{{ route('single') }}"><img src="images/12.png" alt=" " class="img-responsive" /></a>
-                                    <p>fresh broccoli (500 gm)</p>
-                                    <h4>$4.00 <span>$6.00</span></h4>
-                                </div>
-                                <div class="snipcart-details">
-                                    <form action="#" method="post">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="fresh broccoli" />
-                                            <input type="hidden" name="amount" value="4.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </div>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="clearfix"> </div>
-    </div>
-    <div class="w3ls_w3l_banner_nav_right_grid1">
-        <h6>beverages</h6>
-        <div class="col-md-3 w3ls_w3l_banner_left">
-            <div class="hover14 column">
-                <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                    <div class="agile_top_brand_left_grid_pos">
-                        <img src="images/offer.png" alt=" " class="img-responsive" />
-                    </div>
-                    <div class="agile_top_brand_left_grid1">
-                        <figure>
-                            <div class="snipcart-item block">
-                                <div class="snipcart-thumb">
-                                    <a href="{{ route('single') }}"><img src="images/13.png" alt=" " class="img-responsive" /></a>
-                                    <p>mixed fruit juice (1 ltr)</p>
-                                    <h4>$3.00 <span>$4.00</span></h4>
-                                </div>
-                                <div class="snipcart-details">
-                                    <form action="#" method="post">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="mixed fruit juice" />
-                                            <input type="hidden" name="amount" value="3.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </div>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 w3ls_w3l_banner_left">
-            <div class="hover14 column">
-                <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                    <div class="agile_top_brand_left_grid_pos">
-                        <img src="images/offer.png" alt=" " class="img-responsive" />
-                    </div>
-                    <div class="agile_top_brand_left_grid1">
-                        <figure>
-                            <div class="snipcart-item block">
-                                <div class="snipcart-thumb">
-                                    <a href="{{ route('single') }}"><img src="images/14.png" alt=" " class="img-responsive" /></a>
-                                    <p>prune juice - sunsweet (1 ltr)</p>
-                                    <h4>$4.00 <span>$5.00</span></h4>
-                                </div>
-                                <div class="snipcart-details">
-                                    <form action="#" method="post">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="prune juice" />
-                                            <input type="hidden" name="amount" value="4.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </div>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 w3ls_w3l_banner_left">
-            <div class="hover14 column">
-                <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                    <div class="tag"><img src="images/tag.png" alt=" " class="img-responsive" /></div>
-                    <div class="agile_top_brand_left_grid1">
-                        <figure>
-                            <div class="snipcart-item block">
-                                <div class="snipcart-thumb">
-                                    <a href="{{ route('single') }}"><img src="images/15.png" alt=" " class="img-responsive" /></a>
-                                    <p>coco cola zero can (330 ml)</p>
-                                    <h4>$3.00 <span>$5.00</span></h4>
-                                </div>
-                                <div class="snipcart-details">
-                                    <form action="#" method="post">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="coco cola can" />
-                                            <input type="hidden" name="amount" value="3.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </div>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 w3ls_w3l_banner_left">
-            <div class="hover14 column">
-                <div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
-                    <div class="agile_top_brand_left_grid_pos">
-                        <img src="images/offer.png" alt=" " class="img-responsive" />
-                    </div>
-                    <div class="agile_top_brand_left_grid1">
-                        <figure>
-                            <div class="snipcart-item block">
-                                <div class="snipcart-thumb">
-                                    <a href="{{ route('single') }}"><img src="images/16.png" alt=" " class="img-responsive" /></a>
-                                    <p>sprite bottle (2 ltr)</p>
-                                    <h4>$3.00 <span>$4.00</span></h4>
-                                </div>
-                                <div class="snipcart-details">
-                                    <form action="#" method="post">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="sprite bottle" />
-                                            <input type="hidden" name="amount" value="3.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </div>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="clearfix"> </div>
-    </div>
+
 </div>
 </div>
 <div class="clearfix"></div>

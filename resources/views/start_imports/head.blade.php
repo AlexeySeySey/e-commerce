@@ -5,8 +5,7 @@
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords" content="Grocery Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script type="application/x-javascript"> addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
         }, false);
@@ -32,8 +31,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- start-smoth-scrolling -->
     <script type="text/javascript" src="{{asset('js/move-top.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/easing.js')}}"></script>
+    <script src="{{asset('js/minicart.js')}}"></script>
     <!-- start-smoth-scrolling -->
     <script src="{{asset('js/bootstrap.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-    <script src="{{asset('js/Custom/headerAnimate.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/Custom/headerAnimate.js')}}" defer></script>
+    <link rel="icon" href="{{ asset('images/main_icon.png') }}">
+    <script type="text/javascript" src="{{ asset('js/app.js') }}" defer></script>
 </head>

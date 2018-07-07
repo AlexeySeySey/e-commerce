@@ -25,4 +25,6 @@ background-size: cover;
 #bottomBlock i{
     color:green !important;
 }
-
+.SaleText{
+    opacity:0;
+}

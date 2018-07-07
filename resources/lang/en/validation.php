@@ -53,7 +53,8 @@ return [
         'Privacy Policy'              => 'Privacy Policy',
         'Branded Foods'               => 'Branded Foods',
         'policy info'                 => 'policy info',
-        'information'                 => 'information'
+        'information'                 => 'information',
+        'Categories'=>'Categories'
 
 
     ],
@@ -140,6 +141,7 @@ return [
         'Add to card'                                                                                                  => 'Add to card',
     'Product successfully added to your cart'                                                                      => 'Product successfully added to your cart',
 'Available'=>'Available',
+    'Sale'=>'Sale',
 ],
 
     'goods'  => [

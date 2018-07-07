@@ -15,21 +15,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component(
-	'Ses',
-	 require('./components/AddProductsComponent.vue')
-	 );
-
 	 Vue.component(
-		 'test',
+		 'categoires-list',
 		 require('./components/addTestComponent.vue')
 	 );
-
-	 Vue.component(
-	 	'navbar',
-	 	 require('./components/NavigationComponent.vue')
-	 	 );
-
 
 
 const app = new Vue({

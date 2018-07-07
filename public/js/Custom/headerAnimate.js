@@ -43,3 +43,48 @@ setTimeout(function () {
     }, 8100);
 }, 5000);
 
+
+function SaleText(id) {
+    document.getElementById('#'+'precName'+id).style.cssText="opacity:1 !important; margin-left:3px; transition:0.7s;";
+    document.getElementById('#'+'prec'+id).style.cssText="opacity:1 !important; margin-left:6px; color:red; font-weight:bold; transition:1s; transition-delay:0.9s";
+}
+
+function HideSaleText(id) {
+    document.getElementById('#'+'precName'+id).style.cssText="opacity:0 !important; margin-right:3px; transition:0.7s;";
+    document.getElementById('#'+'prec'+id).style.cssText="opacity:0 !important; margin-right:6px; transition:1s;";
+}
+function catButton(){
+
+    if((document.getElementById('buttonDownCat').getAttribute('class')) == 'fa fa-sort-desc') {
+        setTimeout(function () {
+            document.getElementById('buttonDownCat').setAttribute('class', 'fa fa-sort-down');
+
+            var list = document.getElementById("collapseExample").getElementsByTagName("li");
+            for (var i = 0; i < list.length; i++) {
+                list[i].style.cssText = "visibility:visible; transition:0" + i + "s; transition-delay:0." + i + "s";
+            }
+        }, 300);
+    }
+
+    if((document.getElementById('buttonDownCat').getAttribute('class')) == 'fa fa-sort-up') {
+        setTimeout(function () {
+            document.getElementById('buttonDownCat').setAttribute('class', 'fa fa-sort-down');
+
+            var list = document.getElementById("collapseExample").getElementsByTagName("li");
+            for (var i = 0; i < list.length; i++) {
+                    list[i].style.cssText = "visibility:visible; transition:0" + i + "s; transition-delay:0." + i + "s";
+            }
+        }, 300);
+    }
+        if((document.getElementById('buttonDownCat').getAttribute('class')) == 'fa fa-sort-down'){
+            setTimeout(function () {
+                document.getElementById('buttonDownCat').setAttribute('class','fa fa-sort-up');
+                var list = document.getElementById("collapseExample").getElementsByTagName("li");
+                for (var i = 0; i < list.length; i++) {
+                    list[i].style.cssText = "visibility:hidden; transition:0.5s; transition-delay:0." + i + "s";
+                }
+            }, 300);
+        }
+    }
+
+
