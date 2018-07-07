@@ -1,0 +1,106 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+
+
+Auth::routes();
+
+
+Route::get('/test',function(){
+    return view('test');
+});
+
+
+
+
+Route::middleware(['auth','lang'])->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/',['uses'=>'StartController@show','as'=>'start']);
+
+
+//Best products
+    Route::get('/products',['uses'=>'BestController@show','as'=>'products']);
+
+
+    Route::get('/about',function(){
+        return view('about');
+    })->name('about');
+
+
+//Selected category
+    Route::get('/category/{id}',['uses'=>'CategoryController@show','as'=>'category']);
+
+
+    Route::get('/checkout',function(){
+        return view('checkout');
+    })->name('checkout');
+
+
+    Route::get('/events',function(){
+        return view('events');
+    })->name('events');
+
+    Route::get('/faqs',function(){
+        return view('faqs');
+    })->name('faqs');
+
+    Route::get('/mail',function(){
+        return view('mail');
+    })->name('mail');
+
+
+    Route::get('/paymant',function(){
+        return view('paymant');
+    })->name('paymant');
+
+    Route::post('/paymants',function(){
+        return view('paymants');
+    })->name('payment');
+
+    Route::get('/pet',function(){
+        return view('pet');
+    })->name('pet');
+
+    Route::get('/privacy',function(){
+        return view('privacy');
+    })->name('privacy');
+
+    Route::get('/services',function(){
+        return view('services');
+    })->name('services');
+
+//В моадльку вынеси
+    Route::get('/single',function(){
+        return view('single');
+    })->name('single');
+//
+
+
+    Route::get('/admin',['uses'=>'AdminController@show','as'=>'admin']);
+
+
+
+    Route::get('/switch/{locale}',['uses'=>'LanguageController@setLocalisation','as'=>'switch']);
+
+    Route::post('/addToCart',['uses'=>'AddGoodController@add']);
+
+});
+
+
+
+
+
+
+
+
+

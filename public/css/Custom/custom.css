@@ -1,0 +1,28 @@
+td {
+    padding: 50px !important;
+}
+
+.w3l_banner_nav_right_banner4 {
+    background: url({{asset("images/".$image)}}) no-repeat 0px 0px;
+background-size: cover;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+-ms-background-size: cover;
+}
+
+#specSections li {
+    opacity: 0 !important;
+}
+
+#specSectionsSec li {
+    opacity: 0 !important;
+}
+#bottomBlock li{
+    opacity: 0 !important;
+    list-style-type: none !important;
+}
+#bottomBlock i{
+    color:green !important;
+}
+
