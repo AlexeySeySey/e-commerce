@@ -1,14 +1,18 @@
-<div class="newsletter">
+
+@if(count($letter)==0)
+<div class="newsletter" id="newsMember">
     <div class="container">
         <div class="w3agile_newsletter_left">
             <h3>{{ __('validation.other.'.'sign up for our newsletter') }}</h3>
         </div>
         <div class="w3agile_newsletter_right">
-            <form action="#" method="post">
-                <input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-                <input type="submit" value="{{ __('validation.other.'.'subscribe now') }}">
-            </form>
+
+            <button type="button" class="btn btn-primary" value="{{ __('validation.other.'.'subscribe now') }}" onclick="addLetterMemeber({{$id}})">
+                <i class="fa fa-bell-o"></i>
+            </button>
+
         </div>
         <div class="clearfix"></div>
     </div>
 </div>
+    @endif

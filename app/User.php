@@ -35,6 +35,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Cart','user_id');
     }
 
+    public function user_like()
+    {
+        return $this->belongsToMany('App\Good','likes');
+    }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -43,5 +48,10 @@ class User extends Authenticatable
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function follow()
+    {
+        return $this->hasOne('App\Follower','users_id');
     }
 }

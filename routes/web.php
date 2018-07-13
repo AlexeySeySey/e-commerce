@@ -16,11 +16,7 @@
 Auth::routes();
 
 
-Route::get('/test',function(){
-    return view('test');
-});
-
-
+Route::get('/test',['uses'=>'TestController@show']);
 
 
 Route::middleware(['auth','lang'])->group(function () {
@@ -94,13 +90,11 @@ Route::middleware(['auth','lang'])->group(function () {
 
     Route::post('/addToCart',['uses'=>'AddGoodController@add']);
 
+    Route::post('/addLike',['uses'=>'LikeController@add','as'=>'addLike']);
+
+    Route::post('/saleGoods',['uses'=>'SaleGoodsController@show']);
+
+    Route::post('/letterMember',['uses'=>'LetterController@new']);
+
 });
-
-
-
-
-
-
-
-
 

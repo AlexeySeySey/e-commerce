@@ -21,10 +21,18 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="alert-success" style="width:100px;">
-                            {{ __('validation.other.'.'Empty') }}
+                        @if($checkoutCount==0)
+                        <div class="alert alert-success" style="width:100px;">
+                            @lang('validation.other.Empty')
                         </div>
+                        @else
+                            {{ ucfirst(__('validation.other.In the cart')).':' }}
+                            <b>{{ $checkoutCount }}</b> @lang('validation.other.units').
+                        <br>
+                            @lang('validation.other.Summary Price'): <b>{{ $checkoutPrice }}$</b>
+                            @endif
                         <hr>
+                            <button class="text-left"><a href="{{ route('checkout') }}"><i class="fa fa-sign-in"></i></a></button>
                        <button type="button" class="btn btn-info" data-dismiss="modal" style="margin-right:30px;">{{ __('validation.other.'.'Close') }}</button>
                     </div>
                     </div>

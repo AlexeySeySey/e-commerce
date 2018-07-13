@@ -1,7 +1,7 @@
 <div class="fresh-vegetables">
     <div class="container" onmouseover="showBot()" onmouseout="hideBot()">
-        <h3>{{ __('validation.sections.'.'Top Products') }}</h3>
-        <div class="w3l_fresh_vegetables_grids">
+       {{-- <h3>{{ __('validation.sections.'.'Top Products') }}</h3>
+        --}}<div class="w3l_fresh_vegetables_grids">
             <div class="col-md-9 w3l_fresh_vegetables_grid_right" id="bottomBlock">
                 <table>
                     <tr>

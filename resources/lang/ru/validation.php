@@ -55,7 +55,7 @@ return [
         'Branded Foods'               => 'Фирменные Продукты',
         'policy info'                 => 'Информация о политике',
         'information'                 => 'Информация',
-        'Categories'=>'Категории'
+        'Categories'                  => 'Категории'
 
 
     ],
@@ -141,9 +141,17 @@ return [
         'No products available'                                                                                        => 'Нет доступных товаров',
         'Add to card'                                                                                                  => 'Положить в корзину',
         'Product successfully added to your cart'                                                                      => 'Товар успешно добавлен в корзину!',
-'Available'=>'Доступно',
-        'Sale'=>'Знижка',
-        ],
+        'Available'                                                                                                    => 'Доступно',
+        'Sale'                                                                                                         => 'Знижка',
+        'Categorie'                                                                                                    => 'Категория',
+        'Rating'                                                                                                       => 'Рейтинг',
+        'Show products'                                                                                                => 'Показать товары',
+        'Valid from'                                                                                                   => 'Действует с',
+        'Lasts until'                                                                                                  => 'Завершается',
+        'Summary Price'                                                                                                => 'Итоговая цена',
+        'In the cart'                                                                                                  => 'В корзине',
+        'units'                                                                                                        => 'единиц',
+    ],
 
     'goods'  => [
 
@@ -152,7 +160,7 @@ return [
         'kg' => 'кг',//кило
         'l'  => 'л',//литр
         'th' => 'шт',//штука
-        '' => ''
+        ''   => ''
     ],
 
     'time' => [

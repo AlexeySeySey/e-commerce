@@ -15,19 +15,22 @@ class AddGoodController extends Controller
     {
         $user_id = Auth::id();
 
-        $count = intval($request->good_count);
+        $count = intval($request->goods_count);
+        $price     = intval($request->price);
+
         if ($count == 0) {
-            abort(500);
+            abort(500,'Count is null');
+        }
+        if ($price == 0) {
+            abort(500,'Price is null');
         }
 
         $stock = (((Characteristic::select('stock')->where('goods_id', $request->good_id)->get())->toArray())[0])['stock'];
-        if ($stock < ($request->good_count)) {
+        if ($stock < ($request->goods_count)) {
             abort(500);
         }
 
-        $good_data = ((Good::select(['price', 'image', 'name'])->where('id', $request->good_id)->get())->toArray())[0];
-        $price     = intval($good_data['price']);
-        $price     *= $count;
+        $good_data = ((Good::select(['image', 'name'])->where('id', $request->good_id)->get())->toArray())[0];
 
         $image = $good_data['image'];
         $name  = $good_data['name'];
@@ -42,7 +45,7 @@ class AddGoodController extends Controller
 
 
         $characteristic = Characteristic::find($request->good_id);
-        $characteristic->stock -= $request->good_count;
+        $characteristic->stock -= $request->goods_count;
         $characteristic->save();
 
         return redirect()->back()->with('success',1);

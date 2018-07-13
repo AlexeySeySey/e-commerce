@@ -8,6 +8,8 @@ use App\Categories;
 use Illuminate\Support\Facades\View;
 use DB;
 use Illuminate\Support\Facades\Event;
+use App\Cart;
+use Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,9 +22,14 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+        $id = Auth::id();
         $categories = Categories::all();
+        $checkoutCount = Cart::count('*');
+        $checkoutPrice = Cart::where('id', $id)->sum('price');
+
         View::share('categories',$categories);
-        View::share('image',null);
+        View::share('checkoutPrice',$checkoutPrice);
+        View::share('checkoutCount',$checkoutCount);
     }
 
     /**

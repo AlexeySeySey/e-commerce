@@ -53,7 +53,7 @@ return [
         'Branded Foods'               => 'Фірмові Продукти',
         'policy info'                 => 'Інформація про політику',
         'information'                 => 'Інформація',
-        'Categories'=>'Категорії'
+        'Categories'                  => 'Категорії',
 
 
     ],
@@ -139,8 +139,16 @@ return [
         'No products available'                                                                                        => 'Немає доступних товарів',
         'Add to card'                                                                                                  => 'Покласти в корзину',
         'Product successfully added to your cart'                                                                      => 'Товар успішно добавлено до вашого кошику!',
-    'Available'=>'Доступно',
-        'Sale'=>'Скидка',
+        'Available'                                                                                                    => 'Доступно',
+        'Sale'                                                                                                         => 'Скидка',
+        'Categorie'                                                                                                    => 'Категорія',
+        'Rating'                                                                                                       => 'Рейтинг',
+        'Show products'                                                                                                => 'Показати товари',
+        'Valid from'                                                                                                   => 'Діє з',
+        'Lasts until'                                                                                                  => 'Завершується',
+        'Summary Price'                                                                                                => 'Підсумкова ціна',
+        'In the cart'                                                                                                  => 'У кошику',
+        'units'                                                                                                        => 'одиниць',
     ],
 
     'goods'  => [

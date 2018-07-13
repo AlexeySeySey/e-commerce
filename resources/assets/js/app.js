@@ -16,7 +16,7 @@ window.Vue = require('vue');
  */
 
 	 Vue.component(
-		 'categoires-list',
+		 'sos',
 		 require('./components/addTestComponent.vue')
 	 );
 

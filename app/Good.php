@@ -11,16 +11,21 @@ class Good extends Model
 
     public function categorie()
     {
-        return $this->belongsTo('App\Categories');
+        return $this->belongsTo('App\Categories','categories_id');
     }
 
     public function characteristic()
     {
-        return $this->hasOne('App\Characteristic','id');
+        return $this->hasOne('App\Characteristic','goods_id');
     }
 
     public function sale()
     {
         return $this->belongsTo('App\Sale','sales_id');
+    }
+
+    public function like()
+    {
+        return $this->belongsToMany('App\User','likes');
     }
 }

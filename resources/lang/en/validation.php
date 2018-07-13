@@ -54,7 +54,7 @@ return [
         'Branded Foods'               => 'Branded Foods',
         'policy info'                 => 'policy info',
         'information'                 => 'information',
-        'Categories'=>'Categories'
+        'Categories'                  => 'Categories'
 
 
     ],
@@ -72,7 +72,7 @@ return [
         'Savings'                                                                                                      => 'Savings',
         'Support'                                                                                                      => 'Support',
         'Popularity'                                                                                                   => 'Popularity',
-        'Make your food with Spicy'                                                                                    => 'Make your food with Spicy',                                                                                                       => 'food',
+        'Make your food with Spicy'                                                                                    => 'Make your food with Spicy',
         'Discount offer'                                                                                               => 'Discount offer',
         'privacy policy'                                                                                               => 'privacy policy',
         'secure payments'                                                                                              => 'secure payments',
@@ -139,10 +139,18 @@ return [
         'Language'                                                                                                     => 'Language',
         'No products available'                                                                                        => 'No products available',
         'Add to card'                                                                                                  => 'Add to card',
-    'Product successfully added to your cart'                                                                      => 'Product successfully added to your cart',
-'Available'=>'Available',
-    'Sale'=>'Sale',
-],
+        'Product successfully added to your cart'                                                                      => 'Product successfully added to your cart',
+        'Available'                                                                                                    => 'Available',
+        'Sale'                                                                                                         => 'Sale',
+        'Categorie'                                                                                                    => 'Categorie',
+        'Rating'                                                                                                       => 'Rating',
+        'Show products'                                                                                                => 'Show products',
+        'Valid from'                                                                                                   => 'Valid from',
+        'Lasts until'                                                                                                  => 'Lasts until',
+        'Summary Price'                                                                                                => 'Summary Price',
+        'In the cart'                                                                                                  => 'In the car',
+        'units'                                                                                                        => 'units',
+    ],
 
     'goods'  => [
 
@@ -151,7 +159,7 @@ return [
         'kg' => 'kg',//кило
         'l'  => 'l',//литр
         'th' => 'th',//штука
-        '' => ''
+        ''   => ''
     ],
 
     'time' => [

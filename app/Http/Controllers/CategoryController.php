@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Categories;
 use App\Good;
-use App\Characteristic;
+use Auth;
 
 class CategoryController extends Controller
 {
@@ -17,14 +16,18 @@ class CategoryController extends Controller
 
         $image = (((Categories::select('image')->where('id', $id)->get())->toArray())[0])["image"];
 
-        $goods = Good::with('categorie', 'characteristic', 'sale')->where('categories_id',
-            $id)->orderBy('updated_at','desc')->distinct()->paginate(6);
+        $goods = Good::with('characteristic', 'categorie', 'sale', 'like')
+            ->where('categories_id', $id)
+            ->orderBy('updated_at', 'desc')
+            ->paginate(6);
 
+        $id = Auth::id();
 
         return view('category', [
             'name'  => $name,
             'goods' => $goods,
             'image' => $image,
+            'id'    => $id,
             'good'  => null
         ]);
     }

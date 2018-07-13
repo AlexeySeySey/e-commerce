@@ -2,13 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Good;
+use Auth;
 
 class BestController extends Controller
 {
+
     public function show()
     {
-        return view('products',[
+        $goods = Good::with('characteristic', 'categorie', 'sale', 'like')
+            ->orderBy('rating', 'DESC')
+            ->take(12)
+            ->get();
+
+        $id = Auth::id();
+
+        return view('products', [
+            'goods' => $goods,
+            'id'    => $id,
             'image' => null
         ]);
     }
