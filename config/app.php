@@ -162,6 +162,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Elasticquent\ElasticquentServiceProvider::class,
 
 
     ],
@@ -217,6 +218,7 @@ return [
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Carbon' => 'Carbon\Carbon',
+        'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
 
     ],
 

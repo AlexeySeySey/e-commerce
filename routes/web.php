@@ -16,7 +16,16 @@
 Auth::routes();
 
 
+
+
+
+// Tests
 Route::get('/test',['uses'=>'TestController@show']);
+Route::get('/testSearch',['uses'=>'TestController@search']);
+
+
+
+
 
 
 Route::middleware(['auth','lang'])->group(function () {
