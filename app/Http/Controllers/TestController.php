@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Good;
 use Illuminate\Http\Request;
 
 
@@ -18,8 +17,8 @@ class TestController extends Controller
     public function search(Request $request)
     {
         $name = trim($request->name);
-        
-        if($goods->indices()->exists($indexParams)) {
+
+        /*if($goods->indices()->exists($indexParams)) {
             $goods = Good::addAllToIndex();
         }
 
@@ -33,6 +32,7 @@ class TestController extends Controller
             ]
         ]);
 
-        dd($test->toArray());
+        dd($test->toArray());*/
     }
+
 }

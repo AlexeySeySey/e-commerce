@@ -2,13 +2,13 @@
 <div class="agileits_header"style="max-height: 50px !important;">
     <div class="w3l_offers" id="headButton">
         <a href="{{ route('products') }}">{{ __('validation.sections.'.'Special offers') }}</a>
-    </div>
+    </div>{{--
     <div class="w3l_search">
         <form action="#" method="post">
             <input type="text" placeholder="{{ __('validation.sections.'.'Search').'...' }}">
             <input type="submit" value="">
         </form>
-    </div>
+    </div>--}}
     <div class="product_list_header" style="margin-left: 70px !important;">
         <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#cardModal">{{ __('validation.sections.'.'View Your Cart') }}</button>
         <div class="modal fade" id="cardModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

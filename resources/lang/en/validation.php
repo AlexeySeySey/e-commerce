@@ -150,6 +150,7 @@ return [
         'Summary Price'                                                                                                => 'Summary Price',
         'In the cart'                                                                                                  => 'In the car',
         'units'                                                                                                        => 'units',
+        'Error'                                                                                                        => 'Oops! Something goes wrong!',
     ],
 
     'goods'  => [

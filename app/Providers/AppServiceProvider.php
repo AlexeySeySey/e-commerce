@@ -22,14 +22,14 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        $id = Auth::id();
         $categories = Categories::all();
-        $checkoutCount = Cart::count('*');
-        $checkoutPrice = Cart::where('id', $id)->sum('price');
+
+
+        View::share('checkoutCount',null);
+        View::share('checkoutPrice',null);
 
         View::share('categories',$categories);
-        View::share('checkoutPrice',$checkoutPrice);
-        View::share('checkoutCount',$checkoutCount);
+        View::share('letter',[]);
     }
 
     /**

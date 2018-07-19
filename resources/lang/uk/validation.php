@@ -23,7 +23,7 @@ return [
         'Bakery'             => 'Хлібобулочні Вироби',
         'Pet_food'           => 'Корм Для Тварин',
         'Household_Cleaning' => 'Чистячі Засоби',
-        'Household_Utensils' => 'Посуд'
+        'Household_Utensils' => 'Посуд',
     ],
 
     'sections'  => [
@@ -149,6 +149,7 @@ return [
         'Summary Price'                                                                                                => 'Підсумкова ціна',
         'In the cart'                                                                                                  => 'У кошику',
         'units'                                                                                                        => 'одиниць',
+        'Error'                                                                                                        => 'Ой! Щось пішло не так!',
     ],
 
     'goods'  => [

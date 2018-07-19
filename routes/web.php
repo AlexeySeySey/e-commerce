@@ -15,13 +15,12 @@
 
 Auth::routes();
 
-
+#Добавь кнопки на все ссылки чтобы можно было перейти.
 
 
 
 // Tests
 Route::get('/test',['uses'=>'TestController@show']);
-Route::get('/testSearch',['uses'=>'TestController@search']);
 
 
 
@@ -84,16 +83,6 @@ Route::middleware(['auth','lang'])->group(function () {
         return view('services');
     })->name('services');
 
-//В моадльку вынеси
-    Route::get('/single',function(){
-        return view('single');
-    })->name('single');
-//
-
-
-    Route::get('/admin',['uses'=>'AdminController@show','as'=>'admin']);
-
-
 
     Route::get('/switch/{locale}',['uses'=>'LanguageController@setLocalisation','as'=>'switch']);
 
@@ -106,4 +95,20 @@ Route::middleware(['auth','lang'])->group(function () {
     Route::post('/letterMember',['uses'=>'LetterController@new']);
 
 });
+
+
+Route::group([/*'prefix' => 'admin',*/ 'middleware' => ['auth','lang'/*,'role:admin'*/]], function() {
+
+Route::get('/main',['uses'=>'AdminController@show','as'=>'admin']);
+Route::post('/addCat',['uses'=>'AddCategorieController@add']);
+});
+
+
+
+
+
+
+
+
+
 

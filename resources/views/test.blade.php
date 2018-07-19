@@ -14,12 +14,7 @@
 
 <body>
 
-    <div class="container">
-        <form method="GET" action="{{ URL::to('/testSearch') }}" class="from-group">
-            <input type="text" name="name" placeholder="Your name" class="form-control" required>
-            <input type="submit" class="btn btn-primary" value="Search">
-        </form>
-    </div>
+
 
 
 

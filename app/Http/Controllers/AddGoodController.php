@@ -18,6 +18,7 @@ class AddGoodController extends Controller
         $count = intval($request->goods_count);
         $price     = intval($request->price);
 
+
         if ($count == 0) {
             abort(500,'Count is null');
         }

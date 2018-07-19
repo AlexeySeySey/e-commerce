@@ -1,0 +1,87 @@
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#img-upload {
+    width: 100%;
+}
+
+#upload_error {
+    width: 200px !important;
+    height: 70px !important;
+    text-align: center;
+    position: absolute;
+    left: 900px;
+}
+
+.admin-sidebar {
+    position: fixed;
+    height: 100% !important;
+    width: 200px !important;
+    color: whitesmoke !important;
+}
+
+#admin-category-icon {
+    color: whitesmoke !important;
+    font-size: 17px !important;
+}
+
+.hideElem {
+    display: none;
+}
+
+.admin-panel-categires-list {
+    padding-bottom: 20px !important;
+    font-size: 17px;
+}
+
+.admin-panel-categires-list-all {
+    padding-bottom: 20px !important;
+    padding-left: 20px !important;
+    opacity: 0.7;
+}
+#right-first-elem-admin{
+    border-bottom: 2px solid grey;
+    padding-bottom: 10px !important;
+    padding-left: 20px !important;
+}
+#right-first-elem-admin{
+    background-color:dimgrey !important;
+}
+#sidebar-text-category-first{
+    background-color:dimgrey !important;
+}
+#admin-category-icon-sub{
+    background-color:dimgrey !important;
+}
+#right-first-elem-admin:hover{
+    background-color:dimgrey !important;
+}
+#sidebar-text-category-first:hover{
+    background-color:dimgrey !important;
+}
+#admin-category-icon-sub:hover{
+    background-color:dimgrey !important;
+}
+#admin-category-icon-link{
+    background-color:dimgrey !important;
+}
+
+
