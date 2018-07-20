@@ -163,6 +163,7 @@ return [
         Laratrust\LaratrustServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Elasticquent\ElasticquentServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
 
 
     ],

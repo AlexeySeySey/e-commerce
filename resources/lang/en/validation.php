@@ -24,7 +24,8 @@ return [
         'Bakery'             => 'Bakery',
         'Pet_food'           => 'Pet_food',
         'Household_Cleaning' => 'Household Cleaning',
-        'Household_Utensils' => 'Household Utensils'
+        'Household_Utensils' => 'Household Utensils',
+
     ],
 
     'sections'  => [
@@ -54,7 +55,8 @@ return [
         'Branded Foods'               => 'Branded Foods',
         'policy info'                 => 'policy info',
         'information'                 => 'information',
-        'Categories'                  => 'Categories'
+        'Categories'                  => 'Categories',
+        'Website'                     => 'Website',
 
 
     ],
@@ -62,6 +64,7 @@ return [
         'Manager'    => 'Manager',
         'Supervisor' => 'Supervisor',
         'customer'   => 'customer',
+        'Admin'      => 'Admin',
     ],
 
     'other' => [
@@ -151,6 +154,10 @@ return [
         'In the cart'                                                                                                  => 'In the car',
         'units'                                                                                                        => 'units',
         'Error'                                                                                                        => 'Oops! Something goes wrong!',
+        'Exit'                                                                                                         => 'Exit',
+        'Welcome'                                                                                                      => 'Welcome',
+        'Online'                                                                                                       => 'Online',
+        'Offline'                                                                                                      => 'Offline',
     ],
 
     'goods'  => [
@@ -165,6 +172,17 @@ return [
 
     'time' => [
         'July' => 'July',
+    ],
+
+    'admin-categies' => [
+        'Main'           => 'Main',
+        'News'           => 'News',
+        'Users'          => 'Users',
+        'Goods'          => 'Goods',
+        'Sales'          => 'Sales',
+        'Categories'     => 'Categories',
+        'Configurations' => 'Configurations',
+        'Statistics'     => 'Statistics',
     ],
     /*______________________________________*/
 

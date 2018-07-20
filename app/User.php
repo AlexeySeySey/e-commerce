@@ -33,7 +33,7 @@ class User extends Authenticatable
 
     public function cart()
     {
-        return $this->hasOne('App\Cart','user_id');
+        return $this->hasMany('App\Cart','user_id');
     }
 
     public function user_like()
@@ -59,5 +59,15 @@ class User extends Authenticatable
     public function isOnline()
     {
         return Cache::has('user-is-online-' . $this->id);
+    }
+
+    public function ban()
+    {
+        return $this->belongsTo('App\BlackList');
+    }
+
+    public function role()
+    {
+        return $this->belongsToMany('App\Role','role_user','user_id');
     }
 }

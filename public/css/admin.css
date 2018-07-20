@@ -40,7 +40,7 @@
 
 #admin-category-icon {
     color: whitesmoke !important;
-    font-size: 17px !important;
+    font-size: 14px !important;
 }
 
 .hideElem {
@@ -49,7 +49,7 @@
 
 .admin-panel-categires-list {
     padding-bottom: 20px !important;
-    font-size: 17px;
+    font-size: 14px;
 }
 
 .admin-panel-categires-list-all {
@@ -69,7 +69,7 @@
     background-color:dimgrey !important;
 }
 #admin-category-icon-sub{
-    background-color:dimgrey !important;
+    background:none !important;
 }
 #right-first-elem-admin:hover{
     background-color:dimgrey !important;
@@ -78,10 +78,23 @@
     background-color:dimgrey !important;
 }
 #admin-category-icon-sub:hover{
-    background-color:dimgrey !important;
+    background:none !important;
 }
 #admin-category-icon-link{
-    background-color:dimgrey !important;
+    background:none !important;
 }
-
+.main-footer-admin{
+    background-color: black;
+    color:white;
+    text-align: center;
+    height: 40px;
+    padding-bottom: 5px;
+}
+.main-footer-admin-in{
+    color:white;
+}
+table#allUsersTable td {
+    color:black !important;
+    font-weight: bold;
+}
 

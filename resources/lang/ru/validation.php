@@ -24,7 +24,9 @@ return [
         'Bakery'             => 'Хлебобулочные Изделия',
         'Pet_food'           => 'Корм Для Животных',
         'Household_Cleaning' => 'Чистящие Средства',
-        'Household_Utensils' => 'Посуда'
+        'Household_Utensils' => 'Посуда',
+
+
     ],
 
 
@@ -55,7 +57,8 @@ return [
         'Branded Foods'               => 'Фирменные Продукты',
         'policy info'                 => 'Информация о политике',
         'information'                 => 'Информация',
-        'Categories'                  => 'Категории'
+        'Categories'                  => 'Категории',
+        'Website'                     => 'Веб-сайт',
 
 
     ],
@@ -63,6 +66,7 @@ return [
         'Manager'    => 'Менеджер',
         'Supervisor' => 'Руководитель',
         'customer'   => 'Покупатель',
+        'Admin'      => 'Администрирование',
     ],
 
     'other' => [
@@ -152,6 +156,10 @@ return [
         'In the cart'                                                                                                  => 'В корзине',
         'units'                                                                                                        => 'единиц',
         'Error'                                                                                                        => 'Упс! Что-то пошло не так!',
+        'Exit'                                                                                                         => 'Выход',
+        'Welcome'                                                                                                      => 'Добро пожаловать',
+        'Online'                                                                                                       => 'Онлайн',
+        'Offline'                                                                                                      => 'Оффлайн',
     ],
 
     'goods'  => [
@@ -166,6 +174,17 @@ return [
 
     'time' => [
         'July' => 'Июль',
+    ],
+
+    'admin-categies' => [
+        'Main'           => 'Главная',
+        'News'           => 'Новости',
+        'Users'          => 'Пользователи',
+        'Goods'          => 'Товары',
+        'Sales'          => 'Акции',
+        'Categories'     => 'Категории',
+        'Configurations' => 'Настройки',
+        'Statistics'     => 'Статистика',
     ],
     /*______________________________________*/
 

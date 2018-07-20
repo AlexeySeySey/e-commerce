@@ -1,3 +1,4 @@
+@section('head')
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -19,7 +20,9 @@
     <link rel="stylesheet" href="{{asset('css/top_scroll.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/admin_styles.css')}}">
 </head>
+@show
 
+@section('top-nav')
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow"
      style="background-color: black !important; height: 72px !important;">
@@ -31,9 +34,10 @@
     </a>
 </nav>
 
-
 <br><br><br>
+@show
 
+@section('sections')
 <div class="admin-sidebar bg-secondary" id="navbar-admin" style="position:fixed !important;">
     <button class="btn btn-secondary" style="width:50px;" onclick="rightNavBarAdmin()" id="navbar-category-admin"><i
                 class="fa fa-window-minimize" id="navbar-category-admin-icon"></i></button>
@@ -47,7 +51,7 @@
         <li id="right-first-elem-admin">
             <a href="{{ route('admin') }}" id="admin-category-icon-link"><span id="admin-category-icon"><i
                             class="fa fa-home" id="admin-category-icon-sub"></i></span>
-                <span class="sidebar-text-category">@lang('validation.sections.Home')</span></a>
+                <span id="sidebar-text-category-first"  class="sidebar-text-category">@lang('validation.sections.Home')</span></a>
         </li>
         @foreach($admin_categoires as $key)
             <li id="{{'#categ-admin-elem'.$key->id}}" class="admin-panel-categires-list-all"
@@ -69,32 +73,28 @@
         @endforeach
     </ul>
 </div>
-<div class="container-fluid" style="position: static !important;">
+
+<br><br>
+    <div style="margin-left:200px !important;">
+@show
+
+
+@section('content')
     <div class="container-fluid">
-        <div class="row">
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">@lang('validation.other.Welcome')!</h1>
-                    <table>
-                        <tr>
-                            <td>
-                                <span class="foo blue"></span><span> @lang('validation.other.Online')</span>
-                            </td>
-                            <td>
-                                <span class="foo red"></span><span> @lang('validation.other.Offline')</span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="container-fluid">
-                    <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-                </div>
-            </main>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
         </div>
     </div>
+@show
 
+@section('footer')
+    </div>
 
-</div>
 <div id="footer">
     <footer class="main-footer-admin">
         <span class="main-footer-admin-in">© {{ Carbon\Carbon::now()->year }} {{ __('validation.sections.'.'Grocery') }}  {{ __('validation.sections.'.'Store') }}</span>
@@ -110,43 +110,7 @@
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/Custom/admin.js')}}" defer></script>
 <script type="text/javascript" src="{{ asset('js/app.js') }}" defer></script>
-<script src="{{ asset('js/chart.js') }}"></script>
-<script>
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: [],
-            datasets: [{
-                data: [0, {{$onlie_count}}, {{$onlie_count*3}}, {{$onlie_count*4}}, {{$onlie_count*5}}],
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: '#007bff',
-                borderWidth: 4,
-                pointBackgroundColor: '#007bff'
-            }, {
-                data: [0, {{$offline_count}}, {{$offline_count*3}}, {{$offline_count*4}}, {{$offline_count*5}}],
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: 'red',
-                borderWidth: 4,
-                pointBackgroundColor: 'red'
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: false
-                    }
-                }]
-            },
-            legend: {
-                display: false,
-            }
-        }
-    });
-</script>
 
 </body>
 </html>
+@show

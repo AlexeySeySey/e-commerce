@@ -51,9 +51,9 @@ li span:hover{
     background: #FFFFFF;
 }
 
-body{
+body nav footer{
     height: auto;
-    border-left:3px solid black !important;
+    /*border-left:3px solid black !important;*/
     background-color: #F5F5F5 !important;
 }
 
@@ -67,37 +67,3 @@ body{
     text-align: center !important;
 }
 
-/*icons*/
-.social-icons {
-    overflow:hidden;
-    text-align:right;
-    padding:17px 162px 13px 0
-}
-.social-icons span {
-    display:inline-block;
-    font-size:24px;
-    line-height:28px;
-    color:#fff;
-    margin:-1px 20px 0 0;
-    letter-spacing:-1px;
-}
-.social-icons a {
-    display:inline-block;
-    width:23px;
-    height:23px;
-    float:right;
-}
-.icon-1 {
-    background:url(../images/icon-1.png) 0 0 no-repeat;
-}
-.icon-2 {
-    background:url(../images/icon-2.png) 0 0 no-repeat;
-    margin-left:7px;
-}
-.icon-3 {
-    background:url(../images/icon-3.png) 0 0 no-repeat;
-    margin-left:7px;
-}
-.social-icons a:hover {
-    background-color:#1e93f4;
-}

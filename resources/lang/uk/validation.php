@@ -24,6 +24,8 @@ return [
         'Pet_food'           => 'Корм Для Тварин',
         'Household_Cleaning' => 'Чистячі Засоби',
         'Household_Utensils' => 'Посуд',
+
+
     ],
 
     'sections'  => [
@@ -54,6 +56,7 @@ return [
         'policy info'                 => 'Інформація про політику',
         'information'                 => 'Інформація',
         'Categories'                  => 'Категорії',
+        'Website'                     => 'Веб-сайт',
 
 
     ],
@@ -61,6 +64,7 @@ return [
         'Manager'    => 'Менеджер',
         'Supervisor' => 'Керівник',
         'customer'   => 'Покупець',
+        'Admin'      => 'Адміністрування',
     ],
 
     'other' => [
@@ -150,6 +154,10 @@ return [
         'In the cart'                                                                                                  => 'У кошику',
         'units'                                                                                                        => 'одиниць',
         'Error'                                                                                                        => 'Ой! Щось пішло не так!',
+        'Exit'                                                                                                         => 'Вихід',
+        'Welcome'                                                                                                      => 'Ласкаво просимо',
+        'Online'                                                                                                       => 'Онлайн',
+        'Offline'                                                                                                      => 'Оффлайн',
     ],
 
     'goods'  => [
@@ -164,6 +172,17 @@ return [
 
     'time' => [
         'July' => 'Липень',
+    ],
+
+    'admin-categies' => [
+        'Main'           => 'Головна',
+        'News'           => 'Новини',
+        'Users'          => 'Користувачі',
+        'Goods'          => 'Товари',
+        'Sales'          => 'Акції',
+        'Categories'     => 'Категорії',
+        'Configurations' => 'Налаштування',
+        'Statistics'     => 'Статистика',
     ],
     /*______________________________________*/
 

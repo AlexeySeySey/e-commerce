@@ -4,12 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-use App\Categories;
 use Illuminate\Support\Facades\View;
-use DB;
 use Illuminate\Support\Facades\Event;
-use App\Cart;
-use Auth;
+use App\Categories;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,14 +19,13 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        $categories = Categories::all();
-
-
         View::share('checkoutCount',null);
         View::share('checkoutPrice',null);
 
+        $categories = Categories::all();
         View::share('categories',$categories);
         View::share('letter',[]);
+
     }
 
     /**
