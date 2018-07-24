@@ -1,53 +1,37 @@
-<div class="container-fluid">
-    <h2>Ваша локалзиация: {{ $locale }}</h2>
-</div>
-<br>
-<h1>Add new Category</h1>
-@if(session('upload_error'))
-    <div class="container alert alert-danger" id="upload_error">
-        {{ __('validation.other.'.session('upload_error')) }}
+<div class="container-fluid" id="admin-navbar-sticky">
+<nav style="background:white !important; padding-top: 20px !important;">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+           aria-controls="nav-home" aria-selected="true"
+           style="padding-left: 50px !important; padding-right: 50px !important; margin-left: 150px;" onmouseover="visibleMinipanels(this)">
+            Категории <span class="badge badge-primary badge-pill">{{ count($categories) }}</span>
+        </a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+           aria-controls="nav-profile" aria-selected="false"
+           style="padding-left: 50px !important; padding-right: 50px !important;" onmouseover="visibleMinipanels(this)">
+            Создать новую <i class="fa fa-plus"></i>
+        </a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+           aria-controls="nav-contact" aria-selected="false"
+           style="padding-left: 50px !important; padding-right: 50px !important;" onmouseover="visibleMinipanels(this)">Корзина <i class="fa fa-trash-o"></i></a>
     </div>
-@endif
-<div class="container-fluid">
-    <form action="{{ URL::to('/addCat') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="col-md-6">
-            <div class="form-group">
-                <label>Upload Image</label>
-                <div class="input-group">
-            <span class="input-group-btn">
-                <span class="btn btn-default btn-file">
-                    Browse… <input type="file" id="imgInp" name="categories_image" accept="image/*">
-                </span>
-            </span>
-                    <input type="text" class="form-control" readonly>
-                </div>
-                <img id='img-upload'/>
-            </div>
-            <div class="form-group">
-                <label for="name">Categorie Name (by {{ $locale }})</label>
-                <input type="text" class="form-control" id="name" placeholder="Имя категории">
-            </div>
-            @foreach($other_localizations as $key)
-                <div class="form-group">
-                    <label for="tranc">Перевод</label>
-                    <input type="text" class="form-control" id="tranc"
-                           placeholder="Перевод: {{ $key }}">
-                </div>
-            @endforeach
-        </div>
-        <input type="submit" value="Send!">
-    </form>
+</nav>
 </div>
-<div class="container" id="result"></div>
-<br>
-<table class="table table-hover">
-    <h4>Categories here for change/delete</h4>
-    <tbody>
-    <tr>
-        <td><button type="button" class="btn btn-info" disabled>Изменить</button></td>
-        <td><button type="button" class="btn btn-danger" disabled>Удалить</button></td>
-    </tr>
-    </tbody>
-</table>
-<h1>AND add A LIST OF ALL categories</h1>
+
+<br><br><br>
+
+<div class="tab-content" id="nav-tabContent">
+
+    @include('Admin.adminImports.AdminCategoriesImports.categoriesList')
+    @include('Admin.adminImports.AdminCategoriesImports.createNewCategorie')
+    @include('Admin.adminImports.AdminCategoriesImports.trashCategories')
+
+</div>
+
+
+
+
+
+
+
+

@@ -26,6 +26,12 @@ class AppServiceProvider extends ServiceProvider
         View::share('categories',$categories);
         View::share('letter',[]);
 
+
+
+        View::share('goods',[]);
+        View::share('follow',[]);
+        View::share('id',null);
+
     }
 
     /**

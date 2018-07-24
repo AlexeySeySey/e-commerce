@@ -2,13 +2,13 @@
 <div class="agileits_header"style="max-height: 50px !important;">
     <div class="w3l_offers" id="headButton">
         <a href="{{ route('products') }}">{{ __('validation.sections.'.'Special offers') }}</a>
-    </div>{{--
+    </div>
     <div class="w3l_search">
-        <form action="#" method="post">
-            <input type="text" placeholder="{{ __('validation.sections.'.'Search').'...' }}">
+        <form action="{{ URL::to('/search') }}" method="get">
+            <input type="text" name="name" placeholder="{{ __('validation.sections.'.'Search').'...' }}" required>
             <input type="submit" value="">
         </form>
-    </div>--}}
+    </div>
     <div class="product_list_header" style="margin-left: 70px !important;">
         <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#cardModal">{{ __('validation.sections.'.'View Your Cart') }}</button>
         <div class="modal fade" id="cardModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -32,8 +32,8 @@
                             @lang('validation.other.Summary Price'): <b>{{ $checkoutPrice }}$</b>
                             @endif
                         <hr>
-                            <button class="text-left"><a href="{{ route('checkout') }}"><i class="fa fa-sign-in"></i></a></button>
-                       <button type="button" class="btn btn-info" data-dismiss="modal" style="margin-right:30px;">{{ __('validation.other.'.'Close') }}</button>
+                            <button class="text-left btn btn-info"><a href="{{ route('checkout') }}"><i class="fa fa-sign-in"></i></a></button>
+                       <button type="button" class="btn btn-danger" data-dismiss="modal" style="margin-right:30px;">{{ __('validation.other.'.'Close') }}</button>
                     </div>
                     </div>
             </div>
@@ -47,8 +47,13 @@
                 <div class="mega-dropdown-menu">
                     <div class="w3ls_vegetables">
                         <ul class="dropdown-menu drp-mnu">
-                            <li><a href="{{ route('login') }}">{{ __('validation.sections.'.'Login') }}</a></li>
-                            <li><a href="{{ route('login') }}">{{ __('validation.sections.'.'Sign up') }}</a></li>
+                            @guest
+                                <li><a class="nav-link" href="{{ route('login') }}">{{ __('validation.sections.'.'Login') }}</a></li>
+                                <li><a href="{{ url('/register') }}">{{ __('validation.sections.'.'Sign up') }}</a></li>
+                            @else
+                                <li><a class="nav-link" href="{{ route('checkout') }}">{{ __('validation.other.'.'Cart') }}</a></li>
+                                <li><a class="nav-link" href="{{ url('/logout') }}">{{ __('validation.sections.'.'Logout') }}</a></li>
+                            @endguest
                         </ul>
                     </div>
                 </div>

@@ -1,3 +1,5 @@
+
+
 setTimeout(function () {
     var list = document.getElementById("specSections").getElementsByTagName("li");
     for (var i = 0; i < list.length; i++) {

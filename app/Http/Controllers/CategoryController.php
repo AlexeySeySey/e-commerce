@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Categories;
 use App\Good;
 use Auth;
+use App\Cart;
+use App\Traits\UserDataTrait;
 
 class CategoryController extends Controller
 {
+
+    use UserDataTrait;
 
     public function show($id)
     {
@@ -23,12 +27,20 @@ class CategoryController extends Controller
 
         $id = Auth::id();
 
+        $follow = $this->follower($id);
+        $checkoutCount = $this->checkoutCount();
+        $checkoutPrice = $this->checkoutPrice($id);
+
+
         return view('category', [
             'name'  => $name,
             'goods' => $goods,
             'image' => $image,
             'id'    => $id,
-            'good'  => null
+            'good'  => null,
+            'follow'=>$follow,
+            'checkoutCount'=>$checkoutCount,
+            'checkoutPrice'=>$checkoutPrice
         ]);
     }
 }

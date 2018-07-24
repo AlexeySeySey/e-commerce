@@ -40,6 +40,7 @@ return [
         'View Your Cart'              => 'View Your Cart',
         'Contact Us'                  => 'Contact Us',
         'Login'                       => 'Login',
+        'Logout'=>'Logout',
         'Sign up'                     => 'Sign up',
         'Grocery'                     => 'Grocery',
         'Store'                       => 'Store',
@@ -158,6 +159,24 @@ return [
         'Welcome'                                                                                                      => 'Welcome',
         'Online'                                                                                                       => 'Online',
         'Offline'                                                                                                      => 'Offline',
+        'Banned'                                                                                                       => 'Забанен',
+        'Unbanned'                                                                                                     => 'Разбанен',
+
+        'Users'                => 'Users',
+        'Locale'               => 'Locale',
+        'Cart is empty'        => 'Cart is empty',
+        'Items in the cart'    => 'Items in the cart',
+        'Liked goods'          => 'Liked goods',
+        'No goods liked'       => 'No goods liked',
+        'Follows the news'     => 'Follows the news',
+        'Not signed for news'  => 'Not signed for news',
+        'Ban'                  => 'Ban',
+        'Unban'                => 'Unban',
+        'Varieties'            => 'Varieties',
+        'Current Localization' => 'Current Localization',
+        'Cart'=>'Cart',
+
+
     ],
 
     'goods'  => [

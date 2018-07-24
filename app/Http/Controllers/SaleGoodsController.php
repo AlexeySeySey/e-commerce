@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Good;
 use App\Sale;
-use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Auth;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use App\Cart;
+use App\Traits\UserDataTrait;
 
 class SaleGoodsController extends Controller
 {
+
+    use UserDataTrait;
 
     public function show(Request $request)
     {
@@ -25,9 +29,16 @@ class SaleGoodsController extends Controller
             ->orderBy('updated_at', 'desc')
             ->paginate(6);
 
+        $follow = $this->follower($id);
+        $checkoutCount = $this->checkoutCount();
+        $checkoutPrice = $this->checkoutPrice($id);
+
         return view('products_imports.bestProductsImport', [
-            'goods' => $goods,
-            'id'=>$id
+            'goods'  => $goods,
+            'id'     => $id,
+            'follow' => $follow,
+            'checkoutCount'=>$checkoutCount,
+            'checkoutPrice'=>$checkoutPrice
         ]);
     }
 }

@@ -38,8 +38,13 @@
                                                     onclick="NewLike({{ $key->id }})"><i class="fa fa-thumbs-up"></i>
                                             </button>
                                         </td>
+
+
+
                                     @elseif(count($key->like)!=0)
-                                        @if($id == ((($key->like)->toArray())[0])['id'])
+
+                                        @foreach($key->like as $k)
+                                        @if($id == $k->id)
                                         @else
                                             <td>
                                                 <button class="btn btn-primary" id="{{'#like'.$key->id}}"
@@ -47,7 +52,12 @@
                                                             class="fa fa-thumbs-up"></i></button>
                                             </td>
                                         @endif
+                                        @endforeach
+
                                     @endif
+
+
+
                                     <td>
                                         <div class="alert-seccess" id="{{'#likeResult'.$key->id}}"
                                              style="opacity: 0;"></div>

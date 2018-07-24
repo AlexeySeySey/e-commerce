@@ -8,14 +8,9 @@ use Elasticquent\ElasticquentTrait;
 
 class Good extends Model
 {
-    use ElasticquentTrait;
+ #   use ElasticquentTrait;
 
-    /**
-     * The elasticsearch settings.
-     *
-     * @var array
-     */
-    protected $indexSettings = [
+  /*  protected $indexSettings = [
         'analysis' => [
             'char_filter' => [
                 'replace' => [
@@ -60,7 +55,7 @@ class Good extends Model
             'analyzer' => 'standard'
         )
     );
-
+*/
     public function categorie()
     {
         return $this->belongsTo('App\Categories','categories_id');

@@ -22,7 +22,7 @@ class AdminAuthMiddleware
         if (($user->hasRole('admin')) or ($user->hasRole('admin_support'))) {
             return $next($request);
         } else {
-            return abort(500);
+            return abort(500,'Sorry, you don\'t have permission');
         }
     }
 }

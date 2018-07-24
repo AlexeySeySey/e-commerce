@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App;
-use Auth;
-use App\User;
-use App\Role;
-use App\Cart;
-use App\Good;
-use App\Follower;
 use App\AdminCategorie;
+use App\Categories;
+use App\Role;
+use App\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class AdminChildController extends Controller
@@ -29,55 +27,60 @@ class AdminChildController extends Controller
             $localizations       = ['en', 'ru', 'uk'];
             $other_localizations = [];
 
-            $locale = App::getLocale();
-
             foreach ($localizations as $key) {
-                if ($key != $locale) {
+                if ($key != App::getLocale()) {
                     $other_localizations[] = ucwords($key);
                 }
             }
 
+            $categories = Categories::with('good')->get();
+
+            $trashed_categories = Categories::onlyTrashed()->get();
+
             return view('Admin.adminChild', [
                 'section'             => $section,
-                'locale'              => $locale,
+                'categories'          => $categories,
                 'other_localizations' => $other_localizations,
-                'admin_categoires'    => $admin_categoires
+                'admin_categoires'    => $admin_categoires,
+                'trashed_categories'  => $trashed_categories
             ]);
         }
 
-        if($section == 'Users'){
-            /*
-             * Список зареганных юзеров + Добавить юзера в ЧС + Статистика покупок (какие товары куплены, когда, на какую сумму,
-             * именно куплены, а не оплачены)
-             * Черный список юзеров + убрать юзера в ЧС
-             *
-             * */
-            //Если это админ или помощник, то его нельзя забанить.
+        if ($section == 'Users') {
 
-            $admin_role = ((Role::with('user')->where('name','administrator')->get())->toArray())[0];
-            $admin_support_role = ((Role::with('user')->where('name','admin_support')->get())->toArray())[0];
+            $admin_role         = ((Role::with('user')->where('name', 'administrator')->get())->toArray())[0];
+            $admin_support_role = ((Role::with('user')->where('name', 'admin_support')->get())->toArray())[0];
 
-            $admin_id = intval((($admin_role['user'])[0])['id']);
+            $admin_id         = intval((($admin_role['user'])[0])['id']);
             $admin_support_id = intval((($admin_support_role['user'])[0])['id']);
 
 
-            $users = User::with(['cart','user_like','follow','ban'])->where([
-                ['id','!=',$admin_id],
-                ['id','!=',$admin_support_id]
+            $users = User::with(['cart', 'user_like', 'follow'])->where([
+                ['id', '!=', $admin_id],
+                ['id', '!=', $admin_support_id]
             ])->get();
 
+            return view('Admin.adminChild', [
+                'users'            => $users,
+                'section'          => $section,
+                'admin_categoires' => $admin_categoires
+            ]);
+        }
+
+        if ($section == 'Categories') {
+
+            // ...
 
             return view('Admin.adminChild', [
-                'users'               => $users,
-                'section'             => $section,
-                'admin_categoires'    => $admin_categoires
+                'section'          => $section,
+                'admin_categoires' => $admin_categoires
             ]);
         }
 
         //basic (empty) case
         return view('Admin.adminChild', [
-            'section'             => $section,
-            'admin_categoires'    => $admin_categoires
+            'section'          => $section,
+            'admin_categoires' => $admin_categoires
         ]);
 
     }

@@ -24,11 +24,19 @@
 
 @section('top-nav')
 <body>
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow"
-     style="background-color: black !important; height: 72px !important;">
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0" style="background-color: black !important; height: 72px !important;">
+    <table>
+        <tr>
+            <td>
+    <span style="color: grey; text-shadow: #00c0ef 20px 20px 20px">{{ ucwords(App::getLocale()) }}</span>
+            </td>
+            <td>
     <p class="navbar-brand col-sm-3 col-md-2 mr-0">
         @lang('validation.sections.Grocery') @lang('validation.sections.Store') | @lang('validation.positions.Admin')
     </p>
+            </td>
+        </tr>
+    </table>
     <a class="btn btn-danger" href="{{ route('logout') }}" style="margin-right:80px !important;">
         <i class="fa fa-sign-out"></i><b><i>@lang('validation.other.Exit')</i></b>
     </a>
@@ -38,7 +46,7 @@
 @show
 
 @section('sections')
-<div class="admin-sidebar bg-secondary" id="navbar-admin" style="position:fixed !important;">
+<div class="admin-sidebar bg-secondary" id="navbar-admin" style="position: fixed; !important;">
     <button class="btn btn-secondary" style="width:50px;" onclick="rightNavBarAdmin()" id="navbar-category-admin"><i
                 class="fa fa-window-minimize" id="navbar-category-admin-icon"></i></button>
     <ul class="nav flex-column" style="padding-bottom: 100px !important; position: static !important;">
@@ -72,24 +80,15 @@
             </li>
         @endforeach
     </ul>
-</div>
+    </div>
 
 <br><br>
-    <div style="margin-left:200px !important;">
+    <div style="margin-left:200px !important" id="main-content-admin-first">
 @show
 
 
 @section('content')
-    <div class="container-fluid">
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
+
 @show
 
 @section('footer')

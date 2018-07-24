@@ -1,3 +1,7 @@
+window.onscroll = function () {
+document.getElementById('admin-navbar-sticky').style.cssText = "position:fixed; z-index:200 !important; bottom:495px !important; height:70px !important";
+}
+
 $(document).ready(function () {
     $(document).on('change', '.btn-file :file', function () {
         var input = $(this),
@@ -47,6 +51,9 @@ function rightNavBarAdmin() {
     if (document.getElementById('navbar-category-admin-icon').getAttribute('class') == 'fa fa-window-minimize') {
         document.getElementById('sidebar-text-category-first').style.cssText = "visibility:hidden";
         document.getElementById('navbar-admin').style.cssText = "width:50px !important; transition:0.5s";
+
+        document.getElementById('main-content-admin-first').style.cssText = "width:1200px !important; margin-left:50px !important; transition:0.5s;";
+
         document.getElementById('navbar-category-admin-icon').setAttribute('class', 'fa fa-navicon');
         var elements = document.getElementsByClassName("sidebar-text-category");
         for (var i = 0; i < elements.length; i++) {
@@ -54,6 +61,7 @@ function rightNavBarAdmin() {
         }
 
     } else {
+        document.getElementById('main-content-admin-first').style.cssText = "width:1100px !important; margin-left:200px !important; transition:0.5s;";
 
         document.getElementById('navbar-admin').style.cssText = "width:200px !important; transition:0.5s";
         document.getElementById('sidebar-text-category-first').style.cssText = "visibility:visible";
@@ -82,11 +90,11 @@ function adminIconCatOut(id) {
 }
 
 function usersShowUp() {
-    document.getElementById('allUsersTable').style.cssText = "visibility: visible;";
+    document.getElementById('allUsersTable').style.cssText = "visibility:visible !important";
 }
 
 function usersHide() {
-    document.getElementById('allUsersTable').style.cssText = "visibility: hidden !important;";
+    document.getElementById('allUsersTable').style.cssText = "display:none";
 }
 
 function Ban(id) {
@@ -97,8 +105,10 @@ function Ban(id) {
         url: '/banUser',
         cache: false,
         type: 'POST',
-        success: function (data) {
-            document.getElementById('#' + 'banbutton' + id).innerHTML = data;
+        data: {user_id: id},
+        success: function () {
+            document.getElementById('#' + 'ban-return-text' + id).style.cssText = "visibility:visible !important";
+            document.getElementById('#' + 'banbutton' + id).style.cssText = "visibility:hidden !important";
         },
         error: function (ts) {
             alert(ts.responseText)
@@ -106,7 +116,7 @@ function Ban(id) {
     });
 }
 
-function UnBan(id){
+function UnBan(id) {
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -114,11 +124,19 @@ function UnBan(id){
         url: '/unbanUser',
         cache: false,
         type: 'POST',
-        success: function (data) {
-            document.getElementById('#' + 'banbutton' + id).innerHTML = data;
+        data: {user_id: id},
+        success: function () {
+            document.getElementById('#' + 'unban-return-text' + id).style.cssText = "visibility:visible !important";
+            document.getElementById('#' + 'unbanbutton' + id).style.cssText = "visibility:hidden !important";
         },
         error: function (ts) {
             alert(ts.responseText)
         }
     });
 }
+
+
+
+
+
+

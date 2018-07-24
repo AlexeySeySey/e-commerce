@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
-use App\BlackList;
 
 class BanController extends Controller
 {
@@ -12,19 +12,22 @@ class BanController extends Controller
     {
         $user_id = intval($request->user_id);
 
-      /* $black = new BlackList;
-       $black->users_id = $user_id;
-       $black->save();
-*/
+       $user = User::find($user_id);
+       $user->isBan = 1;
+       $user->save();
+
 
         return json_encode('Banned');
     }
+
 
     public function unban(Request $request)
     {
         $user_id = intval($request->user_id);
 
-        $black = BlackList::find($user_id)->delete();
+        $user = User::find($user_id);
+        $user->isBan = 0;
+        $user->save();
 
         return json_encode('Unbanned');
     }

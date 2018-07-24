@@ -164,6 +164,8 @@ return [
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Elasticquent\ElasticquentServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        Laravel\Cashier\CashierServiceProvider::class,
 
 
     ],
@@ -220,6 +222,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Carbon' => 'Carbon\Carbon',
         'Es' => Elasticquent\ElasticquentElasticsearchFacade::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

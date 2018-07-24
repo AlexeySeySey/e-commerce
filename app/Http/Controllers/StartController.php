@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Categories;
+use App\Follower;
 use App\Sale;
 use Auth;
-use App\Follower;
-use App\Cart;
+use App\Traits\UserDataTrait;
 
 class StartController extends Controller
 {
+
+    use UserDataTrait;
 
     public function show()
     {
@@ -22,20 +25,17 @@ class StartController extends Controller
 
         $id = Auth::id();
 
-        $letter = Follower::where('users_id', $id)->get();
-
-        $id = Auth::id();
-
-        $checkoutCount = Cart::count('*');
-        $checkoutPrice = Cart::where('id', $id)->sum('price');
+        $follow = $this->follower($id);
+        $checkoutCount = $this->checkoutCount();
+        $checkoutPrice = $this->checkoutPrice($id);
 
         return view('start', [
-            'checkoutCount'=>$checkoutCount,
-            'checkoutPrice'=>$checkoutPrice,
-            'categories' => $categories,
-            'letter'     => $letter,
-            'goods'      => $sales,
-            'id'         => $id
+            'checkoutCount' => $checkoutCount,
+            'checkoutPrice' => $checkoutPrice,
+            'categories'    => $categories,
+            'follow'        => $follow,
+            'goods'         => $sales,
+            'id'            => $id
         ]);
     }
 }

@@ -16,7 +16,7 @@
 
                     You are logged in!
                 </div>
-                <div>
+                <div class="container-fluid">
                     <h3>Choose language</h3>
                     <table class="table-hover">
                         <tr>

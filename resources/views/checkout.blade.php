@@ -6,7 +6,8 @@
     <div class="products-breadcrumb">
         <div class="container">
             <ul>
-                <li><i class="fa fa-home" aria-hidden="true"></i><a href="{{ route('start') }}">{{ __('validation.sections.'.'Home') }}</a><span>|</span></li>
+                <li><i class="fa fa-home" aria-hidden="true"></i><a
+                            href="{{ route('start') }}">{{ __('validation.sections.'.'Home') }}</a><span>|</span></li>
                 <li>{{ __('validation.sections.'.'Checkout') }}</li>
             </ul>
         </div>
@@ -33,9 +34,11 @@
                         <th>{{ __('validation.other.'.'Remove') }}</th>
                     </tr>
                     </thead>
-                    <tbody><tr class="rem1">
+                    <tbody>
+                    <tr class="rem1">
                         <td class="invert">1</td>
-                        <td class="invert-image"><a href="{{ route('single') }}"><img src="images/1.png" alt=" " class="img-responsive"></a></td>
+                        <td class="invert-image"><a href="#"><img src="images/1.png" alt=" " class="img-responsive"></a>
+                        </td>
                         <td class="invert">
                             <div class="quantity">
                                 <div class="quantity-select">
@@ -50,14 +53,15 @@
                         <td class="invert">$290.00</td>
                         <td class="invert">
                             <div class="rem">
-                                <div class="close1"> </div>
+                                <div class="close1"></div>
                             </div>
 
                         </td>
                     </tr>
                     <tr class="rem2">
                         <td class="invert">2</td>
-                        <td class="invert-image"><a href="{{ route('single') }}"><img src="images/3.png" alt=" " class="img-responsive"></a></td>
+                        <td class="invert-image"><a href="#"><img src="images/3.png" alt=" " class="img-responsive"></a>
+                        </td>
                         <td class="invert">
                             <div class="quantity">
                                 <div class="quantity-select">
@@ -72,14 +76,15 @@
                         <td class="invert">$250.00</td>
                         <td class="invert">
                             <div class="rem">
-                                <div class="close2"> </div>
+                                <div class="close2"></div>
                             </div>
 
                         </td>
                     </tr>
                     <tr class="rem3">
                         <td class="invert">3</td>
-                        <td class="invert-image"><a href="{{ route('single') }}"><img src="images/2.png" alt=" " class="img-responsive"></a></td>
+                        <td class="invert-image"><a href="#"><img src="images/2.png" alt=" " class="img-responsive"></a>
+                        </td>
                         <td class="invert">
                             <div class="quantity">
                                 <div class="quantity-select">
@@ -94,13 +99,14 @@
                         <td class="invert">$15.00</td>
                         <td class="invert">
                             <div class="rem">
-                                <div class="close3"> </div>
+                                <div class="close3"></div>
                             </div>
 
                         </td>
                     </tr>
 
-                    </tbody></table>
+                    </tbody>
+                </table>
             </div>
             <div class="checkout-left">
                 <div class="col-md-4 checkout-left-basket">
@@ -122,28 +128,32 @@
                                 <div class="first-row form-group">
                                     <div class="controls">
                                         <label class="control-label">{{ __('validation.other.'.'Full name') }}: </label>
-                                        <input class="billing-address-name form-control" type="text" name="name" placeholder="{{ __('validation.other.'.'Full name') }}">
+                                        <input class="billing-address-name form-control" type="text" name="name"
+                                               placeholder="{{ __('validation.other.'.'Full name') }}">
                                     </div>
                                     <div class="w3_agileits_card_number_grids">
                                         <div class="w3_agileits_card_number_grid_left">
                                             <div class="controls">
-                                                <label class="control-label">{{ __('validation.other.'.'Mobile number') }}:</label>
-                                                <input class="form-control" type="text" placeholder="{{ __('validation.other.'.'Mobile number') }}">
+                                                <label class="control-label">{{ __('validation.other.'.'Mobile number') }}
+                                                    :</label>
+                                                <input class="form-control" type="text"
+                                                       placeholder="{{ __('validation.other.'.'Mobile number') }}">
                                             </div>
                                         </div>
-                                        <div class="clear"> </div>
+                                        <div class="clear"></div>
                                     </div>
                                     <div class="controls">
                                         <label class="control-label">{{ __('validation.other.'.'Locality') }}: </label>
-                                        <input class="form-control" type="text" placeholder="{{ __('validation.other.'.'Locality') }}">
+                                        <input class="form-control" type="text"
+                                               placeholder="{{ __('validation.other.'.'Locality') }}">
                                     </div>
                                     <div class="controls">
-                                        <label class="control-label">{{ __('validation.other.'.'Address type') }}: </label>
+                                        <label class="control-label">{{ __('validation.other.'.'Address type') }}
+                                            : </label>
                                         <select class="form-control option-w3ls">
                                             <option>{{ __('validation.other.'.'Office') }}</option>
                                             <option>{{ __('validation.other.'.'Home') }}</option>
                                             <option>{{ __('validation.other.'.'Commercial') }}</option>
-
                                         </select>
                                     </div>
                                 </div>
@@ -152,11 +162,11 @@
                         </section>
                     </form>
                     <div class="checkout-right-basket">
-                        <a href="{{ route('payment') }}">{{ __('validation.other.'.'Make a Payment') }} <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                        <a href="{{ route('payment') }}">{{ __('validation.other.'.'Make a Payment') }}</a>
                     </div>
                 </div>
 
-                <div class="clearfix"> </div>
+                <div class="clearfix"></div>
 
             </div>
 
@@ -165,5 +175,8 @@
     </div>
     <div class="clearfix"></div>
     </div>
+@endsection
+
+@section('content')
 @endsection
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Good;
 
 class TestController extends Controller
 {
@@ -16,12 +16,8 @@ class TestController extends Controller
 
     public function search(Request $request)
     {
-        $name = trim($request->name);
 
-        /*if($goods->indices()->exists($indexParams)) {
-            $goods = Good::addAllToIndex();
-        }
-
+        $goods = Good::addAllToIndex();
         $test = Good::complexSearch([
             'body' => [
                 'query' => [
@@ -32,7 +28,6 @@ class TestController extends Controller
             ]
         ]);
 
-        dd($test->toArray());*/
     }
 
 }

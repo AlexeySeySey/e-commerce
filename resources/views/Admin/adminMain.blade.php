@@ -21,11 +21,20 @@
 </head>
 
 <body>
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow"
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0"
      style="background-color: black !important; height: 72px !important;">
-    <p class="navbar-brand col-sm-3 col-md-2 mr-0">
-        @lang('validation.sections.Grocery') @lang('validation.sections.Store') | @lang('validation.positions.Admin')
-    </p>
+    <table>
+        <tr>
+            <td>
+                <span style="color: grey; text-shadow: #00c0ef 20px 20px 20px">{{ ucwords(App::getLocale()) }}</span>
+            </td>
+            <td>
+                <p class="navbar-brand col-sm-3 col-md-2 mr-0">
+                    @lang('validation.sections.Grocery') @lang('validation.sections.Store') | @lang('validation.positions.Admin')
+                </p>
+            </td>
+        </tr>
+    </table>
     <a class="btn btn-danger" href="{{ route('logout') }}" style="margin-right:80px !important;">
         <i class="fa fa-sign-out"></i><b><i>@lang('validation.other.Exit')</i></b>
     </a>
@@ -69,7 +78,7 @@
         @endforeach
     </ul>
 </div>
-<div class="container-fluid" style="position: static !important;">
+<div style="margin-left:200px !important" id="main-content-admin-first">
     <div class="container-fluid">
         <div class="row">
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
