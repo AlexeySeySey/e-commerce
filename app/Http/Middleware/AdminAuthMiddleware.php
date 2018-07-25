@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
+use App\Models\User;
 
 class AdminAuthMiddleware
 {
@@ -18,6 +19,7 @@ class AdminAuthMiddleware
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
+        dd($user->hasRole('admin'));
 
         if (($user->hasRole('admin')) or ($user->hasRole('admin_support'))) {
             return $next($request);

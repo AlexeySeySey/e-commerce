@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use App\AdminCategorie;
+use App\Models\AdminCategorie;
 
 class ComposerServiceProvider extends ServiceProvider
 {

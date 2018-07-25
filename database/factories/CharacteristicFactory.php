@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Characteristic::class, function (Faker $faker) {
+$factory->define(App\Models\Characteristic::class, function (Faker $faker) {
     return [
         'goods_id'   => $faker->unique()->numberBetween($min = 1, $max = 60),
         'stock'      => $faker->numberBetween($min = 1, $max = 800),

@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Event;
-use App\Categories;
+use App\Models\Categories;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,8 +25,6 @@ class AppServiceProvider extends ServiceProvider
         $categories = Categories::all();
         View::share('categories',$categories);
         View::share('letter',[]);
-
-
 
         View::share('goods',[]);
         View::share('follow',[]);

@@ -23,7 +23,6 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
-        // \Illuminate\Auth\Middleware\Authenticate::class,
         \App\Http\Middleware\BlockMiddleware::class,
     ];
 
@@ -68,8 +67,6 @@ class Kernel extends HttpKernel
         'signed'              => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle'            => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'admin'               => \App\Http\Middleware\AdminAuthMiddleware::class,
-        'jwt.auth'            => 'Tymon\JWTAuth\Middleware\GetUserFromToken',
-        'jwt.refresh'         => 'Tymon\JWTAuth\Middleware\RefreshToken',
         'lang'                => \App\Http\Middleware\LanguageMiddleware::class,
     ];
 }

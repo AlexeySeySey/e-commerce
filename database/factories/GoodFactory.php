@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Good::class, function (Faker $faker) {
+$factory->define(App\Models\Good::class, function (Faker $faker) {
     return [
         'name' => $faker->word,
         'image'=>'15.png',

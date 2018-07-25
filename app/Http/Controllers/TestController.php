@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Good;
+use App\Models\Good;
 
 class TestController extends Controller
 {
@@ -17,6 +17,7 @@ class TestController extends Controller
     public function search(Request $request)
     {
 
+        /*
         $goods = Good::addAllToIndex();
         $test = Good::complexSearch([
             'body' => [
@@ -27,6 +28,7 @@ class TestController extends Controller
                 ]
             ]
         ]);
+        */
 
     }
 

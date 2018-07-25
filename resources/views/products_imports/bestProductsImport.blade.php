@@ -44,18 +44,17 @@
                                     @elseif(count($key->like)!=0)
 
                                         @foreach($key->like as $k)
-                                        @if($id == $k->id)
-                                        @else
-                                            <td>
-                                                <button class="btn btn-primary" id="{{'#like'.$key->id}}"
-                                                        onclick="NewLike({{ $key->id }})"><i
-                                                            class="fa fa-thumbs-up"></i></button>
-                                            </td>
-                                        @endif
+                                            @if($id == $k->id)
+                                            @else
+                                                <td>
+                                                    <button class="btn btn-primary" id="{{'#like'.$key->id}}"
+                                                            onclick="NewLike({{ $key->id }})"><i
+                                                                class="fa fa-thumbs-up"></i></button>
+                                                </td>
+                                            @endif
                                         @endforeach
 
                                     @endif
-
 
 
                                     <td>
@@ -174,7 +173,8 @@
                                                                                                        value="{{__('validation.other.Add to card')}}">
                                                                                             </td>
                                                                                             <td>
-                                                                                                            <span id="{{'#'.'good-count'.$key->id}}" class="alert alert-success"></span>
+                                                                                                <span id="{{'#'.'good-count'.$key->id}}"
+                                                                                                      class="alert alert-success"></span>
                                                                                                 <input type="hidden"
                                                                                                        name="good_id"
                                                                                                        value="{{$key->id}}">

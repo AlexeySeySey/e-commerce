@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Session;
 use Illuminate\Support\Facades\Auth;
 use App;
-use App\User;
+use App\Models\User;
 use Closure;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Contracts\Auth\Factory as Authentific;

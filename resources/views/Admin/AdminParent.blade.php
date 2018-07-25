@@ -88,8 +88,7 @@
 
 
 @section('content')
-
-@show
+        @show
 
 @section('footer')
     </div>
