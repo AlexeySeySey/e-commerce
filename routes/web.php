@@ -16,7 +16,6 @@ Auth::routes();
 #Route::get('/logout', 'LoginController@logout');
 #Route::get('/register', 'LoginController@logout');
 
-
 // Tests
 Route::get('/test', ['uses' => 'TestController@show']);
 
@@ -110,16 +109,5 @@ Route::group([
 
 });
 
-//php artisan make:controller folder/name --plain
 
 
-
-
-
-
-
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

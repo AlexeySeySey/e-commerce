@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laratrust\Traits\LaratrustUserTrait;
 use Cache;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
-    use Notifiable;
     use LaratrustUserTrait;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -50,8 +50,4 @@ class User extends Authenticatable
         return Cache::has('user-is-online-' . $this->id);
     }
 
-    public function role()
-    {
-        return $this->belongsToMany('App\Models\Role','role_user','user_id');
-    }
 }

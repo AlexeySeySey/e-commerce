@@ -15,9 +15,15 @@ class CreateGoodsTable extends Migration
     {
         Schema::create('goods', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('sales_id');
+            $table->integer('categories_id');
+            $table->integer('characteristics_id');
             $table->string('name');
-            $table->float('weight',8,2);
-            $table->float('price',8,2);
+            $table->string('image');
+            $table->double('weight',8,2);
+            $table->string('weight_type');
+            $table->double('price',8,2);
+            $table->integer('rating');
             $table->timestamps();
         });
     }

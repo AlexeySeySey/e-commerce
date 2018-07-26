@@ -11,7 +11,6 @@ class CharacteristicsSeeder extends Seeder
      */
     public function run()
     {
-        //CharacteristicFactory
         factory('App\Models\Characteristic',60)->create();
     }
 }

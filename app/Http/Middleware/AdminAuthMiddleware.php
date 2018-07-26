@@ -19,12 +19,11 @@ class AdminAuthMiddleware
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        dd($user->hasRole('admin'));
 
-        if (($user->hasRole('admin')) or ($user->hasRole('admin_support'))) {
+      //  if (($user->hasRole('admin')) or ($user->hasRole('admin_support'))) {
             return $next($request);
-        } else {
+        /*} else {
             return abort(500,'Sorry, you don\'t have permission');
-        }
+        }*/
     }
 }

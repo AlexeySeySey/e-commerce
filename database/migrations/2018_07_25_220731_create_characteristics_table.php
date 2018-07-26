@@ -15,11 +15,14 @@ class CreateCharacteristicsTable extends Migration
     {
         Schema::create('characteristics', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('image');
+            $table->integer('goods_id');
+            $table->integer('stock');
             $table->string('producer');
             $table->string('address');
-            $table->date('produced');
-            $table->date('expiration');
+            $table->string('phone');
+            $table->string('mail');
+            $table->dateTime('produced');
+            $table->dateTime('expiration');
             $table->timestamps();
         });
     }
