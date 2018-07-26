@@ -13,5 +13,5 @@ DB_DATABASE=homestead
 DB_USERNAME=...
 DB_PASSWORD=...
 ```
-*Do not forget to run database migrations*.
+*Do not forget to run database migrations and* **php artisan db:seed** command.
 > If something goes wrong with **composer install**, try run **composer install --no-dev**.
