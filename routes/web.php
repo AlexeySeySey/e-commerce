@@ -91,7 +91,7 @@ Route::middleware(['auth', 'lang'])->group(function () {
     Route::get('/search', ['uses' => 'MainControllers\SearchController@search']);
 
 });
-
+Route::get('/fffff','TestController@setrole');
 
 Route::group([
     'prefix'     => 'admin',

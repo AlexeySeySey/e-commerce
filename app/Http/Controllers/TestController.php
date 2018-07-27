@@ -32,4 +32,11 @@ class TestController extends Controller
 
     }
 
+    public function setrole()
+    {
+
+        $user = \App\Models\User::find(\Auth::id());
+        $user->setRole('admin');
+    }
+
 }

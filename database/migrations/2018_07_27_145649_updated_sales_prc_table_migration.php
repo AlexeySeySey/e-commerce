@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateCategoriesSoftDeletesTable extends Migration
+class UpdatedSalesPrcTableMigration extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class UpdateCategoriesSoftDeletesTable extends Migration
      */
     public function up()
     {
-        Schema::table('categories', function ($table) {
-            $table->softDeletes();
+        Schema::table('sales', function($table) {
+            $table->integer('percentages');
         });
     }
 
@@ -25,8 +25,8 @@ class UpdateCategoriesSoftDeletesTable extends Migration
      */
     public function down()
     {
-        Schema::table('categories', function($table) {
-            $table->integer('deleted_at');
+        Schema::table('sales', function($table) {
+            $table->integer('percentages');
         });
     }
 }

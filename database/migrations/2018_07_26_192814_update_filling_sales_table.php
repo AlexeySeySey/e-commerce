@@ -27,6 +27,10 @@ class UpdateFillingSalesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('categories', function($table) {
+            $table->string('description');
+            $table->dateTime('start');
+            $table->dateTime('end');
+        });
     }
 }
