@@ -20,10 +20,10 @@ class AdminAuthMiddleware
     {
         $user = Auth::user();
 
-      //  if (($user->hasRole('admin')) or ($user->hasRole('admin_support'))) {
+        if (($user->hasRole('admin')) or ($user->hasRole('admin_support'))) {
             return $next($request);
-        /*} else {
+        } else {
             return abort(500,'Sorry, you don\'t have permission');
-        }*/
+        }
     }
 }

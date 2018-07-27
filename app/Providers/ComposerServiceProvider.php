@@ -15,16 +15,8 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-       // View::composer('*','App\Http\ViewComposers\CategoriesComposer');
 
-
-        //$admin_sections = (AdminCategorie::all())->toArray();
-
-
-        /*View::composer(
-            ['*'],
-            'App\Http\ViewComposers\AdminViewComposer'
-        );*/
+        view()->composer('*', 'App\Http\ViewComposers\GlobalComposer');
     }
 
     /**

@@ -177,6 +177,7 @@ return [
         'Varieties'            => 'Разновидностей',
         'Current Localization' => 'Действующая Локализация',
         'Cart'=>'Корзина',
+        'parties'=>'партий',
     ],
 
     'goods'  => [

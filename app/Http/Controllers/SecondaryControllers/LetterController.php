@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\MainControllers;
+namespace App\Http\Controllers\SecondaryControllers;
 
-use App\Models\Follower;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class LetterController extends Controller
 {
@@ -13,8 +13,8 @@ class LetterController extends Controller
     {
         $user_id = $request->user_id;
 
-        $follow           = new Follower();
-        $follow->users_id = $request->user_id;
+        $user             = User::find($user_id);
+        $follow->isFollow = 1;
         $follow->save();
 
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\MainControllers;
+namespace App\Http\Controllers\SecondaryControllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Good;

@@ -35,7 +35,6 @@
             </div>
         </div>
 
-    {{--?--}}
     <div>
         <table>
             <tr>
@@ -79,7 +78,6 @@
 </div>
 <!-- banner -->
 
-{{--?--}}
 
 
     <div class="clearfix"> </div>

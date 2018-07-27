@@ -5,7 +5,7 @@ namespace App\Http\Controllers\AdminControllers;
 use App;
 use App\Models\AdminCategorie;
 use App\Models\Categories;
-use App\Models\Role;
+use App\Role;
 use App\Models\User;
 use Auth;
 use Artisan;

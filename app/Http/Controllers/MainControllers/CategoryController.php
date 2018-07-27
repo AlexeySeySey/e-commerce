@@ -5,6 +5,8 @@ namespace App\Http\Controllers\MainControllers;
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use App\Models\Good;
+use App\Models\Cart;
+use App\Models\User;
 use Artisan;
 use Auth;
 
@@ -25,19 +27,22 @@ class CategoryController extends Controller
 
         $id = Auth::id();
 
-        Artisan::call('view:clear');
+        $follow = (((User::select('isFollow')->where('id', $id)->get())->toArray())[0])['isFollow'];
 
+        $checkoutCount = Cart::where('user_id',$id)->count('*');
+        $checkoutAllCount = Cart::where('user_id',$id)->sum('count');
+        $checkoutPrice = Cart::where('user_id', $id)->sum('price');
 
         return view('main_layouts.category', [
-            'name'  => $name,
-            'goods' => $goods,
-            'image' => $image,
-            'id'    => $id,
-            'good'  => null/*,
-             'follow'=>$follow,
-             'checkoutCount'=>$checkoutCount,
-             'checkoutPrice'=>$checkoutPrice
-        */
+            'follow'        => $follow,
+            'checkoutCount' => $checkoutCount,
+            'checkoutPrice' => $checkoutPrice,
+            'checkoutAllCount'=>$checkoutAllCount,
+            'name'          => $name,
+            'goods'         => $goods,
+            'image'         => $image,
+            'id'            => $id,
+            'good'          => null
         ]);
     }
 

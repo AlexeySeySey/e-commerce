@@ -175,6 +175,7 @@ return [
         'Varieties'=>'Різновидів',
         'Current Localization'=>'Діюча Локалізація',
         'Cart'=>'Кошик',
+        'parties'=>'партій',
     ],
 
     'goods'  => [

@@ -50,4 +50,9 @@ class User extends Authenticatable
         return Cache::has('user-is-online-' . $this->id);
     }
 
+    public function role()
+    {
+       return $this->belongsToMany('App\Role','role_user','user_id');
+   }
+
 }

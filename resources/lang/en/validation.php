@@ -175,6 +175,7 @@ return [
         'Varieties'            => 'Varieties',
         'Current Localization' => 'Current Localization',
         'Cart'=>'Cart',
+        'parties'=>'parties',
 
 
     ],

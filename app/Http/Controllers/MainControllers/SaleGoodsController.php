@@ -7,7 +7,6 @@ use App\Models\Sale;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\Cart;
 use App\Http\Controllers\Controller;
 
 class SaleGoodsController extends Controller
@@ -31,10 +30,7 @@ class SaleGoodsController extends Controller
 
         return view('products_imports.bestProductsImport', [
             'goods'  => $goods,
-            'id'     => $id/*,
-            'follow' => $follow,
-            'checkoutCount'=>$checkoutCount,
-            'checkoutPrice'=>$checkoutPrice*/
+            'id'     => $id
         ]);
     }
 }

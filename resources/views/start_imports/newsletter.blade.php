@@ -1,4 +1,4 @@
-@if(count($follow)==0)
+@if($follow==0)
             <div class="newsletter" id="newsMember">
                 <div class="container">
                     <div class="w3agile_newsletter_left">

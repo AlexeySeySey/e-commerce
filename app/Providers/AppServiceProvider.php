@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Event;
-use App\Models\Categories;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,11 +18,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        View::share('checkoutCount',null);
-        View::share('checkoutPrice',null);
-
-        $categories = Categories::all();
-        View::share('categories',$categories);
         View::share('letter',[]);
 
         View::share('goods',[]);
