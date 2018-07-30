@@ -15,6 +15,11 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('description');
+            $table->integer('percentages');
+            $table->dateTime('start');
+            $table->dateTime('end');
             $table->timestamps();
         });
     }

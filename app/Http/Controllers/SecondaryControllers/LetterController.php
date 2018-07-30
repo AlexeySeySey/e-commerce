@@ -13,9 +13,9 @@ class LetterController extends Controller
     {
         $user_id = $request->user_id;
 
-        $user             = User::find($user_id);
-        $follow->isFollow = 1;
-        $follow->save();
+        $user           = User::find($user_id);
+        $user->isFollow = 1;
+        $user->save();
 
 
         return "<i class='fa fa-check'></i>";

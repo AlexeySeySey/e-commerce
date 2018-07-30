@@ -12,21 +12,6 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-    'categories' => [
-        'Household'          => 'Household',
-        'Vegetables'         => 'Vegetables',
-        'Fruit'              => 'Fruit',
-        'Soft_drinks'        => 'Soft drinks',
-        'Juices'             => 'Juices',
-        'Energy_Drinks'      => 'Energy Drinks',
-        'Frozen_Snacks'      => 'Frozen Snacks',
-        'Frozen_Vegetables'  => 'Frozen Vegetables',
-        'Bakery'             => 'Bakery',
-        'Pet_food'           => 'Pet_food',
-        'Household_Cleaning' => 'Household Cleaning',
-        'Household_Utensils' => 'Household Utensils',
-
-    ],
 
     'sections'  => [
         'About Us'                    => 'About Us',

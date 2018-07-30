@@ -11,22 +11,6 @@ return [
     | наприклад, size. Ви можете змінити будь-яке з цих повідомлень.
     |
     */
-    'categories' => [
-        'Household'          => 'Господарство',
-        'Vegetables'         => 'Овочі',
-        'Fruit'              => 'Фрукти',
-        'Soft_drinks'        => 'Безалкогольні Напої',
-        'Juices'             => 'Соки',
-        'Energy_Drinks'      => 'Енергетичні напої',
-        'Frozen_Snacks'      => 'Заморожені закуски',
-        'Frozen_Vegetables'  => 'Заморожені овочі',
-        'Bakery'             => 'Хлібобулочні Вироби',
-        'Pet_food'           => 'Корм Для Тварин',
-        'Household_Cleaning' => 'Чистячі Засоби',
-        'Household_Utensils' => 'Посуд',
-
-
-    ],
 
     'sections'  => [
         'About Us'                    => 'Про нас',

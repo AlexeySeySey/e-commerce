@@ -21,10 +21,16 @@
             <td style="padding: 50px !important;">
                 <div onmouseover="SaleText({{$key->id}})" onmouseout="HideSaleText({{$key->id}})">
                     <div>
+                        @if($name!=null)
                         <div class="alert-info">
-                            @lang('validation.other.Categorie')
-                            : @lang("validation.categories.".(($key->categorie)->name))
+                            @lang('validation.other.Categorie') :
+                            @if($key->categorie!=null)
+                                <small><b>{{ $name }}</b></small>
+                            @else
+                                <kbd class="bg-danger">-</kbd>
+                            @endif
                         </div>
+                            @endif
                         <div class="alert-secondary">
                             <table>
                                 <tr>
@@ -38,9 +44,6 @@
                                                     onclick="NewLike({{ $key->id }})"><i class="fa fa-thumbs-up"></i>
                                             </button>
                                         </td>
-
-
-
                                     @elseif(count($key->like)!=0)
 
                                         @foreach($key->like as $k)
@@ -74,7 +77,7 @@
                             <div class="snipcart-item block">
                                 <div class="snipcart-thumb">
                                     <a href="#"><img
-                                                src="{{asset('images/'.$key->image)}}"
+                                                src="{{ $key->image }}"
                                                 alt="Loading..."
                                                 class="img-responsive"/></a>
                                     <p>{{$key->name}} {{($key->weight)}}</p>
@@ -159,7 +162,6 @@
                                                                                            placeholder="0"
                                                                                            required
                                                                                            oninput="sumProducts(this,{{$key->price}},{{$key->id}},{{ (($key->price)-((($key->price)/100)*(($key->sale)->percentages))) }})">
-                                                                                    {{-- id="{{'#'.'good-count'.$key->id}}" --}}
                                                                                     <button type="reset"
                                                                                             class="btn btn-danger">
                                                                                         x

@@ -1,13 +1,15 @@
 <?php
+
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 use Cache;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
+
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -25,21 +27,24 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
 
-    public function __construct(){
-        $this->middleware('guest', [ 'except' => 'logout' ]); // Default router name is "logout"
+    public function __construct()
+    {
+        $this->middleware('guest', ['except' => 'logout']); // Default router name is "logout"
     }
 
     public function logout()
     {
-        Cache::forget('user-is-online-' . Auth::user()->id);
+        Cache::forget('user-is-online-'.Auth::user()->id);
         Auth::logout();
 
         return redirect('/');
     }
+
 }

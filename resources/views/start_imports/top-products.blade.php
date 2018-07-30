@@ -1,7 +1,6 @@
 <div class="fresh-vegetables">
     <div class="container" onmouseover="showBot()" onmouseout="hideBot()">
-       {{-- <h3>{{ __('validation.sections.'.'Top Products') }}</h3>
-        --}}<div class="w3l_fresh_vegetables_grids">
+       <div class="w3l_fresh_vegetables_grids">
             <div class="col-md-9 w3l_fresh_vegetables_grid_right" id="bottomBlock">
                 <table>
                     <tr>
@@ -23,7 +22,17 @@
                             <ul>
                             @foreach($categories as $key)
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <a href="{{ url('/category/'.$key->id) }}">{{ str_replace('_',' ',(__('validation.categories.'.$key->name) )) }}</a>
+                                    <a href="{{ url('/category/'.$key->id) }}">
+                                        @if($locale == 'en')
+                                            {{ $key->ENname }}
+                                        @elseif($locale == 'ru')
+                                            {{ $key->RUname }}
+                                        @elseif($locale == 'uk')
+                                            {{ $key->UKname }}
+                                        @else
+                                            {{ ucwords($locale) }}
+                                        @endif
+                                    </a>
                                 <i class="fa fa-check"></i>
                                 </li>
                             @endforeach

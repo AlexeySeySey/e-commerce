@@ -40,11 +40,6 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Good','likes');
     }
 
-    public function follow()
-    {
-        return $this->hasOne('App\Models\Follower','users_id');
-    }
-
     public function isOnline()
     {
         return Cache::has('user-is-online-' . $this->id);

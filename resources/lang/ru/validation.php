@@ -12,22 +12,6 @@ return [
     | другие, которые лучше подходят для вашего приложения.
     |
     */
-    'categories' => [
-        'Household'          => 'Домохозяйство',
-        'Vegetables'         => 'Овощи',
-        'Fruit'              => 'Фрукты',
-        'Soft_drinks'        => 'Безалкогольные Напитки',
-        'Juices'             => 'Соки',
-        'Energy_Drinks'      => 'Энергетические напитки',
-        'Frozen_Snacks'      => 'Замороженные закуски',
-        'Frozen_Vegetables'  => 'Замороженные овощи',
-        'Bakery'             => 'Хлебобулочные Изделия',
-        'Pet_food'           => 'Корм Для Животных',
-        'Household_Cleaning' => 'Чистящие Средства',
-        'Household_Utensils' => 'Посуда',
-
-
-    ],
 
 
     'sections'  => [

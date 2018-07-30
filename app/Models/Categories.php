@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Categories extends Model
 {
-    //use SoftDeletes;
+    use SoftDeletes;
 
 
     protected $table = 'categories';
 
-   protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at'];
+
+    protected $softDelete = true;
+
 
     public function good()
     {

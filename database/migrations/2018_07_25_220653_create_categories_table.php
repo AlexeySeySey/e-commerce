@@ -16,7 +16,10 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image');
-            $table->string('name');
+            $table->string('ENname');
+            $table->string('RUname');
+            $table->string('UKname');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

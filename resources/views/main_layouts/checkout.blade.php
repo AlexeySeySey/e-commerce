@@ -8,7 +8,7 @@
             <ul>
                 <li><i class="fa fa-home" aria-hidden="true"></i><a
                             href="{{ route('start') }}">{{ __('validation.sections.'.'Home') }}</a><span>|</span></li>
-                <li>{{ __('validation.sections.'.'Checkout') }}</li>
+                <li>@lang('validation.sections.Checkout')</li>
             </ul>
         </div>
     </div>
@@ -19,7 +19,7 @@
     <div class="w3l_banner_nav_right">
         <!-- about -->
         <div class="privacy about">
-            <h3>{{ __('validation.sections.'.'Checkout') }}</h3>
+            <h3>@lang('validation.sections.Checkout')</h3>
 
             <div class="checkout-right">
                 <h4>{{ __('validation.other.'.'Products count in your shopping cart') }}: <span>(integer)</span></h4>
@@ -165,13 +165,9 @@
                         <a href="{{ route('payment') }}">{{ __('validation.other.'.'Make a Payment') }}</a>
                     </div>
                 </div>
-
                 <div class="clearfix"></div>
-
             </div>
-
         </div>
-        <!-- //about -->
     </div>
     <div class="clearfix"></div>
     </div>

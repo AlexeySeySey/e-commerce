@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
-use App\Models\Good;
+
 
 class TestController extends Controller
 {
@@ -30,13 +32,6 @@ class TestController extends Controller
         ]);
         */
 
-    }
-
-    public function setrole()
-    {
-
-        $user = \App\Models\User::find(\Auth::id());
-        $user->setRole('admin');
     }
 
 }

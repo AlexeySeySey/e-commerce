@@ -14,6 +14,7 @@ class AddGoodController extends Controller
 
     public function add(Request $request)
     {
+
         $user_id = Auth::id();
 
         $count = intval($request->goods_count);
@@ -44,7 +45,6 @@ class AddGoodController extends Controller
         $cart->price   = $price;
         $cart->user_id = $user_id;
         $cart->save();
-
 
         $characteristic = Characteristic::find($request->good_id);
         $characteristic->stock -= $request->goods_count;

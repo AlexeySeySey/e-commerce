@@ -11,70 +11,37 @@
 |
 */
 
-
 Auth::routes();
-#Route::get('/logout', 'LoginController@logout');
-#Route::get('/register', 'LoginController@logout');
 
-// Tests
-Route::get('/test', ['uses' => 'TestController@show']);
-
-
-Route::middleware(['auth', 'lang'])->group(function () {
+Route::middleware(['auth', 'lang','cart-info'])->group(function () {
 
     Route::get('/home', 'Auth\HomeController@index')->name('home');
     Route::get('/', ['uses' => 'MainControllers\StartController@show', 'as' => 'start']);
 
 
-//Best products
     Route::get('/products', ['uses' => 'MainControllers\BestController@show', 'as' => 'products']);
 
 
-    Route::get('/about', function () {
-        return view('about');
-    })->name('about');
-
-
-//Selected category
     Route::get('/category/{id}', ['uses' => 'MainControllers\CategoryController@show', 'as' => 'category']);
 
 
-    Route::get('/checkout', function () {
-        return view('checkout');
-    })->name('checkout');
+    Route::get('/about',['uses'=>'MainControllers\AboutController@show','as'=>'about']);
 
-    Route::get('/events', function () {
-        return view('events');
-    })->name('events');
+    Route::get('/events',['uses'=>'MainControllers\EventsController@show','as'=>'events']);
 
-    Route::get('/faqs', function () {
-        return view('faqs');
-    })->name('faqs');
+    Route::get('/faqs',['uses'=>'MainControllers\FaqController@show','as'=>'faqs']);
 
-    Route::get('/mail', function () {
-        return view('mail');
-    })->name('mail');
+    Route::get('/mail',['uses'=>'MainControllers\MailController@show','as'=>'mail']);
+
+    Route::get('/checkout',['uses'=>'MainControllers\CheckoutController@show','as'=>'checkout']);
+
+    Route::get('/payment',['uses'=>'MainControllers\PayController@show','as'=>'payment']);
 
 
-    Route::get('/paymant', function () {
-        return view('paymant');
-    })->name('paymant');
 
-    Route::post('/paymants', function () {
-        return view('paymants');
-    })->name('payment');
+    Route::get('/privacy',['uses'=>'MainControllers\PrivacyController@show','as'=>'privacy']);
 
-    Route::get('/pet', function () {
-        return view('pet');
-    })->name('pet');
-
-    Route::get('/privacy', function () {
-        return view('privacy');
-    })->name('privacy');
-
-    Route::get('/services', function () {
-        return view('services');
-    })->name('services');
+    Route::get('/services',['uses'=>'MainControllers\ServicesController@show','as'=>'services']);
 
 
     Route::get('/switch/{locale}',
@@ -86,28 +53,53 @@ Route::middleware(['auth', 'lang'])->group(function () {
 
     Route::post('/saleGoods', ['uses' => 'MainControllers\SaleGoodsController@show']);
 
-    Route::post('/letterMember', ['uses' => 'MainControllers\SecondaryControllers\LetterController@new']);
+    Route::post('/letterMember', ['uses' => 'SecondaryControllers\LetterController@new']);
 
     Route::get('/search', ['uses' => 'MainControllers\SearchController@search']);
 
 });
-Route::get('/fffff','TestController@setrole');
 
 Route::group([
     'prefix'     => 'admin',
     'middleware' => ['auth', 'lang', 'admin']
 ], function () {
 
-    Route::get('/main', ['uses' => 'AdminControllers\AdminController@show', 'as' => 'admin']);
-    Route::get('/section/{id}', ['uses' => 'AdminControllers\AdminChildController@show', 'as' => 'adminChild']);
 
-    Route::post('/addCat', ['uses' => 'AdminControllers\AddCategorieController@add']);
-    Route::post('/updateCat', ['uses' => 'AdminControllers\AddCategorieController@update']);
+    Route::post('/addCat', ['uses' => 'AdminControllers\AddCategorieController@add','as'=>'addCat']);
+    Route::post('/updateCatImg', ['uses' => 'AdminControllers\AddCategorieController@updateImg','as'=>'updateCatImg']);
+    Route::post('/updateCatName', ['uses' => 'AdminControllers\AddCategorieController@updateName','as'=>'updateCatName']);
 
-    Route::post('/banUser', ['uses' => 'AdminControllers\BanController@ban']);
+    Route::post('/banUser', ['uses' => 'AdminControllers\BanController@ban','as'=>'banUser']);
     Route::post('/unbanUser', ['uses' => 'AdminControllers\BanController@unban']);
 
+    Route::post('/softDeleteCategorie',['uses'=>'AdminControllers\DropCategorieController@hide','as'=>'softDeleteCategorie']);
+    Route::post('/realDeleteCategorie',['uses'=>'AdminControllers\DropCategorieController@drop','as'=>'realDeleteCategorie']);
+
+    Route::post('/restoreCategorie',['uses'=>'AdminControllers\AdminCategoriesController@restore','as'=>'restoreCategorie']);
+
+
+    Route::get('/', ['uses' => 'AdminControllers\AdminController@show', 'as' => 'admin']);
+    Route::get('/admin-categories',['uses'=>'AdminControllers\AdminCategoriesController@show','as'=>'categories']);
+    Route::get('/admin-users',['uses'=>'AdminControllers\AdminUsersController@show','as'=>'users']);
+    Route::get('/admin-goods',['uses'=>'AdminControllers\AdminGoodsController@show','as'=>'goods']);
+    Route::get('/admin-news',['uses'=>'AdminControllers\AdminNewsController@show','as'=>'news']);
+    Route::get('/admin-sales',['uses'=>'AdminControllers\AdminSalesController@show','as'=>'sales']);
+    Route::get('/admin-configurations',['uses'=>'AdminControllers\AdminConfigurationsController@show','as'=>'configurations']);
+    Route::get('/admin-statistics',['uses'=>'AdminControllers\AdminStatisticsController@show','as'=>'statistics']);
+
+
 });
+
+
+
+
+ // Set main role for testing purposes
+
+   /* Route::get('/settingRole',function(){
+      $user = \App\Models\User::find(\Auth::id());
+      $user->attachRole('admin');
+      return 1;
+  });*/
 
 
 

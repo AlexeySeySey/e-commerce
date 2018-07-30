@@ -1,6 +1,6 @@
 <ul>
     <div class="container-fluid">
-        <h4>@lang('validation.other.Current Localization'): <b>{{ ucwords(App::getLocale()) }}</b></h4>
+        <h4>@lang('validation.other.Current Localization'): <b>{{ ucwords($locale) }}</b></h4>
 <br>
                     <a href="{{ route('switch','en') }}" class="btn btn-primary">English</a>
 <br><br>

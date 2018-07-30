@@ -26,7 +26,7 @@
     <table>
         <tr>
             <td>
-                <span style="color: grey; text-shadow: #00c0ef 20px 20px 20px">{{ ucwords(App::getLocale()) }}</span>
+                <span style="color: grey; text-shadow: #00c0ef 20px 20px 20px">{{ ucwords($locale) }}</span>
             </td>
             <td>
                 <p class="navbar-brand col-sm-3 col-md-2 mr-0">
@@ -35,9 +35,15 @@
             </td>
         </tr>
     </table>
-    <a class="btn btn-danger" href="{{ route('logout') }}" style="margin-right:80px !important;">
-        <i class="fa fa-sign-out"></i><b><i>@lang('validation.other.Exit')</i></b>
-    </a>
+    <div>
+        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-danger">
+            @lang('validation.other.Exit')
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+    </div>
 </nav>
 
 
@@ -58,24 +64,7 @@
                             class="fa fa-home" id="admin-category-icon-sub"></i></span>
                 <span class="sidebar-text-category">@lang('validation.sections.Home')</span></a>
         </li>
-        @foreach($admin_categoires as $key)
-            <li id="{{'#categ-admin-elem'.$key->id}}" class="admin-panel-categires-list-all"
-                onmouseover="adminIconCat({{ $key->id }})" onmouseout="adminIconCatOut({{ $key->id }})">
-                <a class="admin-panel-categires-list" href="{{ route('adminChild',[$key->id]) }}">
-                    <table>
-                        <tr id="{{'#sidecat'.$key->id}}">
-                            <td>
-                                <span id="{{'#admin-category-icon'.$key->id}}"
-                                      class="admin-cat-icon-nav">{!! $key->icon !!}</span>
-                            </td>
-                            <td class="sidebar-text-category">
-                                <span>{{ __('validation.admin-categies.'.$key->name) }}</span>
-                            </td>
-                        </tr>
-                    </table>
-                </a>
-            </li>
-        @endforeach
+        @include('Admin.adminImports.Sections')
     </ul>
 </div>
 <div style="margin-left:200px !important" id="main-content-admin-first">

@@ -51,11 +51,25 @@
                     <div class="w3ls_vegetables">
                         <ul class="dropdown-menu drp-mnu">
                             @guest
-                                <li><a class="nav-link" href="{{ route('login') }}">{{ __('validation.sections.'.'Login') }}</a></li>
-                                <li><a href="{{ url('/register') }}">{{ __('validation.sections.'.'Sign up') }}</a></li>
+                                <li>
+                                    <a href="{{ route('login') }}">{{ __('validation.sections.'.'Login') }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('register') }}">{{ __('validation.sections.'.'Sign up') }}</a>
+                                </li>
                             @else
                                 <li><a class="nav-link" href="{{ route('checkout') }}">{{ __('validation.other.'.'Cart') }}</a></li>
-                                <li><a class="nav-link" href="{{ url('/logout') }}">{{ __('validation.sections.'.'Logout') }}</a></li>
+                            <li>
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('validation.other.'.'Exit') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                            </li>
                             @endguest
                         </ul>
                     </div>

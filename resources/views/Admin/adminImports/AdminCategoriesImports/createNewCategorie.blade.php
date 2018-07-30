@@ -1,13 +1,8 @@
 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
     <div class="container-fluid">
         <h1>Add new Category</h1>
-        @if(session('upload_error'))
-            <div class="container alert alert-danger" id="upload_error">
-                {{ __('validation.other.'.session('upload_error')) }}
-            </div>
-        @endif
         <div class="container-fluid">
-            <form action="{{ URL::to('/addCat') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('addCat') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-6">
                     <div class="form-group">
@@ -23,16 +18,10 @@
                         <img id='img-upload'/>
                     </div>
                     <div class="form-group">
-                        <label for="name">Categorie Name (by {{ App::getLocale() }})</label>
-                        <input type="text" class="form-control" id="name" placeholder="Имя категории">
+                        <input class="form-control" type="text" name="ENname" placeholder="EN" required>
+                        <input class="form-control" type="text" name="RUname" placeholder="RU" required>
+                        <input class="form-control" type="text" name="UKname" placeholder="UK" required>
                     </div>
-                    @foreach($other_localizations as $key)
-                        <div class="form-group">
-                            <label for="tranc">Перевод</label>
-                            <input type="text" class="form-control" id="tranc"
-                                   placeholder="Перевод: {{ $key }}">
-                        </div>
-                    @endforeach
                 </div>
                 <input type="submit" value="Send!">
             </form>

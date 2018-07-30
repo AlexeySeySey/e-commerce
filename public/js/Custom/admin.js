@@ -1,5 +1,5 @@
 window.onscroll = function () {
-document.getElementById('admin-navbar-sticky').style.cssText = "position:fixed; z-index:200 !important; bottom:495px !important; height:70px !important";
+    document.getElementById('admin-navbar-sticky').style.cssText = "position:fixed; z-index:200 !important; bottom:495px !important; height:70px !important";
 }
 
 $(document).ready(function () {
@@ -73,20 +73,27 @@ function rightNavBarAdmin() {
     }
 }
 
-function adminIconCat(id) {
-    if (document.getElementById('navbar-category-admin-icon').getAttribute('class') == 'fa fa-window-minimize') {
-        document.getElementById('#' + 'categ-admin-elem' + id).style.cssText = "z-index:60; margin-left:50px !important; opacity:1; transition:0.2s;";
-        document.getElementById('#' + 'sidecat' + id).style.cssText = "margin-right:50px !important; transform: scale(1.5); opacity:1; transition: 0.35s ease;";
-        document.getElementById('#' + 'sidecat' + id).setAttribute('class', 'bg-secondary');
 
+function adminIconCat(num) {
+    if (document.getElementById('navbar-category-admin-icon').getAttribute('class') == 'fa fa-window-minimize') {
+        var sections = document.getElementsByClassName('admin-panel-categires-list-all');
+        for (var i = 0; i < sections.length; i++) {
+            if (num == i) {
+                document.getElementById('categ-admin-elem' + i).style.cssText = "z-index:60; margin-left:50px !important; opacity:1; transition:0.2s;";
+                document.getElementById('sidecat' + i).style.cssText = "margin-right:50px !important; transform: scale(1.5); opacity:1; transition: 0.35s ease;";
+                document.getElementById('sidecat' + i).setAttribute('class', 'bg-secondary');
+                break
+            }
+        }
     }
 }
 
-function adminIconCatOut(id) {
-
-    document.getElementById('#' + 'categ-admin-elem' + id).style.cssText = "z-index:60; margin-right:50px !important; transition:0.2s;";
-    document.getElementById('#' + 'sidecat' + id).style.cssText = "transform: scale(1); opacity:0.7; transition: 0.35s ease; z-index:1";
-
+function adminIconCatOut() {
+    var sections = document.getElementsByClassName('admin-panel-categires-list-all');
+    for (var i = 0; i < sections.length; i++) {
+        document.getElementById('categ-admin-elem' + i).style.cssText = "z-index:60; margin-right:50px !important; transition:0.2s;";
+        document.getElementById('sidecat' + i).style.cssText = "transform: scale(1); opacity:0.7; transition: 0.35s ease; z-index:1";
+    }
 }
 
 function usersShowUp() {
@@ -102,7 +109,7 @@ function Ban(id) {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: '/banUser',
+        url: '/admin/banUser',
         cache: false,
         type: 'POST',
         data: {user_id: id},
@@ -121,7 +128,7 @@ function UnBan(id) {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: '/unbanUser',
+        url: '/admin/unbanUser',
         cache: false,
         type: 'POST',
         data: {user_id: id},
@@ -134,6 +141,72 @@ function UnBan(id) {
         }
     });
 }
+
+
+function hideCategorie(id) {
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/admin/softDeleteCategorie',
+        cache: false,
+        type: 'POST',
+        data: {categorie_id: id},
+        success: function () {
+            $('#AdmCatAll' + id).css('opacity', '0.7');
+            $('#hideadmincat' + id).css('display', 'none');
+            $('#changeadmincat' + id).css('display', 'none');
+        },
+        error: function (ts) {
+            alert(ts.responseText)
+        }
+    });
+}
+
+function dropCategorie(id) {
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/admin/realDeleteCategorie',
+        cache: false,
+        type: 'POST',
+        data: {categorie_id: id},
+        success: function () {
+            $('#AdmCatAll' + id).css('opacity', '0.7');
+            $('#dropadmincat' + id).css('display', 'none');
+            $('#aliveadmincat' + id).css('display', 'none');
+        },
+        error: function (ts) {
+            alert(ts.responseText)
+        }
+    });
+}
+
+function restoreCategorie(id) {
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/admin/restoreCategorie',
+        cache: false,
+        type: 'POST',
+        data: {categorie_id: id},
+        success: function () {
+            $('#AdmCatAll' + id).css({
+                'background-color': 'mediumspringgreen',
+                'transition': '1s'
+            });
+            $('#dropadmincat' + id).css('display', 'none');
+            $('#aliveadmincat' + id).css('display', 'none');
+        },
+        error: function (ts) {
+            alert(ts.responseText)
+        }
+    });
+}
+
+
 
 
 

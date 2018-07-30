@@ -2,13 +2,13 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Event;
+use Illuminate\Support\ServiceProvider;
+use View;
 
 class AppServiceProvider extends ServiceProvider
 {
+
     /**
      * Bootstrap any application services.
      *
@@ -16,14 +16,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         Schema::defaultStringLength(191);
 
-        View::share('letter',[]);
-
-        View::share('goods',[]);
-        View::share('follow',[]);
-        View::share('id',null);
-
+        View::share([
+            'goods'=>[],
+            'name'=>null
+        ]);
     }
 
     /**

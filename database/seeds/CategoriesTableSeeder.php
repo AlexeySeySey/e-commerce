@@ -15,52 +15,76 @@ class CategoriesTableSeeder extends Seeder
         DB::table('categories')->insert([
 
             [
-                'image' => '21.jpeg',
-                'name' => 'Household',
+                'image' => 'public/images/upload_cat/21.jpeg',
+                'ENname' => 'Household',
+                'RUname'=>'Домохозяйство',
+                'UKname'=>'Господарство'
             ],
             [
-                'image' => '21.jpeg',
-                'name' => 'Vegetables',
+                'image' => 'public/images/upload_cat/21.jpeg',
+                'ENname' => 'Vegetables',
+                'RUname'=>'Овощи',
+                'UKname'=>'Овочі'
             ],
             [
-                'image' => '21.jpeg',
-                'name' => 'Fruit',
+                'image' => 'public/images/upload_cat/21.jpeg',
+                'ENname' => 'Fruit',
+                'RUname'=>'Фрукти',
+                'UKname'=>'Фрукти'
             ],
             [
-                'image' => '21.jpeg',
-                'name' => 'Soft_drinks',
+                'image' => 'public/images/upload_cat/21.jpeg',
+                'ENname' => 'Soft_drinks',
+                'RUname'=>'Безалкогольные напитки',
+                'UKname'=>'Безалкогольні напої'
             ],
             [
-                'image' => '21.jpeg',
-                'name' => 'Juices',
+                'image' => 'public/images/upload_cat/21.jpeg',
+                'ENname' => 'Juices',
+                'RUname'=>'Соки',
+                'UKname'=>'Соки'
             ],
             [
-                'image' => '21.jpeg',
-                'name' => 'Energy_Drinks',
+                'image' => 'public/images/upload_cat/21.jpeg',
+                'ENname' => 'Energy_Drinks',
+                'RUname'=>'Энергетики',
+                'UKname'=>'Енергетики'
             ],
             [
-                'image' => '21.jpeg',
-                'name' => 'Frozen_Snacks',
+                'image' => 'public/images/upload_cat/21.jpeg',
+                'ENname' => 'Frozen_Snacks',
+                'RUname'=>'Замороженные закуски',
+                'UKname'=>'Заморожені закуски'
             ],
             [
-                'image' => '21.jpeg',
-                'name' => 'Frozen_Vegetables',
+                'image' => 'public/images/upload_cat/21.jpeg',
+                'ENname' => 'Frozen_Vegetables',
+                'RUname'=>'Замороженные овощи',
+                'UKname'=>'Заморожені овочі'
             ],
             [
-                'image' => '21.jpeg',
-                'name' => 'Bakery',
+                'image' => 'public/images/upload_cat/21.jpeg',
+                'ENname' => 'Bakery',
+                'RUname'=>'Хлебобулочные изделия',
+                'UKname'=>'Хлібобулочні вироби'
             ],
             [
-                'image' => '21.jpeg',
-                'name' => 'Pet_food',
+                'image' => 'public/images/upload_cat/21.jpeg',
+                'ENname' => 'Pet_food',
+                'RUname'=>'Корм для животных',
+                'UKname'=>'Корм для тварин'
             ],
             [
-                'image' => '21.jpeg',
-                'name' => 'Household_Cleaning',
+                'image' => 'public/images/upload_cat/21.jpeg',
+                'ENname' => 'Household_Cleaning',
+                'RUname'=>'Чистящие средства',
+                'UKname'=>'Чистячі засоби'
             ],
             [
-                'image' => '21.jpeg',
-                'name' => 'Household_Utensils',
+                'image' => 'public/images/upload_cat/21.jpeg',
+                'ENname' => 'Household_Utensils',
+                'RUname'=>'Посуда',
+                'UKname'=>'Посуд'
             ],
 
         ]);
