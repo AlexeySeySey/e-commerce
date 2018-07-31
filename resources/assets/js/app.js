@@ -16,11 +16,11 @@ window.Vue = require('vue');
  */
 
 	 Vue.component(
-		 'sos',
-		 require('./components/addTestComponent.vue')
+		 'form-custom',
+		 require('./components/FormComponent.vue')
 	 );
 
 
 const app = new Vue({
-    el: '#app'
+    el: '#test'
 });

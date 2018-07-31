@@ -6,11 +6,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Cache;
 use Laratrust\Traits\LaratrustUserTrait;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
     use LaratrustUserTrait;
     use Notifiable;
+    use Billable;
 
     /**
      * The attributes that are mass assignable.

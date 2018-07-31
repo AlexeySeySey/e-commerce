@@ -94,12 +94,24 @@ Route::group([
 
 
  // Set main role for testing purposes
-
-   /* Route::get('/settingRole',function(){
+/*
+    Route::get('/settingRole',function(){
       $user = \App\Models\User::find(\Auth::id());
       $user->attachRole('admin');
       return 1;
-  });*/
+  });
+*/
 
+Route::get('/test1',function(){
+    return view('test');
+});
+
+Route::get('/test2',function(){
+    return view('test-child');
+});
+
+Route::get('/test3',function(){
+    return view('test-newChild');
+});
 
 
