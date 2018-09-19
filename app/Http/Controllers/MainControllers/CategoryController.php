@@ -13,6 +13,12 @@ class CategoryController extends Controller
     public function show($id)
     {
 
+        $all = Categories::find($id);
+        
+        if(!$all){
+            abort(404,"Not Found");
+        }
+
         $image = (((Categories::select('image')->where('id', $id)->get())->toArray())[0])["image"];
 
         $goods = Good::with('characteristic', 'categorie', 'sale', 'like')

@@ -19,10 +19,8 @@
 @section('slider-brands')
     <div class="w3l_banner_nav_right">
         <div class="w3l_banner_nav_right_banner4"
-             style="{{'background-image:url(/'.$image.')'}}; background-repeat: no-repeat;
+             style="{{'background-image:url(/'.'/public/'.$image.')'}}; background-repeat: no-repeat;
                      background-size: auto;">
-            {{$image}}
-            <!-- сделай как было (путь к изображениям) и зарефреш чтобы толкьо имя картинки как раьше было, чтобы работало все. -->
             <h3>{{ __('validation.sections.'.'Best Deals For New Products') }}<span class="blink_me"></span></h3>
         </div>
         <div class="w3ls_w3l_banner_nav_right_grid">

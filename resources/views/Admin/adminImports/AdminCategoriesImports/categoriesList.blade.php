@@ -5,7 +5,8 @@
                 @foreach($categories as $key)
                     <tr class="row" id="AdmCatAll{{ $key->id }}">
                         <td class="col"><b>№{{ $loop->iteration }}</b></td>
-                        <td class="col" id="AdmCatImg{{ $key->id }}"><img height="170px" width="500px" style="border-radius: 10px; border: 2px solid lightgrey" src="{{ URL::to('/').$key->image}}" alt="-">
+                        <td class="col" id="AdmCatImg{{ $key->id }}">
+                        <img height="170px" width="500px" style="border-radius: 10px; border: 2px solid lightgrey" src="{{ URL::to('/').$key->image}}" alt="Loading...">
                         </td>
                         <td class="col" style="text-align: center; color:black" id="AdmCatName{{ $key->id }}">
                             @if($locale == 'en')

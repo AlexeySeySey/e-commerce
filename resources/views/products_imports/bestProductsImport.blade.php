@@ -77,7 +77,7 @@
                             <div class="snipcart-item block">
                                 <div class="snipcart-thumb">
                                     <a href="#"><img
-                                                src="{{ $key->image }}"
+                                    src="{{ URL::to('/').$key->image}}"
                                                 alt="Loading..."
                                                 class="img-responsive"/></a>
                                     <p>{{$key->name}} {{($key->weight)}}</p>

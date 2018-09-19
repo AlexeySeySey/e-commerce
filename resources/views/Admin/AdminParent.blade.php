@@ -18,7 +18,7 @@
     <link href="{{asset('css/admin.css')}}" rel="stylesheet" type="text/css" media="all"/>
     <link rel="icon" href="{{ asset('images/main_icon.png') }}">
     <link rel="stylesheet" href="{{asset('css/top_scroll.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/admin_styles.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/admin_styles.css')}}"> 
 </head>
 @show
 
@@ -91,7 +91,7 @@
 </div>
 
 
-<script src="{{ asset('js/jquery331.js') }}" defer></script>
+<script src="{{ asset('js/jquery331.js') }}"></script>
 <script type="text/javascript" src="{{asset('js/move-top.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/easing.js')}}"></script>
 <script src="{{asset('js/minicart.js')}}"></script>
@@ -99,7 +99,6 @@
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/Custom/admin.js')}}" defer></script>
 <script type="text/javascript" src="{{ asset('js/app.js') }}" defer></script>
-
 </body>
 </html>
 @show

@@ -67,3 +67,7 @@ body nav footer{
     text-align: center !important;
 }
 
+#adminGoodsTable{
+    margin-left: 70px !important;
+    width: 1000px !important; 
+}

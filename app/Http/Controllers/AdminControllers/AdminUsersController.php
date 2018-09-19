@@ -13,15 +13,11 @@ class AdminUsersController extends Controller
     {
 
         $admin_role         = ((Role::with('user')->where('name', 'admin')->get())->toArray())[0];
-        $admin_support_role = ((Role::with('user')->where('name', 'admin_support')->get())->toArray())[0];
-
         $admin_id         = intval((($admin_role['user'])[0])['id']);
-        $admin_support_id = intval((($admin_support_role['user'])[0])['id']);
-
 
         $users = User::with(['cart', 'user_like'])->where([
             ['id', '!=', $admin_id],
-            ['id', '!=', $admin_support_id]
+            ['id','!=',\Auth::id()]
         ])->get();
 
         return view('Admin.adminChild',[

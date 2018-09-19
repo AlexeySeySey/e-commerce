@@ -1,10 +1,10 @@
-<div class="container-fluid">
+{{--<div class="container-fluid">
     <button class="btn btn-secondary" onclick="usersShowUp()">@lang('validation.other.Users')<i class="fa fa-eye"></i></button>
     <button class="btn btn-secondary" onclick="usersHide()"><i class="fa fa-eye-slash"></i></button>
-</div>
+</div>--}}
 <br>
 <div class="container-fluid" id="container-for-users-table">
-<table class="table table-hover" id="allUsersTable" style="visibility: hidden">
+<table class="table table-hover" id="allUsersTable">
     @if (!empty($users))
     @foreach($users as $key)
         @if(!empty($key))
@@ -12,7 +12,7 @@
                 <td>№ {{ $loop->iteration }}</td>
                 <td>@lang('validation.other.Name'): {{ $key->name }}</td>
                 <td>@lang('validation.other.Mail'): {{ $key->email  }}</td>
-                <td>@lang('validation.other.Locale'): {{ $key->locale }}</td>
+                <td>@lang('validation.other.Locale'): @if($key->locale) {{ $key->locale }} @else <b>-</b> @endif</td>
                 @if($key->cart==null)
                     <td class="alert alert-danger">@lang('validation.other.Cart is empty')Коризна пуста</td>
                 @else
@@ -39,9 +39,9 @@
                     @if($key->isBan==1)
                         <td>
                             <div id="{{ '#unbanbutton'.$key->id }}">
-                            <buttom class="btn btn-info" onclick="UnBan({{ $key->id }})"><i class="fa fa-user-plus"></i>
+                            <button class="btn btn-info" onclick="UnBan({{ $key->id }})"><i class="fa fa-user-plus"></i>
                                 @lang('validation.other.Unban')
-                            </buttom>
+                            </button>
                             </div>
                             <span id="{{ '#unban-return-text'.$key->id }}" style="visibility: hidden">@lang('validation.other.Unbanned')</span>
                         </td>
@@ -56,7 +56,7 @@
                         </td>
                     @endif
             </tr>
-        @endif
+         @endif
     @endforeach
         @endif
 </table>

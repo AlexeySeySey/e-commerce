@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers\AdminControllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Good;
 
 class AdminGoodsController extends Controller
 {
     public function show()
     {
 
-        return view('Admin.adminChild',[
-            'section'=>'Goods'
+        $goods = Good::with(['categorie','sale','like'])->paginate(20);
+        dd($goods->toArray());
+
+        return view('Admin.adminChild', [
+            'section' => 'Goods',
+            'goods' => $goods,
         ]);
     }
 }
