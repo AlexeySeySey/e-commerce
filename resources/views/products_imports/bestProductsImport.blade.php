@@ -169,11 +169,13 @@
                                                                                     <br>
                                                                                     <table>
                                                                                         <tr>
+                                                                                       
                                                                                             <td>
                                                                                                 <input type="submit"
                                                                                                        class="btn btn-primary"
                                                                                                        value="{{__('validation.other.Add to card')}}">
                                                                                             </td>
+                                                                                          
                                                                                             <td>
                                                                                                 <span id="{{'#'.'good-count'.$key->id}}"
                                                                                                       class="alert alert-success"></span>

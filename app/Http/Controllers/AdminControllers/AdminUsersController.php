@@ -20,9 +20,16 @@ class AdminUsersController extends Controller
             ['id','!=',\Auth::id()]
         ])->get();
 
+        if(count($users)==0){
+            $searchErr = 1;
+        }else{
+            $searchErr = 0;
+        }
+
         return view('Admin.adminChild',[
             'users'=>$users,
-            'section'=>'Users'
+            'section'=>'Users',
+            'searchErr'=>$searchErr
         ]);
     }
 }

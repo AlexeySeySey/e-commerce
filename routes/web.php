@@ -71,6 +71,7 @@ Route::group([
 
     Route::post('/banUser', ['uses' => 'AdminControllers\BanController@ban','as'=>'banUser']);
     Route::post('/unbanUser', ['uses' => 'AdminControllers\BanController@unban']);
+    Route::post('/searchUser', ['uses' => 'AdminControllers\SearchController@searchUser']);
 
     Route::post('/softDeleteCategorie',['uses'=>'AdminControllers\DropCategorieController@hide','as'=>'softDeleteCategorie']);
     Route::post('/realDeleteCategorie',['uses'=>'AdminControllers\DropCategorieController@drop','as'=>'realDeleteCategorie']);
@@ -81,7 +82,11 @@ Route::group([
     Route::get('/', ['uses' => 'AdminControllers\AdminController@show', 'as' => 'admin']);
     Route::get('/admin-categories',['uses'=>'AdminControllers\AdminCategoriesController@show','as'=>'categories']);
     Route::get('/admin-users',['uses'=>'AdminControllers\AdminUsersController@show','as'=>'users']);
+
     Route::get('/admin-goods',['uses'=>'AdminControllers\AdminGoodsController@show','as'=>'goods']);
+    Route::post('/admin-goods-delete',['uses'=>'AdminControllers\AdminGoodsController@delete']);
+    Route::post('/admin-goods-edit',['uses'=>'AdminControllers\AdminGoodsController@edit']);
+
     Route::get('/admin-news',['uses'=>'AdminControllers\AdminNewsController@show','as'=>'news']);
     Route::get('/admin-sales',['uses'=>'AdminControllers\AdminSalesController@show','as'=>'sales']);
     Route::get('/admin-configurations',['uses'=>'AdminControllers\AdminConfigurationsController@show','as'=>'configurations']);

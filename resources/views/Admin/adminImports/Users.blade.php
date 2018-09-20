@@ -1,18 +1,34 @@
-{{--<div class="container-fluid">
-    <button class="btn btn-secondary" onclick="usersShowUp()">@lang('validation.other.Users')<i class="fa fa-eye"></i></button>
-    <button class="btn btn-secondary" onclick="usersHide()"><i class="fa fa-eye-slash"></i></button>
-</div>--}}
-<br>
+<div class="container-fluid">
+<form action="{{ URL::to('/admin/searchUser') }}" method="POST">
+@csrf
+<div class="btn-group">
+<input name="search"
+ class="form-control form-control-sm"
+ type="text"
+ placeholder="Search..."
+ style="margin-left:370px; width:300px"
+ required>
+<button class="btn btn-secondary" type="submit">
+<i class="fa fa-search"></i>
+</button>
+</div>
+</form>
+<hr>
+@if($searchErr)
+<div class="alert alert-secondary">
+       Ничего не найдено...
+</div>
+@endif
 <div class="container-fluid" id="container-for-users-table">
 <table class="table table-hover" id="allUsersTable">
     @if (!empty($users))
     @foreach($users as $key)
         @if(!empty($key))
             <tr>
-                <td>№ {{ $loop->iteration }}</td>
-                <td>@lang('validation.other.Name'): {{ $key->name }}</td>
-                <td>@lang('validation.other.Mail'): {{ $key->email  }}</td>
-                <td>@lang('validation.other.Locale'): @if($key->locale) {{ $key->locale }} @else <b>-</b> @endif</td>
+                <td>{{ $loop->iteration }}</td>
+                <td>@lang('validation.other.Name'):<br> {{ $key->name }}</td>
+                <td>@lang('validation.other.Mail'):<br> {{ $key->email  }}</td>
+                <td>@lang('validation.other.Locale'):<br> @if($key->locale) {{ $key->locale }} @else <b>-</b> @endif</td>
                 @if($key->cart==null)
                     <td class="alert alert-danger">@lang('validation.other.Cart is empty')Коризна пуста</td>
                 @else
@@ -60,4 +76,5 @@
     @endforeach
         @endif
 </table>
+</div>
 </div>

@@ -9,7 +9,7 @@
         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
            aria-controls="nav-profile" aria-selected="false"
            style="padding-left: 50px !important; padding-right: 50px !important;" onmouseover="visibleMinipanels(this)">
-            Создать новую <i class="fa fa-plus"></i>
+            Создать новую <br><small>Створити нову - перевод</small> <i class="fa fa-plus"></i>
         </a>
         <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
            aria-controls="nav-contact" aria-selected="false"

@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function user_like()
     {
-        return $this->belongsToMany('App\Models\Good','likes');
+        return $this->belongsToMany('App\Models\Good','good_like','user_id','good_id');
     }
 
     public function isOnline()
@@ -50,6 +50,19 @@ class User extends Authenticatable
     public function role()
     {
        return $this->belongsToMany('App\Role','role_user','user_id');
+   }
+
+   public function scopeUserSearch($query,$admin_id,$auth_id,$search)
+   {
+       return $query->where([
+        ['id', '!=', $admin_id],
+        ['id','!=',$auth_id],
+        ['name','like','%'.$search.'%']
+    ])->orWhere([
+        ['id', '!=', $admin_id],
+        ['id','!=',$auth_id],
+        ['email','like','%'.$search.'%']
+    ]);
    }
 
 }

@@ -19,7 +19,7 @@ class Categories extends Model
 
     public function good()
     {
-        return $this->hasMany('App\Models\Good','categories_id');
+        return $this->belongsToMany('App\Models\Good','good_categorie','good_id','categorie_id');
     }
 
 }
