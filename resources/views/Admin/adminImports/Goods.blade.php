@@ -1,4 +1,9 @@
 <div id="adminGoodsTable">
+  @if (session('error_file_change'))
+  <div class="alert alert-danger text-center msg">
+    <strong>{{ session('error_file_change') }}</strong>
+  </div>
+  @endif
   <table class="table table-hover">
     <thead class="thead-dark">
       <tr>
@@ -15,7 +20,7 @@
     <tbody>
       @foreach($goods as $good)
       <tr>
-        <td><b>{{ ucfirst($good->name) }}</b></td>
+        <td><b>{{ str_limit($good->name,10,"...") }}</b></td>
         <td>
           <img style="border-radius: 10px; border: 2px solid lightgrey"
             src="{{ URL::to('/').$good->image}}"
@@ -70,13 +75,9 @@
                     <div class="modal-header">
                       <h5 class="modal-title"
                         id="exampleModalLabel">Edit product: <b>{{ ucfirst($good->name) }}</b></h5>
-                      <button type="button"
-                        class="btn btn-secondary"
-                        data-dismiss="modal"
-                        style="margin-left:800px !important"><i class="fa fa-times"></i></button>
                       <br>
                     </div>
-                    <div class="modal-body btn-group">
+                    <div class="modal-body">
                       <form id="good-change-form"
                         action="{{ URL::to('/admin/admin-goods-edit') }}"
                         method="POST"
@@ -85,85 +86,92 @@
                         <input type="hidden"
                           name="good"
                           value="{{ $good->id }}">
-                        <div>
-                          <table class="table">
-                            <tr>
-                              <td>
-                                <b>Name:</b>
-                              </td>
-                              <td>
-                                <input class="form-control"
-                                  type="text"
-                                  name="name"
-                                  value="{{ $good->name }}">
-                              </td>
-                              <td>
-                                <b>Weight:</b>
-                              </td>
-                              <td>
-                                <input type=number
-                                  name="weight"
-                                  step=0.1
-                                  value="{{ $good->weight }}"
-                                  class="form-control w-150" />
-                              </td>
-                            </tr>
-                            <tr>
-                              <td><b>Price:</b></td>
-                              <td><input type=number
-                                  name="price"
-                                  step=0.1
-                                  value="{{ $good->price }}"
-                                  class="form-control w-150" /></td>
-                              <td><b>Rating:</b></td>
-                              <td><input type=number
-                                  name="rating"
-                                  step=1
-                                  value="{{ $good->rating }}"
-                                  class="form-control w-150" /></td>
-                            </tr>
-                          </table>
-                          <div>
-                            <div class="btn-group"
-                              style="width:350px !important">
-                              <b>Weight Type:</b>
-                              <select name="w_type"
-                                class="form-control">
-                                <option>l</option>
-                                <option>kg</option>
-                                <option>th</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="container-fluid">
-                          <div class="container-fluid">
-                            @csrf
-                            <div class="col-md-6 alert alert-secondary"
-                              style="margin-left: 200px !important;">
-                              <div class="form-group">
-                                <div class="input-group">
-                                  <span class="input-group-btn">
-                                    <span class="btn btn-default btn-file">
-                                      <i class="fa fa-image btn btn-secondary"></i>
-                                      <input type="file"
-                                        id="imgInp"
-                                        name="good_image_up"
-                                        accept="image/*">
-                                    </span>
-                                  </span>
-                                  <input type="text"
-                                    class="form-control"
-                                    value="{{ str_replace('/images/','',$good->image) }}"
-                                    readonly>
+                        <div class="container">
+                          <div class="row">
+
+
+
+
+                            <div class="col-md">
+                              <b>Name:</b>
+                              <input class="form-control"
+                                type="text"
+                                name="name"
+                                value="{{ $good->name }}">
+                              <br>
+                              <b>Weight:</b>
+                              <input type=number
+                                name="weight"
+                                step=0.1
+                                value="{{ $good->weight }}"
+                                class="form-control w-150" />
+                              <br>
+                              <b>Price:</b>
+                              <input type=number
+                                name="price"
+                                step=0.1
+                                value="{{ $good->price }}"
+                                class="form-control w-150" />
+                              <br>
+                              <b>Rating:</b>
+                              <input type=number
+                                name="rating"
+                                step=1
+                                value="{{ $good->rating }}"
+                                class="form-control w-150" />
+                              <br>
+                              <div>
+                                <b>Weight Type:</b>
+                                <br>
+                                <div class="btn-group"
+                                  style="width:500px !important">
+                                  <select name="w_type"
+                                    class="form-control">
+                                    <option>l</option>
+                                    <option>kg</option>
+                                    <option>th</option>
+                                  </select>
                                 </div>
-                                <img id='img-upload'
-                                  src="{{ URL::to('/').$good->image}}" />
                               </div>
+                              <br>
+                            </div>
+
+
+                            <div id="photoEditGood"
+                              class="col-md">
+                              <div class="container-fluid">
+                                <div class="col-md-6 alert alert-secondary">
+                                  <div class="form-group">
+                                    <div class="input-group">
+                                      <span class="input-group-btn">
+                                        <span class="btn btn-default btn-file">
+                                          <i class="fa fa-image btn btn-secondary"></i>
+                                          <input type="file"
+                                            id="imgInp"
+                                            name="good_image_up"
+                                            accept="image/*">
+                                        </span>
+                                      </span>
+                                      <input type="text"
+                                        name="new_img_name_good"
+                                        class="form-control"
+                                        value="{{ str_replace('/images/','',$good->image) }}"
+                                        readonly
+                                        id="inpt">
+                                    </div>
+                                    <img id='img-upload'
+                                      src="{{ URL::to('/').$good->image}}" />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="container"
+                                id="result"></div>
+                              <input type="hidden"
+                                name="old_category_image_name"
+                                value="{{ $good->image }}"
+                                accept="image/*">
                             </div>
                           </div>
-                          <div class="container"
-                            id="result"></div>
                         </div>
                       </form>
                     </div>
@@ -172,6 +180,10 @@
                       <button type="submit"
                         class="btn btn-info"
                         onclick="document.getElementById('good-change-form').submit()">Save</button>
+                      <button type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                        style="margin-left:800px !important"><i class="fa fa-times"></i></button>
                     </div>
                   </div>
                 </div>
@@ -199,4 +211,5 @@
   <div class="alert alert-secondary">
     {{ $goods->links() }}
   </div>
+  <br>
 </div>

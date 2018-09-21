@@ -98,5 +98,12 @@ table#allUsersTable td {
     font-weight: bold;
 }
 
+#photoEditGood{
+    width: 500px !important;
+}
+
+#result{
+    width: 400px !important;
+ }
 
 
