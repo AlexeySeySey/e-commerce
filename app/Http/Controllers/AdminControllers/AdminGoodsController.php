@@ -4,6 +4,8 @@ namespace App\Http\Controllers\AdminControllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Good;
+use App\Models\Categories;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -14,16 +16,24 @@ class AdminGoodsController extends Controller
     {
 
         $goods = Good::with(['categorie','sale','like'])->paginate(20);
+        
+        $categories = Categories::all();
+        $sales = Sale::all();
 
         return view('Admin.adminChild', [
             'section' => 'Goods',
             'goods' => $goods,
+            'categories'=>$categories,
+            'sales'=> $sales
         ]);
     }
 
     public function edit(Request $request)
     {
         $good = Good::find($request->good);
+
+        $good->categorie()->sync($request->input('categories_checked'));
+        $good->sale()->sync($request->input('sales_checked'));
 
         if ($request->hasFile('good_image_up')) {
             if ($request->good_image_up->isValid()) {

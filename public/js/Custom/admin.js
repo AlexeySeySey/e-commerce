@@ -112,7 +112,7 @@ function Ban(id) {
         url: '/admin/banUser',
         cache: false,
         type: 'POST',
-        data: {user_id: id},
+        data: { user_id: id },
         success: function () {
             document.getElementById('#' + 'ban-return-text' + id).style.cssText = "visibility:visible !important";
             document.getElementById('#' + 'banbutton' + id).style.cssText = "visibility:hidden !important";
@@ -131,7 +131,7 @@ function UnBan(id) {
         url: '/admin/unbanUser',
         cache: false,
         type: 'POST',
-        data: {user_id: id},
+        data: { user_id: id },
         success: function () {
             document.getElementById('#' + 'unban-return-text' + id).style.cssText = "visibility:visible !important";
             document.getElementById('#' + 'unbanbutton' + id).style.cssText = "visibility:hidden !important";
@@ -151,7 +151,7 @@ function hideCategorie(id) {
         url: '/admin/softDeleteCategorie',
         cache: false,
         type: 'POST',
-        data: {categorie_id: id},
+        data: { categorie_id: id },
         success: function () {
             $('#AdmCatAll' + id).css('opacity', '0.7');
             $('#hideadmincat' + id).css('display', 'none');
@@ -171,7 +171,7 @@ function dropCategorie(id) {
         url: '/admin/realDeleteCategorie',
         cache: false,
         type: 'POST',
-        data: {categorie_id: id},
+        data: { categorie_id: id },
         success: function () {
             $('#AdmCatAll' + id).css('opacity', '0.7');
             $('#dropadmincat' + id).css('display', 'none');
@@ -191,7 +191,7 @@ function restoreCategorie(id) {
         url: '/admin/restoreCategorie',
         cache: false,
         type: 'POST',
-        data: {categorie_id: id},
+        data: { categorie_id: id },
         success: function () {
             $('#AdmCatAll' + id).css({
                 'background-color': 'mediumspringgreen',
@@ -205,6 +205,7 @@ function restoreCategorie(id) {
         }
     });
 }
+
 
 
 
