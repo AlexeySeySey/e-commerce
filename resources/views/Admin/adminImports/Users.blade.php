@@ -1,6 +1,5 @@
 <div class="container-fluid">
-<form action="{{ URL::to('/admin/searchUser') }}" method="POST">
-@csrf
+<form action="{{ URL::to('/admin/searchUser') }}" method="GET">
 <div class="btn-group">
 <input name="search"
  class="form-control form-control-sm"

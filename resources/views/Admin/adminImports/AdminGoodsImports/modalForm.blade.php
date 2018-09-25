@@ -48,9 +48,10 @@
                                   style="width:500px !important">
                                   <select name="w_type"
                                     class="form-control">
-                                    <option>l</option>
-                                    <option>kg</option>
-                                    <option>th</option>
+                                    selected
+                                    <option @if($good->weight_type == 'l') selected @endif value="l">l</option>
+                                    <option @if($good->weight_type == 'kg') selected @endif value="kg">kg</option>
+                                    <option @if($good->weight_type == 'th') selected @endif value="th">th</option>
                                   </select>
                                 </div>
                               </div>
@@ -88,7 +89,7 @@
                               <div class="container"
                                 id="result"></div>
                               <input type="hidden"
-                                name="old_category_image_name"
+                                name="old_image_name"
                                 value="{{ $good->image }}"
                                 accept="image/*">
                               <br>
@@ -100,7 +101,8 @@
                                     <div class="button-group">
                                       <button type="button"
                                         class="btn btn-default btn-sm dropdown-toggle"
-                                        data-toggle="dropdown">
+                                        data-toggle="dropdown"
+                                        title="Categories">
                                         <i class="fa fa-pie-chart"></i>
                                       </button>
                                       <ul class="dropdown-menu">
@@ -139,7 +141,8 @@
                                       <div class="button-group">
                                         <button type="button"
                                           class="btn btn-default btn-sm dropdown-toggle"
-                                          data-toggle="dropdown">
+                                          data-toggle="dropdown"
+                                          title="Sales">
                                           <i class="fa fa-tags"></i>
                                         </button>
                                         <ul class="dropdown-menu">
@@ -162,7 +165,6 @@
                                           @endforeach
                                         </ul>
                                       </div>
-                                      <span id="precGood"></span>
                                     </div>
                                   </div>
                                 </div>
@@ -174,7 +176,8 @@
                                         <div class="button-group">
                                           <button type="button"
                                             class="btn btn-default btn-sm dropdown-toggle"
-                                            data-toggle="dropdown">
+                                            data-toggle="dropdown"
+                                            title="Likes">
                                             <i class="fa fa-thumbs-up"></i>
                                           </button>
                                           <div class="dropdown-menu">
@@ -187,6 +190,29 @@
                                       </div>
                                     </div>
                                   </div>
+
+
+                                  <div class="container">
+                                      <div class="row">
+                                        <div class="col-lg-12">
+                                          <div class="button-group">
+                                            <button type="button"
+                                              class="btn btn-default btn-sm dropdown-toggle"
+                                              data-toggle="dropdown"
+                                              title="Stock">
+                                             <i class="fa fa-database"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                   <input id="char_stock_good_num"
+                                          type="text"
+                                          class="form-control"
+                                          name="stock"
+                                          value="{{ $good->characteristic ? ($good->characteristic)->stock : '' }}"/>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
 
 </div>
 

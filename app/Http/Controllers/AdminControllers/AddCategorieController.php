@@ -4,9 +4,7 @@ namespace App\Http\Controllers\AdminControllers;
 
 use App\Models\Categories;
 use Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use Intervention\Image\ImageManagerStatic as Image;
 use App\Http\Controllers\Controller;
 
 class AddCategorieController extends Controller
@@ -14,7 +12,6 @@ class AddCategorieController extends Controller
 
     public function add(Request $request)
     {
-
         if(($request->ENname == null) and ($request->RUname == null) and ($request->UKname == null)){
             abort(403, 'You forget to input data!');
         }
@@ -23,24 +20,13 @@ class AddCategorieController extends Controller
         $RUname = $request->RUname;
         $UKname = $request->UKname;
 
-            if ($request->categories_image->isValid()) {
-                $filename = $request->file('categories_image')->getClientOriginalName();
-                $image_store_name = $ENname.'_name.jpg';
-
-                Storage::disk('public')->put($image_store_name, file_get_contents($request->file('categories_image')));
-
-                $img = Image::make(public_path().'/images/upload_cat/'.$image_store_name);
-                $img->resize(1100, 240);
-                $img->save(public_path().'/images/upload_cat/'.$image_store_name);
-            } else {
-            abort(500, 'Oops! something wrong with your file!');
-        }
-
         $categorie = new Categories;
+
+        parent::addNewImage($categorie, $request, 'public', 'upload_cat', 'categories_image', 1100, 240);
+
         $categorie->ENname = $ENname;
         $categorie->RUname = $RUname;
         $categorie->UKname = $UKname;
-        $categorie->image = $image_store_name;
         $categorie->save();
 
         return redirect()->back();

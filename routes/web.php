@@ -71,7 +71,7 @@ Route::group([
 
     Route::post('/banUser', ['uses' => 'AdminControllers\BanController@ban','as'=>'banUser']);
     Route::post('/unbanUser', ['uses' => 'AdminControllers\BanController@unban']);
-    Route::post('/searchUser', ['uses' => 'AdminControllers\SearchController@searchUser']);
+    Route::get('/searchUser', ['uses' => 'AdminControllers\SearchController@searchUser']);
 
     Route::post('/softDeleteCategorie',['uses'=>'AdminControllers\DropCategorieController@hide','as'=>'softDeleteCategorie']);
     Route::post('/realDeleteCategorie',['uses'=>'AdminControllers\DropCategorieController@drop','as'=>'realDeleteCategorie']);
@@ -86,12 +86,17 @@ Route::group([
     Route::get('/admin-goods',['uses'=>'AdminControllers\AdminGoodsController@show','as'=>'goods']);
     Route::post('/admin-goods-delete',['uses'=>'AdminControllers\AdminGoodsController@delete']);
     Route::post('/admin-goods-edit',['uses'=>'AdminControllers\AdminGoodsController@edit']);
+    
+    Route::get('/searchProduct', ['uses' => 'AdminControllers\SearchController@searchProduct']);
+    Route::get('/createNewProduct', ['uses' => 'AdminControllers\AdminGoodsController@createProduct']);
+    Route::post('/saveNewProduct', ['uses' => 'AdminControllers\AdminGoodsController@saveProduct']);
 
     Route::get('/admin-news',['uses'=>'AdminControllers\AdminNewsController@show','as'=>'news']);
+    Route::get('/createNewEvent', ['uses' => 'AdminControllers\AdminNewsController@createEvent']);
+    Route::post('/saveNewEvent', ['uses' => 'AdminControllers\AdminNewsController@saveEvent']);
+    
     Route::get('/admin-sales',['uses'=>'AdminControllers\AdminSalesController@show','as'=>'sales']);
-    Route::get('/admin-configurations',['uses'=>'AdminControllers\AdminConfigurationsController@show','as'=>'configurations']);
     Route::get('/admin-statistics',['uses'=>'AdminControllers\AdminStatisticsController@show','as'=>'statistics']);
-
 
 });
 
@@ -99,13 +104,14 @@ Route::group([
 
 
  // Set main role for testing purposes
+
 /*
     Route::get('/settingRole',function(){
       $user = \App\Models\User::find(\Auth::id());
       $user->attachRole('admin');
       return 1;
   });
-*/
+
 
 Route::get('/test1',function(){
     return view('test');
@@ -119,4 +125,4 @@ Route::get('/test3',function(){
     return view('test-newChild');
 });
 
-
+*/

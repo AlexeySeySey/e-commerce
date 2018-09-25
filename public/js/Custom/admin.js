@@ -1,15 +1,15 @@
-window.onscroll = function () {
+window.onscroll = function() {
     document.getElementById('admin-navbar-sticky').style.cssText = "position:fixed; z-index:200 !important; bottom:495px !important; height:70px !important";
 }
 
-$(document).ready(function () {
-    $(document).on('change', '.btn-file :file', function () {
+$(document).ready(function() {
+    $(document).on('change', '.btn-file :file', function() {
         var input = $(this),
             label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
         input.trigger('fileselect', [label]);
     });
 
-    $('.btn-file :file').on('fileselect', function (event, label) {
+    $('.btn-file :file').on('fileselect', function(event, label) {
 
         var input = $(this).parents('.input-group').find(':text'),
             log = label;
@@ -26,7 +26,7 @@ $(document).ready(function () {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 $('#img-upload').attr('src', e.target.result);
             }
 
@@ -34,12 +34,12 @@ $(document).ready(function () {
         }
     }
 
-    $("#imgInp").change(function () {
+    $("#imgInp").change(function() {
         readURL(this);
     });
 });
 
-addEventListener("load", function () {
+addEventListener("load", function() {
     setTimeout(hideURLbar, 0);
 }, false);
 
@@ -113,11 +113,11 @@ function Ban(id) {
         cache: false,
         type: 'POST',
         data: { user_id: id },
-        success: function () {
+        success: function() {
             document.getElementById('#' + 'ban-return-text' + id).style.cssText = "visibility:visible !important";
             document.getElementById('#' + 'banbutton' + id).style.cssText = "visibility:hidden !important";
         },
-        error: function (ts) {
+        error: function(ts) {
             alert(ts.responseText)
         }
     });
@@ -132,11 +132,11 @@ function UnBan(id) {
         cache: false,
         type: 'POST',
         data: { user_id: id },
-        success: function () {
+        success: function() {
             document.getElementById('#' + 'unban-return-text' + id).style.cssText = "visibility:visible !important";
             document.getElementById('#' + 'unbanbutton' + id).style.cssText = "visibility:hidden !important";
         },
-        error: function (ts) {
+        error: function(ts) {
             alert(ts.responseText)
         }
     });
@@ -152,12 +152,12 @@ function hideCategorie(id) {
         cache: false,
         type: 'POST',
         data: { categorie_id: id },
-        success: function () {
+        success: function() {
             $('#AdmCatAll' + id).css('opacity', '0.7');
             $('#hideadmincat' + id).css('display', 'none');
             $('#changeadmincat' + id).css('display', 'none');
         },
-        error: function (ts) {
+        error: function(ts) {
             alert(ts.responseText)
         }
     });
@@ -172,12 +172,12 @@ function dropCategorie(id) {
         cache: false,
         type: 'POST',
         data: { categorie_id: id },
-        success: function () {
+        success: function() {
             $('#AdmCatAll' + id).css('opacity', '0.7');
             $('#dropadmincat' + id).css('display', 'none');
             $('#aliveadmincat' + id).css('display', 'none');
         },
-        error: function (ts) {
+        error: function(ts) {
             alert(ts.responseText)
         }
     });
@@ -192,7 +192,7 @@ function restoreCategorie(id) {
         cache: false,
         type: 'POST',
         data: { categorie_id: id },
-        success: function () {
+        success: function() {
             $('#AdmCatAll' + id).css({
                 'background-color': 'mediumspringgreen',
                 'transition': '1s'
@@ -200,12 +200,16 @@ function restoreCategorie(id) {
             $('#dropadmincat' + id).css('display', 'none');
             $('#aliveadmincat' + id).css('display', 'none');
         },
-        error: function (ts) {
+        error: function(ts) {
             alert(ts.responseText)
         }
     });
 }
 
+function unfill() {
+    var inputs = $('#followers-checkList-new :input');
+    inputs.attr("checked", !inputs.attr("checked"));
+}
 
 
 

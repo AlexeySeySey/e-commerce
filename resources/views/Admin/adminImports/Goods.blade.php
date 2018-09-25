@@ -1,3 +1,37 @@
+<div class="row" style="margin-right:50px !important">
+  <div class="col-sm">
+<form action="{{ URL::to('/admin/searchProduct') }}" method="GET">
+  <div class="btn-group">
+  <input name="search"
+   class="form-control form-control-sm"
+   type="text"
+   placeholder="Search..."
+   style="margin-left:370px; width:300px"
+   required>
+  <button class="btn btn-secondary" type="submit">
+  <i class="fa fa-search"></i>
+  </button>
+  </div>
+  </form>
+</div>
+<div class="col-sm">
+    <button type="button" class="btn btn-secondary">
+      <a href="/admin/createNewProduct">
+      <i class="fa fa-plus"></i> Add new product
+      </a>
+    </button>
+</div>
+
+</div>
+
+  @if($searchErr)
+  <hr>
+<div class="alert alert-secondary">
+       Ничего не найдено...
+</div>
+@endif
+<hr>
+
 <div id="adminGoodsTable">
   @if (session('error_file_change'))
   <div class="alert alert-danger text-center msg">
@@ -31,7 +65,17 @@
         <td>
           @if(count($good->categorie)>0)
           @foreach($good->categorie as $cat)
-          <i>{{ $cat->name }}</i><br>
+          <i class="fa fa-check"></i> 
+          <i>
+            @if(App::getLocale()=='ru')
+            {{ $cat->RUname }}
+            @elseif(App::getLocale()=='en')
+            {{ $cat->ENname }}
+            @else
+            {{ $cat->UKname }}
+            @endif
+          </i>
+          <br>
           @endforeach
           @else
           <b>-</b>
@@ -40,7 +84,7 @@
         <td>
           @if(count($good->sale)>0)
           @foreach($good->sale as $s)
-          <i>{{ $s->name }}</i><br>
+          <i class="fa fa-check"></i> <i>{{ $s->name }}</i><br>
           @endforeach
           @else
           <b>-</b>
@@ -101,6 +145,10 @@
                 <input type="hidden"
                   name="good"
                   value="{{ $good->id }}">
+                  <input type="hidden"
+                  name="old_image_name"
+                  value="{{ $good->image }}"
+                  accept="image/*">
                 <button type="submit"
                   class="btn btn-danger">
                   <i class="fa fa-times"></i>
