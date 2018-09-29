@@ -1,6 +1,7 @@
-<form action="{{ URL::to('/admin/saveNewEvent') }}"
+<form action="{{ URL::to('/admin/editEvent') }}"
     method="POST"
-    enctype="multipart/form-data">
+    enctype="multipart/form-data"
+    id="change-form{!! json_encode($n->id) !!}">
     @csrf
     <div class="container">
         <div class="row">
@@ -40,13 +41,13 @@
                                         <i class="fa fa-image btn btn-secondary"></i>
                                         <input type="file"
                                             id="imgInp"
-                                            name="good_image_up"
+                                            name="image_up"
                                             accept="image/*"
                                             required>
                                     </span>
                                 </span>
                                 <input type="text"
-                                    name="new_img_name_good"
+                                    name="new_img_name"
                                     class="form-control"
                                     readonly
                                     id="inpt">
@@ -60,27 +61,6 @@
                 <br>
             </div>
         </div>
-
-        <br>
-
-        <div>
-            <button type="button"
-                class="btn btn-secondary"
-                data-toggle="modal"
-                data-target="#exampleModalLong">
-                Notify
-            </button>
-            {{-- @include("Admin.adminImports.AdminEventsImports.modalFollowersForm") --}}
-        </div>
-
-        <hr>
-        <br>
-        <button type="submit"
-            class="btn btn-dark btn-lg"
-            style="margin-left:670px;">
-            <i class="fa fa-check"></i>
-            Save
-        </button>
-    </div>
-    <hr><br><br>
+        <input type="hidden" name="event" value="{{ $n->id }}">
 </form>
+<br>

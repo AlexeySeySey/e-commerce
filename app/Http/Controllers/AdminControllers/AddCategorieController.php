@@ -40,33 +40,11 @@ class AddCategorieController extends Controller
         }
 
         $current_category_id = intval($request->current_category_id);
-
-        $name = (((Categories::select('ENname')->where('id',$current_category_id)->get())->toArray())[0])['ENname'];
-
-        if ($request->hasFile('new_categories_image')) {
-            if ($request->new_categories_image->isValid()) {
-
-                $filename = $request->file('new_categories_image')->getClientOriginalName();
-                $image_store_name = $name.$current_category_id.'_name.jpg';
-
-                Storage::disk('public')->put($image_store_name, file_get_contents($request->file('new_categories_image')));
-
-                $img = Image::make(public_path().'/images/upload_cat/'.$image_store_name);
-                $img->resize(1100, 240);
-                $img->save(public_path().'/images/upload_cat/'.$image_store_name);
-            }
-        } else {
-            abort(500, 'Oops! something wrong with your file!');
-        }
-
         $categorie = Categories::find($current_category_id);
-        $categorie->image = $image_store_name;
+
+        parent::changeOldImage($categorie, $request, 'new_categories_image', $current_category_id, 'public_cat', 'upload_cat', 1100, 240);
+
         $categorie->save();
-
-
-        if(file_exists($request->old_category_image_name)){
-            @unlink('public/images/upload_cat/.'.$request->old_category_image_name);
-        }
 
         return redirect()->back();
 

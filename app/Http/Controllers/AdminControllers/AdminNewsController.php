@@ -11,15 +11,18 @@ use Illuminate\Support\Facades\Mail;
 
 class AdminNewsController extends Controller
 {
+
     public function show()
     {
 
        $news = News::paginate(20);
+       $followers = User::where('isFollow',1)->get();
 
         return view('Admin.adminChild',[
             'section'=>'News',
             'news'=>$news,
-            'searchErr'=>0
+            'searchErr'=>0,
+            'followers'=>$followers
         ]);
     }
 
@@ -27,7 +30,7 @@ class AdminNewsController extends Controller
     {
 
         $followers = User::where('isFollow',1)->get();
-
+        
         return view('Admin.adminChild',[
             'section'=>'EventNew',
             'followers'=>$followers
@@ -47,11 +50,10 @@ class AdminNewsController extends Controller
     $event->action = $request->datetime;
     $event->info = $request->info;
 
-    if(($request->followersNoty) and (count($request->followersNoty)>0)){
-    $emails = (User::select('email')->whereIn('id',$request->followersNoty)->get())->toArray()[0];
-    Mail::to(User::find($request->followersNoty))->send(new EventShipped($event));
-    }
+    $ids = (User::select('id')->whereIn('isFollow',1)->get())->toArray()[0];
 
+    Mail::to(User::find($ids))->send(new EventShipped($event));
+    
     $event->save();
 
     return redirect()->to('/admin/admin-news');
@@ -59,6 +61,26 @@ class AdminNewsController extends Controller
 
     public function editEvent(Request $request)
     {
-        // EDIT and resend messages to followers
+       /*
+  "new_img_name" => "черный.jpg"
+  "image_up" => UploadedFile {1059 ▶}
+       */
+      $event = News::find($request->event);
+
+      parent::changeOldImage($event, $request, 'new_img_name', 0, 'public_event', 'events_img', 250, 250);
+
+      // не срабатывает изменение изображения
+
+      $event->name = $request->name;
+      $event->action = $request->datetime;
+      $event->info = $request->info;
+      $event->save();
+
+      return redirect()->back();
+    }
+
+    public function deleteEvent(Request $request)
+    {
+        // ....Delete
     }
 }

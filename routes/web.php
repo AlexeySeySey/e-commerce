@@ -94,6 +94,7 @@ Route::group([
     Route::get('/admin-news',['uses'=>'AdminControllers\AdminNewsController@show','as'=>'news']);
     Route::get('/createNewEvent', ['uses' => 'AdminControllers\AdminNewsController@createEvent']);
     Route::post('/saveNewEvent', ['uses' => 'AdminControllers\AdminNewsController@saveEvent']);
+    Route::post('/editEvent', ['uses' => 'AdminControllers\AdminNewsController@editEvent']);
     
     Route::get('/admin-sales',['uses'=>'AdminControllers\AdminSalesController@show','as'=>'sales']);
     Route::get('/admin-statistics',['uses'=>'AdminControllers\AdminStatisticsController@show','as'=>'statistics']);

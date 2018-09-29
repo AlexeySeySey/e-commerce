@@ -48,23 +48,23 @@ return [
             'root' => storage_path('app'),
         ],
 
-        'public' => [
+        'public_cat' => [
             'driver' => 'local',
-            'root' => public_path() . '/images/upload_cat',
+            'root' => public_path() . '/images/upload_cat/',
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
         
         'public_good' => [
             'driver' => 'local',
-            'root' => public_path() . '/images/products_img',
+            'root' => public_path() . '/images/products_img/',
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
 
         'public_event' => [
             'driver' => 'local',
-            'root' => public_path() . '/images/events_img',
+            'root' => public_path() . '/images/events_img/',
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],

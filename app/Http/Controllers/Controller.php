@@ -15,7 +15,7 @@ class Controller extends BaseController
 
     protected function addNewImage($obj, $request, $disk, $path, $Fname, $width = 50, $height = 50)
     {
-        
+       
         if ($request->hasFile($Fname)) {
             if ($request->$Fname->isValid()) {
                 
@@ -36,8 +36,29 @@ class Controller extends BaseController
         } 
     } 
 
-    protected function changeOldImage()
+    protected function changeOldImage($obj, $request, $file, $current_id = 0, $disk, $folder, $width = 50, $height = 50)
     {
 
+        if ($request->hasFile($file)) {
+            if ($request->$file->isValid()) {
+
+                $filename = $request->file($file)->getClientOriginalName(); 
+
+                $image_store_name = $current_id.'_name.jpg';
+
+                Storage::disk($disk)->put($image_store_name, file_get_contents($request->file($file)));
+
+                $img = Image::make(public_path().'/images/'.$folder.'/'.$image_store_name);
+                $img->resize($width, $height);
+                $img->save(public_path().'/images/'.$folder.'/'.$image_store_name);
+
+                $obj->image = '/images/'.$folder.'/'.$image_store_name;
+            }
+        }
+        if($request->old_image_name){ 
+        if(file_exists($request->old_image_name)){
+            @unlink('public/images/'.$folder.'/'.$request->old_image_name);
+        }
+      }
     }
 }

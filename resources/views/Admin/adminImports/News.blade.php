@@ -92,7 +92,7 @@
                                             style="margin-right: 100px !important">
                                             <button type="submit"
                                                 class="btn btn-info"
-                                                onclick="document.getElementById('good-change-form'+{!! json_encode($n->id) !!}).submit()">Save</button>
+                                                onclick="document.getElementById('change-form'+{!! json_encode($n->id) !!}).submit()">Save</button>
                                             <button type="button"
                                                 class="btn btn-secondary"
                                                 data-dismiss="modal"
