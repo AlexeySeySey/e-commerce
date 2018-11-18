@@ -10,6 +10,6 @@ class Sale extends Model
 
     public function good()
     {
-        return $this->belongsToMany('App\Models\Good','good_sale','sale_id','good_id');
+        return $this->hasMany('App\Models\Good');
     }
 }

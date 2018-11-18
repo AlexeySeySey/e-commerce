@@ -2,65 +2,76 @@
 
 
 @section('banners')
-    <div class="products-breadcrumb">
-        <div class="container">
-            <ul>
-                <li><i class="fa fa-home" aria-hidden="true"></i><a href="{{ route('start') }}">{{ __('validation.sections.'.'Home') }}</a><span>|</span></li>
-                <li>{{ __('validation.sections.'.'Contact Us') }}</li>
-            </ul>
-        </div>
+<div class="products-breadcrumb">
+    <div class="container">
+        <ul>
+            <li><i class="fa fa-home"
+                    aria-hidden="true"></i><a href="{{ route('start') }}">{{ __('validation.sections.'.'Home') }}</a><span>|</span></li>
+            <li>{{ __('validation.sections.'.'Contact Us') }}</li>
+        </ul>
     </div>
-    @parent
+</div>
+@parent
 @endsection
 
 
 
 @section('slider-brands')
-    <div class="w3l_banner_nav_right">
+<div class="w3l_banner_nav_right">
     <div class="mail">
         <h3>{{ __('validation.sections.'.'Contact Us') }}</h3>
         <div class="agileinfo_mail_grids">
-            <div class="col-md-4 agileinfo_mail_grid_left">
-                <ul>
-                    <li><i class="fa fa-home" aria-hidden="true"></i></li>
-                    <li>{{ __('validation.other.'.'Address') }}<span>868 1st Avenue NYC.</span></li>
-                </ul>
-                <ul>
-                    <li><i class="fa fa-envelope" aria-hidden="true"></i></li>
-                    <li>email<span><a href="mailto:info@example.com">info@example.com</a></span></li>
-                </ul>
-                <ul>
-                    <li><i class="fa fa-phone" aria-hidden="true"></i></li>
-                    <li>{{ __('validation.other.'.'call to us') }}<span>(+123) 233 2362 826</span></li>
-                </ul>
+            <div>
+                <table class="table">
+                    <tr>
+                        <td>@lang('validation.other.Address')</td>
+                        <td>@lang('validation.other.Mail')</td>
+                        <td>@lang('validation.other.Phone')</td>
+                    </tr>
+                    <tr>
+                        <td>868 1st Avenue NYC.</td>
+                        <td>info@example.com</td>
+                        <td>(+123) 233 2362 826</td>
+                    </tr>
+                </table>
             </div>
+            <hr>
+            @guest
+            <div class="alert alert-dark">
+                <h1 class="text-white">@lang('validation.sections.Sign up') <b>/</b> @lang('validation.sections.Login')
+                    <i class="fa fa-guest"></i></h1>
+            </div>
+            @else
             <div class="col-md-8 agileinfo_mail_grid_right">
-                <form action="#" method="post">
+                <form action="{{ URL::to('/sendMail') }}"
+                    method="post">
+                    @csrf
                     <div class="col-md-6 wthree_contact_left_grid">
-                        <input type="text" name="Name" value="{{ __('validation.other.'.'Name') }}*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name*';}" required="">
-                        <input type="email" name="Email" value="Email*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email*';}" required="">
-                    </div>
-                    <div class="col-md-6 wthree_contact_left_grid">
-                        <input type="text" name="Telephone" value="{{ __('validation.other.'.'Phone') }}*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Telephone*';}" required="">
-                        <input type="text" name="Subject" value="{{ __('validation.other.'.'Subject') }}*" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject*';}" required="">
+                        <input type="text"
+                            name="Subject"
+                            placeholder="{{ __('validation.other.'.'Subject') }}*"
+                            required>
                     </div>
                     <div class="clearfix"> </div>
-                    <textarea  name="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">{{ __('validation.other.'.'Message') }}...</textarea>
-                    <input type="submit" value="{{ __('validation.other.'.'Submit') }}">
-                    <input type="reset" value="{{ __('validation.other.'.'Clear') }}">
+                    <textarea name="Message"
+                        required>{{ __('validation.other.Message') }}...</textarea>
+                    <input type="hidden"
+                        name="sender"
+                        value="{{ Auth::id() }}">
+                    <input type="submit"
+                        value="{{ __('validation.other.'.'Submit') }}">
+                    <input type="reset"
+                        value="{{ __('validation.other.'.'Clear') }}">
                 </form>
             </div>
+            @endguest
             <div class="clearfix"> </div>
         </div>
     </div>
     <!-- //mail -->
-    </div>
-    <div class="clearfix"></div>
-    </div>
-    <!-- //banner -->
-    <!-- map -->
-    <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d96748.15352429623!2d-74.25419879353115!3d40.731667701988506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sshopping+mall+in+New+York%2C+NY%2C+United+States!5e0!3m2!1sen!2sin!4v1467205237951" style="border:0"></iframe>
-    </div>
+</div>
+<div class="clearfix"></div>
+</div>
+<!-- //banner -->
 
 @endsection

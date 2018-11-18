@@ -50,7 +50,12 @@ class User extends Authenticatable
     public function role()
     {
        return $this->belongsToMany('App\Role','role_user','user_id');
-   }
+    }
+
+    public function mail()
+    {
+        return $this->hasMany('App\Models\Mail','user_id');
+    }
 
    public function scopeUserSearch($query,$admin_id,$auth_id,$search)
    {

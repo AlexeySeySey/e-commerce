@@ -4,6 +4,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Characteristic::class, function (Faker $faker) {
     return [
+        'goods_id'   =>  $faker->numberBetween($min = 1, $max = 50),
         'stock'      => $faker->numberBetween($min = 1, $max = 800),
         'producer'   => $faker->company,
         'address'    => $faker->city.' '.$faker->secondaryAddress,

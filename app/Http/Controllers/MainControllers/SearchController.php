@@ -17,7 +17,7 @@ class SearchController extends Controller
             abort(400, 'Illegal symbol');
         }
 
-        $name = trim($request->name);
+        $name = trim(strip_tags($request->name));
 
         $goods = Good::where('name', 'like', '%'.$name.'%')->with([
             'characteristic',
@@ -25,7 +25,6 @@ class SearchController extends Controller
             'sale',
             'like'
         ])->paginate(6);
-
 
         return view('main_layouts.searchProduct', [
             'goods'  => $goods

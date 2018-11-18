@@ -9,7 +9,7 @@ class Good extends Model
 {
     public function categorie()
     {
-    return $this->belongsToMany('App\Models\Categories','good_categorie','good_id','categorie_id');
+       return $this->belongsTo('App\Models\Categories');
     }
 
     public function characteristic()
@@ -19,7 +19,7 @@ class Good extends Model
 
     public function sale()
     {
-        return $this->belongsToMany('App\Models\Sale','good_sale','good_id','sale_id');
+        return $this->belongsTo('App\Models\Sale','sale_id');
     }
 
     public function like()

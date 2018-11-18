@@ -12,6 +12,6 @@ class Characteristic extends Model
 
     public function good()
     {
-        return $this->belongsTo('App\Models\Good','id');
+        return $this->belongsTo('App\Models\Good','characteristic_id');
     }
 }

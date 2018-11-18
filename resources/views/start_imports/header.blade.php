@@ -35,7 +35,7 @@
                             @lang('validation.other.Summary Price'): <b>{{ $checkoutPrice }}$</b>
                             @endif
                         <hr>
-                            <button class="text-left btn btn-info"><a href="{{ route('checkout') }}"><i class="fa fa-sign-in"></i></a></button>
+                            <button class="text-left btn btn-info"><a style="color: white" href="{{ route('checkout') }}"><i class="fa fa-sign-in"></i></a></button>
                        <button type="button" class="btn btn-danger" data-dismiss="modal" style="margin-right:30px;">{{ __('validation.other.'.'Close') }}</button>
                     </div>
                     </div>

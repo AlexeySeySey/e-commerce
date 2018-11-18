@@ -32,8 +32,9 @@ Route::middleware(['auth', 'lang','cart-info'])->group(function () {
     Route::get('/faqs',['uses'=>'MainControllers\FaqController@show','as'=>'faqs']);
 
     Route::get('/mail',['uses'=>'MainControllers\MailController@show','as'=>'mail']);
+    Route::post('/sendMail',['uses'=>'MainControllers\MailController@send']);
 
-    Route::get('/checkout',['uses'=>'MainControllers\CheckoutController@show','as'=>'checkout']);
+    Route::get('/checkout',['uses'=>'MainControllers\CheckoutController@show','as'=>'checkout']);//HERE
 
     Route::get('/payment',['uses'=>'MainControllers\PayController@show','as'=>'payment']);
 

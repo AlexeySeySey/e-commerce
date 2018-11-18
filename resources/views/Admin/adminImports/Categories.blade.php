@@ -2,8 +2,8 @@
     id="admin-navbar-sticky">
     <nav style="background:white !important; padding-top: 20px !important;">
         <div class="nav nav-tabs"
-            id="nav-tab"
-            role="tablist">
+            role="tablist"
+            id="nav-tab">
             <a class="nav-item nav-link active"
                 id="nav-home-tab"
                 data-toggle="tab"
