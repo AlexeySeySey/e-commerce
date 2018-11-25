@@ -12,7 +12,7 @@ class AddCategorieController extends Controller
 
     public function add(Request $request)
     {
-        if(($request->ENname == null) and ($request->RUname == null) and ($request->UKname == null)){
+        if((!$request->ENname) and (!$request->RUname) and (!$request->UKname)){
             abort(403, 'You forget to input data!');
         }
 
@@ -22,7 +22,7 @@ class AddCategorieController extends Controller
 
         $categorie = new Categories;
 
-        parent::addNewImage($categorie, $request, 'public', 'upload_cat', 'categories_image', 1100, 240);
+        parent::addNewImage($categorie, $request, 'public_cat', 'upload_cat', 'categories_image', 1100, 240);
 
         $categorie->ENname = $ENname;
         $categorie->RUname = $RUname;

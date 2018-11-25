@@ -67,6 +67,7 @@
         <td>{{ $good->rating }}</td>
         <td>{{ $good->price }}$/{{ $good->weight_type }}</td>
         <td>
+          <!-- ... -->
           @if(count($good->categorie)>0)
           @foreach($good->categorie as $cat)
           <i class="fa fa-check"></i>

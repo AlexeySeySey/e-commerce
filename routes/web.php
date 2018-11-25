@@ -36,7 +36,7 @@ Route::middleware(['auth', 'lang','cart-info'])->group(function () {
 
     Route::get('/checkout',['uses'=>'MainControllers\CheckoutController@show','as'=>'checkout']);//HERE
 
-    Route::get('/payment',['uses'=>'MainControllers\PayController@show','as'=>'payment']);
+    Route::get('/payment',['uses'=>'MainControllers\PayController@show','as'=>'payment']);//HERE
 
 
 
