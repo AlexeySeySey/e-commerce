@@ -24,16 +24,15 @@
             <div onmouseover="SaleText({{$key->id}})"
                 onmouseout="HideSaleText({{$key->id}})">
                 <div>
-                    @if($name!=null)
-                    <div class="alert-info">
-                        @lang('validation.other.Categorie') :
-                        @if($key->categorie!=null)
-                        <small><b>{{ $name }}</b></small>
-                        @else
-                        <kbd class="bg-danger">-</kbd>
-                        @endif
-                    </div>
-                    @endif
+                  @if (($key->characteristic)["stock"] == 0)
+                  <div class="alert alert-danger">
+                  @lang("validation.other.No products available")
+                  </div>
+                  @else 
+                  <div class="alert alert-success">
+                     {{__('validation.other.Available').': '.($key->characteristic)['stock'].' '. __('validation.other.units') }}
+                   </div>
+                  @endif
                     <div class="alert-secondary">
                         <table>
                             <tr>
@@ -127,20 +126,10 @@
                                                                 <tr>
                                                                     <td>
                                                                         <table>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    <h5>@lang('validation.other.Name')
-                                                                                        : </h5>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <span>{{$key->name}}</span>
-                                                                                </td>
-                                                                            </tr>
                                                                             <tr style="height: 100px;"></tr>
                                                                             <tr>
                                                                                 <td>
-                                                                                    {{ ($key->characteristic)['stock']
-                                                                                    }}
+                                                                                    {{ ($key->characteristic)['stock']}}
 
                                                                                     @if(($key->characteristic)['stock'])
                                                                                     @if((($key->characteristic)['stock']==0)||(($key->characteristic)['stock']==null))
@@ -151,7 +140,7 @@
                                                                                     @else
                                                                                     <div class="alert alert-success">
                                                                                         {{__('validation.other.Available').':
-                                                                                        '.($key->characteristic)['stock']}}
+                                                                                        '.($key->characteristic)['stock'].' '. __('validation.other.units') }}
                                                                                     </div>
                                                                                     @endif
                                                                                     @endif

@@ -18,10 +18,9 @@
 
 @section('slider-brands')
 <div class="w3l_banner_nav_right">
-    <div class="w3l_banner_nav_right_banner4"
-        style="{{'background-image:url(/'.'/public/'.$image.')'}}; background-repeat: no-repeat;
-                     background-size: auto;">
-        <h3>{{ __('validation.sections.'.'Best Deals For New Products') }}<span class="blink_me"></span></h3>
+    <h3>@lang('validation.sections.'.'Best Deals For New Products')<span class="blink_me"></span></h3>
+    <div class='w3l_banner_nav_right_banner4' style="{{'background-image:'.url($image).';'}} background-repeat: no-repeat; background-size: auto;">
+    <img src="{{$image}}" alt="loading" style="width:100%; height: 150% !important">
     </div>
     <div class="w3ls_w3l_banner_nav_right_grid">
         <h3>{{ $name }}</h3>

@@ -64,15 +64,22 @@
         <br>
 
         <div>
-            <button type="button"
-                class="btn btn-secondary"
-                data-toggle="modal"
-                data-target="#exampleModalLong">
-                Notify
-            </button>
-            @include("Admin.adminImports.AdminEventsImports.modalFollowersForm")
-        </div>
+        <p>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-target
+  </button>
+</p>
 
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+      <ul>
+      @foreach($followers as $follower)
+         <li class="btn-group"><input class="form-group" type="checkbox" checked value="{{ $follower->id }}">{{ $follower->email }}</li>
+      @endforeach  
+      </ul>
+</div>
+</div>
+        </div>
         <hr>
         <br>
         <button type="submit"

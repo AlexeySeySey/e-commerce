@@ -1,7 +1,8 @@
 <form action="{{ URL::to('/admin/editEvent') }}"
     method="POST"
     enctype="multipart/form-data"
-    id="change-form{!! json_encode($n->id) !!}">
+    id="change-form{!! json_encode($n->id) !!}"> 
+    >
     @csrf
     <div class="container">
         <div class="row">

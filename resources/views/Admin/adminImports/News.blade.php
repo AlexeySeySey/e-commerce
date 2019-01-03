@@ -20,7 +20,7 @@
     <div class="col-sm">
         <button type="button"
             class="btn btn-secondary">
-            <a href="/admin/createNewEvent/">
+            <a href="/admin/createNewEvent/" style="color:white">
                 <i class="fa fa-plus"></i> Add new event
             </a>
         </button>

@@ -15,7 +15,7 @@
                     <img height="170px"
                         width="500px"
                         style="border-radius: 10px; border: 2px solid lightgrey"
-                        src="{{ URL::to('/').'/'.$key->image }}"
+                        src="{{ asset($key->image) }}"
                         alt="Loading...">
                 </td>
                 <td class="col"

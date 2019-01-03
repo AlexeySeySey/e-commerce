@@ -7,7 +7,7 @@
         <div class="modal-content">
             <table style="max-width: 200px;">
                 <tr>
-                    <td><b>№</b></td>
+                    <td><b>#</b></td>
                     <td><b>{{__('validation.other.'.'Stock')}}</b></td>
                     <td><b>{{__('validation.other.'.'Producer')}}</b></td>
                     <td><b>{{__('validation.other.'.'Address')}}</b></td>

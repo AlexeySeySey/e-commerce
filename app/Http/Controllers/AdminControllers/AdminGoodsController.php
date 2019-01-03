@@ -14,7 +14,7 @@ class AdminGoodsController extends Controller
     public function show()
     {
 
-        $goods = Good::with(['categorie','sale','like','characteristic'])->paginate(20);
+        $goods = Good::with(['categorie','sale','like','characteristic'])->orderBy("id","desc")->paginate(20);
         
         $categories = Categories::all();
         $sales = Sale::all();
@@ -34,8 +34,8 @@ class AdminGoodsController extends Controller
 
         parent::changeOldImage($good, $request, 'good_image_up', 0, 'public_good', 'products_img', 140, 140);         
 
-        $good->categorie()->sync($request->input('categories_checked'));
-        $good->sale()->sync($request->input('sales_checked'));
+        $good->sale_id = $request->input("sales_checked");
+        $good->categorie_id = $request->input("categories_checked");
 
         $good->name = $request->name;
         $good->weight = $request->weight;
@@ -54,17 +54,13 @@ class AdminGoodsController extends Controller
 
     public function delete(Request $request)
     {
-        $good = Good::find($request->good);
-
-        $good->categorie()->sync([]);
-        $good->sale()->sync([]);
-
         Characteristic::where('goods_id',$request->good)->delete();
 
         if(file_exists($request->old_image_name)){
             @unlink('public/images/products_img/.'.$request->old_image_name);
         }
-
+        
+        $good = Good::find($request->good);
         $good->delete();
 
         return redirect()->back();

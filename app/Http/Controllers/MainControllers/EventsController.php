@@ -11,6 +11,6 @@ class EventsController extends Controller
     public function show()
     {
 
-        return view('info_layouts\events');
+        return view('info_layouts.events');
     }
 }

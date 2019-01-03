@@ -11,6 +11,6 @@ class PrivacyController extends Controller
     public function show()
     {
 
-        return view('info_layouts\privacy');
+        return view('info_layouts.privacy');
     }
 }

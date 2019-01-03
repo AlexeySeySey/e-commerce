@@ -11,7 +11,7 @@ class MailController extends Controller
 
     public function show()
     {
-        return view('info_layouts\mail');
+        return view('info_layouts.mail');
     }
 
     public function send(Request $request)

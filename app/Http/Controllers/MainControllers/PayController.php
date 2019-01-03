@@ -11,7 +11,7 @@ class PayController extends Controller
     public function show()
     {
 
-        return view('main_layouts\payment');
+        return view('main_layouts.payment');
     }
 
 }

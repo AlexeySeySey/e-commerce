@@ -11,7 +11,7 @@ class ServicesController extends Controller
     public function show()
     {
 
-        return view('info_layouts\services');
+        return view('info_layouts.services');
     }
 
 }

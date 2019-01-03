@@ -42,7 +42,7 @@ class CategoryController extends Controller
         return view('main_layouts.category', [
             'name'          => $name,
             'goods'         => $goods,
-            'image'         => $image,
+            'image'         => asset($image),
             'good'          => null
         ]);
     }

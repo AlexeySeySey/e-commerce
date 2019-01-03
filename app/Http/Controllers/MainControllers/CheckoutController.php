@@ -11,7 +11,7 @@ class CheckoutController extends Controller
     public function show()
     {
 
-        return view('main_layouts\checkout');
+        return view('main_layouts.checkout');
     }
 
 }

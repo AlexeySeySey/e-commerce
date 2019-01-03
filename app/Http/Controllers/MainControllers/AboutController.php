@@ -11,6 +11,6 @@ class AboutController extends Controller
     public function show()
     {
 
-        return view('info_layouts\about');
+        return view('info_layouts.about');
     }
 }

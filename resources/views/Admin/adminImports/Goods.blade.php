@@ -20,7 +20,7 @@
   <div class="col-sm">
     <button type="button"
       class="btn btn-secondary">
-      <a href="/admin/createNewProduct">
+      <a href="/admin/createNewProduct" style="color: white">
         <i class="fa fa-plus"></i> Add new product
       </a>
     </button>
@@ -68,32 +68,24 @@
         <td>{{ $good->price }}$/{{ $good->weight_type }}</td>
         <td>
           <!-- ... -->
-          @if(count($good->categorie)>0)
-          @foreach($good->categorie as $cat)
+
+    
           <i class="fa fa-check"></i>
           <i>
             @if(App::getLocale()=='ru')
-            {{ $cat->RUname }}
+            {{ ($good->categorie)['RUname'] }}
             @elseif(App::getLocale()=='en')
-            {{ $cat->ENname }}
+            {{ ($good->categorie)['ENname'] }}
             @else
-            {{ $cat->UKname }}
+            {{ ($good->categorie)['UKname'] }}
             @endif
           </i>
           <br>
-          @endforeach
-          @else
-          <b>-</b>
-          @endif
+       
+    
         </td>
         <td>
-          @if(count($good->sale)>0)
-          @foreach($good->sale as $s)
-          <i class="fa fa-check"></i> <i>{{ $s->name }}</i><br>
-          @endforeach
-          @else
-          <b>-</b>
-          @endif
+          <i class="fa fa-check"></i> <i>{{ $good->sale['name'] }}</i><br>
         </td>
         <td>
           @if($good->like)

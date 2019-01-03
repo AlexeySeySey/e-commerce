@@ -11,6 +11,6 @@ class FaqController extends Controller
     public function show()
     {
 
-        return view('info_layouts\faqs');
+        return view('info_layouts.faqs');
     }
 }

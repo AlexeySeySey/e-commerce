@@ -106,29 +106,29 @@
                                         <i class="fa fa-pie-chart"></i>
                                       </button>
                                       <ul class="dropdown-menu">
-                                        @foreach($categories as $cat)
+                                     @foreach($categories as $c)
                                         <li>
-                                          <input type="checkbox"
+                                          <input type="radio"
                                             id="cats{{ $good->id }}"
-                                            name="categories_checked[]"
-                                            value="{{ $cat->id }}"
-                                          @if(count($good->categorie)>0)
-                                          @foreach($good->categorie as $gcat)
-                                          @if($gcat["id"] == $cat->id)
+                                            name="categories_checked"
+                                            value="{{ $c->id }}"
+                                         
+                                         
+                                        @if($good->categorie_id == $c->id)
                                           checked
-                                          @endif
-                                          @endforeach
-                                          @endif
+                                         @endif 
+                                      
+                                       
                                           />
                                           @if(App::getLocale()=='ru')
-                                          {{ $cat->RUname }}
+                                          {{ $c->RUname }}
                                           @elseif(App::getLocale()=='en')
-                                          {{ $cat->ENname }}
+                                          {{ $c->ENname }}
                                           @else
-                                          {{ $cat->UKname }}
+                                          {{ $c->UKname }}
                                           @endif
                                         </li>
-                                        @endforeach
+                                    @endforeach
                                       </ul>
                                     </div>
                                   </div>
@@ -148,17 +148,15 @@
                                         <ul class="dropdown-menu">
                                           @foreach($sales as $s)
                                           <li>
-                                            <input type="checkbox"
+                                            <input type="radio"
                                               id="cats{{ $good->id }}"
-                                              name="sales_checked[]"
+                                              name="sales_checked"
                                               value="{{ $s->id }}"
-                                            @if(count($good->sale)>0)
-                                            @foreach($good->sale as $gs)
-                                            @if($gs["id"] == $s->id)
+                                        
+                                            @if($good->sale_id == $s->id)
                                             checked
-                                            @endif
-                                            @endforeach
-                                            @endif
+                                           @endif
+                                            
                                             />
                                             {{ $s->name }} ({{ $s->percentages }}%)
                                           </li>
