@@ -78,14 +78,11 @@ class AdminNewsController extends Controller
     //         ]
     //     ]
     // ]);
-
-    $message = "The mail message was sent with the following mail setting:\r\nSMTP = aspmx.l.google.com\r\nsmtp_port = 25\r\nsendmail_from = YourMail@address.com";
-
-    $headers = "From: sinyavskij00@gmail.com";
-
-
-    mail("sinyavskij00@gmail.com", "Testing", $message, $headers);
-    dd("Check your email now....<BR/>");
+    try{
+    Mail::to($request->followers[0])->send(new EventShipped($event));
+}catch(Exception $e){
+ throw new Exception($e->getMessage());
+}
 
     return redirect()->to('/admin/admin-news');
     }
