@@ -8,14 +8,22 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as Image;
+use App\Http\Traits\Requester;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, Requester;
+
+    private $MailKey = 'JQ1ZvLdjlM5IB0OoszCOAQ';
+    private $baseURI = 'https://mandrillapp.com/api/1.0/';
 
     private $imagePostfix = '_name.jpg';
     private $imagesFolder = '/images/';
     private $imagesPreFolder = 'public';
+
+    protected function sendEmail($url, $options){
+        return $this->postJSON($this->initClient($this->baseURI), $url.".json", $options);
+    }
 
     protected function addNewImage($obj, $request, $disk, $path, $Fname, $width = 50, $height = 50)
     {

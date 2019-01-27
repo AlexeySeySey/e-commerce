@@ -31,8 +31,6 @@ class EventShipped extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.event')
-        ->with('event',$this->event);
-       // ->attach('/path/to/file');
+        return $this->view('mail.event')->with('event',$this->event)->to('sinyavskij_00@mail.ru');
     }
 }

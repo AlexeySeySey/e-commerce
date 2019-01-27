@@ -48,10 +48,10 @@
                 <th scope="col">Name</th>
                 <th scope="col">Image</th>
                 <th scope="col">Date</th>
-                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
+            @if(count($news) > 0)
             @foreach($news as $n)
             <tr>
                 <td><b>{{ str_limit($n->name,10,"...") }}</b></td>
@@ -60,17 +60,15 @@
                         src="{{ URL::to('/').$n->image }}"
                         alt="Loading...">
                 </td>
+                @if($n->action > Carbon::now())
                 <td>{{ $n->action }}</td>
+                @else 
+                <td class="alert alert-danger">Expired</td>
+                @endif
                 <td>
                     <div class="btn-group"
                         role="group">
                         <div>
-                            <button type="button"
-                                class="btn btn-info"
-                                data-toggle="modal"
-                                data-target="#exampleModal{{$n->id}}">
-                                <i class="fa fa-edit"></i>
-                            </button>
                             <div class="modal fade"
                                 id="exampleModal{{$n->id}}"
                                 tabindex="-1"
@@ -92,7 +90,7 @@
                                             style="margin-right: 100px !important">
                                             <button type="submit"
                                                 class="btn btn-info"
-                                                onclick="document.getElementById('change-form'+{!! json_encode($n->id) !!}).submit()">Save</button>
+                                                onclick="document.getElementById('change-form'+{!! $n->id !!}).submit()">Save</button>
                                             <button type="button"
                                                 class="btn btn-secondary"
                                                 data-dismiss="modal"
@@ -113,16 +111,17 @@
                                     name="old_image_name"
                                     value="{{ $n->image }}"
                                     accept="image/*">
-                                <button type="submit"
-                                    class="btn btn-danger">
-                                    <i class="fa fa-times"></i>
-                                </button>
                             </form>
                         </div>
                     </div>
                 </td>
             </tr>
             @endforeach
+            @else 
+             <div class="alert alert-warning">
+                No Events Found... 
+            </div>
+            @endif
         </tbody>
     </table>
     <div class="alert alert-secondary">

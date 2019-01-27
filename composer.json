@@ -17,6 +17,7 @@
     "laravel/cashier": "~7.0",
     "laravel/framework": "5.6.*",
     "laravel/tinker": "^1.0",
+    "phpmailer/phpmailer": "^6.0",
     "santigarcor/laratrust": "5.0.*"
   },
   "require-dev": {

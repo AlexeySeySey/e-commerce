@@ -8,32 +8,36 @@ use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
+use Auth;
 
 class AdminNewsController extends Controller
 {
+
+    protected function getFollowers(){
+     return User::where([
+       ['isFollow',1],
+       ['id','!=',Auth::id()]
+     ])->get();
+    }
 
     public function show()
     {
 
        $news = News::paginate(20);
-       $followers = User::where('isFollow',1)->get();
 
         return view('Admin.adminChild',[
             'section'=>'News',
             'news'=>$news,
             'searchErr'=>0,
-            'followers'=>$followers
+            'followers'=>$this->getFollowers()
         ]);
     }
 
     public function createEvent()
     {
-
-        $followers = User::where('isFollow',1)->get();
-        
         return view('Admin.adminChild',[
             'section'=>'EventNew',
-            'followers'=>$followers
+            'followers'=>$this->getFollowers()
         ]);
         
 
@@ -41,7 +45,7 @@ class AdminNewsController extends Controller
 
     public function saveEvent(Request $request)
     {
-
+        
     $event = new News;
 
     parent::addNewImage($event, $request, 'public_event', 'events_img', 'good_image_up', 250, 250);
@@ -50,26 +54,47 @@ class AdminNewsController extends Controller
     $event->action = $request->datetime;
     $event->info = $request->info;
 
-    $ids = (User::select('id')->whereIn('isFollow',1)->get())->toArray()[0];
+    $followers = [];
+    if($request->followers){
+    $followers = $request->followers;
+    } 
 
-    Mail::to(User::find($ids))->send(new EventShipped($event));
-    
     $event->save();
+
+    // parent::sendEmail("messages/send", [
+    //     "key"=>$this->MailKey,
+    //     "message"=>[
+    //         "html"=> sprintf("<a href='%s' alt='%s'>Go</a>", 'http://localhost:8000/events', 'ERR_LINK'),
+    //         "text"=> $event->info,
+    //         "subject"=> $event->name,
+    //         "from_email"=> "sinyavskij_00@mail.ru",
+    //         "from_name"=> "Grocery Store",
+    //         "to"=> [
+    //             [
+    //                 "email"=> $followers[0],
+    //                 "name"=> "Follower",
+    //                 "type"=> "to"
+    //             ]
+    //         ]
+    //     ]
+    // ]);
+
+    $message = "The mail message was sent with the following mail setting:\r\nSMTP = aspmx.l.google.com\r\nsmtp_port = 25\r\nsendmail_from = YourMail@address.com";
+
+    $headers = "From: sinyavskij00@gmail.com";
+
+
+    mail("sinyavskij00@gmail.com", "Testing", $message, $headers);
+    dd("Check your email now....<BR/>");
 
     return redirect()->to('/admin/admin-news');
     }
 
     public function editEvent(Request $request)
     {
-       /*
-  "new_img_name" => "черный.jpg"
-  "image_up" => UploadedFile {1059 ▶}
-       */
       $event = News::find($request->event);
 
       parent::changeOldImage($event, $request, 'new_img_name', 0, 'public_event', 'events_img', 250, 250);
-
-      // не срабатывает изменение изображения
 
       $event->name = $request->name;
       $event->action = $request->datetime;
@@ -77,10 +102,5 @@ class AdminNewsController extends Controller
       $event->save();
 
       return redirect()->back();
-    }
-
-    public function deleteEvent(Request $request)
-    {
-        // ....Delete
     }
 }

@@ -17,7 +17,8 @@
                 <input class="form-control"
                     type="text"
                     name="datetime"
-                    placeholder="1980-05-25 10:56:13"
+                    placeholder="{{ Carbon::now() }}"
+                    value="{{ Carbon::now() }}"
                     required>
                 <br>
                 <span><b>Info:</b></span>
@@ -66,16 +67,22 @@
         <div>
         <p>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Button with data-target
+         Followers
   </button>
 </p>
 
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
       <ul>
+          @if(count($followers) > 0)
       @foreach($followers as $follower)
-         <li class="btn-group"><input class="form-group" type="checkbox" checked value="{{ $follower->id }}">{{ $follower->email }}</li>
+         <li class="btn-group"><input name="followers[]" value="{{ $follower->email }}" class="form-group" type="checkbox" checked>{{ $follower->email }}</li>
       @endforeach  
+      @else
+    <div class="alert alert-warning">
+       No users follows 
+    </div>
+      @endif
       </ul>
 </div>
 </div>
