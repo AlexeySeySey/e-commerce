@@ -53,36 +53,16 @@ class AdminNewsController extends Controller
     $event->name = $request->name;
     $event->action = $request->datetime;
     $event->info = $request->info;
-
-    $followers = [];
-    if($request->followers){
-    $followers = $request->followers;
-    } 
-
     $event->save();
-
-    // parent::sendEmail("messages/send", [
-    //     "key"=>$this->MailKey,
-    //     "message"=>[
-    //         "html"=> sprintf("<a href='%s' alt='%s'>Go</a>", 'http://localhost:8000/events', 'ERR_LINK'),
-    //         "text"=> $event->info,
-    //         "subject"=> $event->name,
-    //         "from_email"=> "sinyavskij_00@mail.ru",
-    //         "from_name"=> "Grocery Store",
-    //         "to"=> [
-    //             [
-    //                 "email"=> $followers[0],
-    //                 "name"=> "Follower",
-    //                 "type"=> "to"
-    //             ]
-    //         ]
-    //     ]
-    // ]);
+    if($request->followers){
     try{
-    Mail::to($request->followers[0])->send(new EventShipped($event));
-}catch(Exception $e){
- throw new Exception($e->getMessage());
-}
+     foreach($request->followers as $follower){   
+        Mail::to($follower)->send(new EventShipped($event));
+     }
+    }catch(Exception $e){
+      throw new Exception($e->getMessage());
+    }
+    }
 
     return redirect()->to('/admin/admin-news');
     }

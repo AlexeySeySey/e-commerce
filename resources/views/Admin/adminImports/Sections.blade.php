@@ -97,23 +97,3 @@
         </table>
     </a>
 </li>
-
-<li class="admin-panel-categires-list-all"
-    onmouseover="adminIconCat(5)"
-    onmouseout="adminIconCatOut()"
-    id="{{'categ-admin-elem5'}}">
-    <a class="admin-panel-categires-list"
-        href="{{ route('statistics') }}">
-        <table>
-            <tr id="{{'sidecat5'}}">
-                <td>
-                    <span id="admin-category-icon6"
-                        class="admin-cat-icon-nav"><i class='fa fa-bar-chart'></i></span>
-                </td>
-                <td class="sidebar-text-category">
-                    <span>@lang('validation.admin-categies.Statistics')</span>
-                </td>
-            </tr>
-        </table>
-    </a>
-</li>

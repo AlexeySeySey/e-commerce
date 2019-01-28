@@ -33,7 +33,6 @@ class EventShipped extends Mailable
     {
       return $this->from('sinyavskij00@gmail.com')
                 ->view('mail.event')
-                ->with('event',$this->event)
-                ->to('sinyavskij_00@mail.ru');
+                ->with('event',$this->event);
     }
 }

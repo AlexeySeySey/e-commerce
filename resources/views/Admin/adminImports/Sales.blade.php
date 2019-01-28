@@ -1,7 +1,38 @@
-<ul>
-    <li>Список действующих акций</li>
-    <li>КРУД по действующим акциям (возможность удалить, добавить или изменить какой-то из параметров, напирмер % или время, или товары под ней)</li>
-    <li>Список товаров с этой акцией и возможность удалить акцию с данного товара</li>
-    <li>*При создании новой акции товары к ней не привязываются, ПОТОМУ ЧТО Акция привязывается к Товару, при создании нового товара в секции Товаров</li>
-    <li>*НО, при создании акции можно привязать ее ко всем товарам в одной из списка (всех) категорий,привязка идет только к тем товарам, которые не имеют акции</li>
-</ul>
+<style>
+td{
+    color:black !important; 
+    font-weight:bold !important;
+}
+</style>
+
+<input id="searchField" type="text" placeholder="Search...">
+
+<table class="table table-hover">
+<tr>
+  <td>Name</td>
+  <td>Description</td>
+  <td>%</td>
+  <td>From</td>
+  <td>To</td>
+  <td>Goods</td>
+  <td>Action</td>
+</tr>
+    @foreach($sales as $sale)
+<tr name="sale">
+  <td>{{ $sale->name }}</td>
+  <td>{{ $sale->description }}</td>
+  <td>{{ $sale->percentages }}</td>
+  <td>{{ $sale->start }}</td>
+  <td>{{ $sale->end }}</td>
+  <td>{{ count($sale->good) }}</td>
+  <td>
+      <form action="{{ URL::to('/admin/dropSomeSale') }}" method="POST">
+      {{ csrf_field() }}
+      <input class="btn btn-danger" type="submit" value="-">
+      <input type="hidden" name="saleID" value="{{ $sale->id }}">
+      </form>
+  </td>
+</tr>
+    @endforeach
+</table>
+

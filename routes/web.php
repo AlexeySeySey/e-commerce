@@ -79,6 +79,8 @@ Route::group([
 
     Route::post('/restoreCategorie',['uses'=>'AdminControllers\AdminCategoriesController@restore','as'=>'restoreCategorie']);
 
+    Route::post('/dropSomeSale',['uses'=>'AdminControllers\AdminSalesController@drop']);
+
 
     Route::get('/', ['uses' => 'AdminControllers\AdminController@show', 'as' => 'admin']);
     Route::get('/admin-categories',['uses'=>'AdminControllers\AdminCategoriesController@show','as'=>'categories']);
@@ -98,7 +100,6 @@ Route::group([
     Route::post('/editEvent', ['uses' => 'AdminControllers\AdminNewsController@editEvent']);
     
     Route::get('/admin-sales',['uses'=>'AdminControllers\AdminSalesController@show','as'=>'sales']);
-    Route::get('/admin-statistics',['uses'=>'AdminControllers\AdminStatisticsController@show','as'=>'statistics']);
 
 });
 

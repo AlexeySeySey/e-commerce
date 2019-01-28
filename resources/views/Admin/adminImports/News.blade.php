@@ -1,22 +1,5 @@
 <div class="row"
-    style="margin-right:50px !important">
-    <div class="col-sm">
-        <form action="#"
-            method="GET">
-            <div class="btn-group">
-                <input name="search"
-                    class="form-control form-control-sm"
-                    type="text"
-                    placeholder="Search..."
-                    style="margin-left:370px; width:300px"
-                    required>
-                <button class="btn btn-secondary"
-                    type="submit">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
-        </form>
-    </div>
+    style="margin-left:350px !important">
     <div class="col-sm">
         <button type="button"
             class="btn btn-secondary">

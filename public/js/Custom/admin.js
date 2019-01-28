@@ -207,6 +207,3 @@ function unfill() {
     inputs.attr("checked", !inputs.attr("checked"));
 }
 
-
-
-
