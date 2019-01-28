@@ -24,9 +24,11 @@ class CartInfoMiddleware
 
         $follow = (((User::select('isFollow')->where('id', $id)->get())->toArray())[0])['isFollow'];
 
-        $checkoutCount = Cart::where('user_id',$id)->count('*');
-        $checkoutAllCount = Cart::where('user_id',$id)->sum('count');
-        $checkoutPrice = Cart::where('user_id', $id)->sum('price');
+        
+
+        $checkoutCount = Cart::where('user_id', $id)->count();
+        $checkoutAllCount = null;
+        $checkoutPrice = null;
 
         $locale = App::getLocale();
 

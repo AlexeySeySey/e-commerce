@@ -33,17 +33,10 @@ class AddGoodController extends Controller
             abort(500);
         }
 
-        $good_data = ((Good::select(['image', 'name'])->where('id', $request->good_id)->get())->toArray())[0];
-
-        $image = $good_data['image'];
-        $name  = $good_data['name'];
-
         $cart          = new Cart;
-        $cart->image   = $image;
-        $cart->name    = $name;
-        $cart->count   = $count;
-        $cart->price   = $price;
-        $cart->user_id = $user_id;
+        $cart->user_id   = $user_id;
+        $cart->good_id    = $request->good_id;
+        $cart->goods_count = $request->goods_count;
         $cart->save();
        
         $characteristic = Characteristic::find($request->good_id);

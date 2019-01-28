@@ -1,4 +1,4 @@
-@extends('main_layouts.start')
+﻿@extends('main_layouts.start')
 
 
 
@@ -22,7 +22,7 @@
             <h3>@lang('validation.sections.Checkout')</h3>
 
             <div class="checkout-right">
-                <h4>{{ __('validation.other.'.'Products count in your shopping cart') }}: <span>(integer)</span></h4>
+                <h4>{{ __('validation.other.'.'Products count in your shopping cart') }}</h4>
                 <table class="timetable_sub">
                     <thead>
                     <tr>
@@ -35,22 +35,23 @@
                     </tr>
                     </thead>
                     <tbody>
+ @foreach($goods as $good)
                     <tr class="rem1">
-                        <td class="invert">1</td>
-                        <td class="invert-image"><a href="#"><img src="images/1.png" alt=" " class="img-responsive"></a>
+                        <td class="invert">{{ $loop->count }}</td>
+                        <td class="invert-image"><a href="#"><img src="{{ $good['good']->image }}" alt=" " class="img-responsive"></a>
                         </td>
                         <td class="invert">
                             <div class="quantity">
                                 <div class="quantity-select">
                                     <div class="entry value-minus">&nbsp;</div>
-                                    <div class="entry value"><span>1</span></div>
+                                    <div class="entry value"><span>{{ $good['']-> }}</span></div>
                                     <div class="entry value-plus active">&nbsp;</div>
                                 </div>
                             </div>
                         </td>
-                        <td class="invert">Fortune Sunflower Oil</td>
+                        <td class="invert">{{ $good->name }}</td>
 
-                        <td class="invert">$290.00</td>
+                        <td class="invert">${{ $good->price }}</td>
                         <td class="invert">
                             <div class="rem">
                                 <div class="close1"></div>
@@ -58,53 +59,7 @@
 
                         </td>
                     </tr>
-                    <tr class="rem2">
-                        <td class="invert">2</td>
-                        <td class="invert-image"><a href="#"><img src="images/3.png" alt=" " class="img-responsive"></a>
-                        </td>
-                        <td class="invert">
-                            <div class="quantity">
-                                <div class="quantity-select">
-                                    <div class="entry value-minus">&nbsp;</div>
-                                    <div class="entry value"><span>1</span></div>
-                                    <div class="entry value-plus active">&nbsp;</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="invert">Basmati Rise (5 Kg)</td>
-
-                        <td class="invert">$250.00</td>
-                        <td class="invert">
-                            <div class="rem">
-                                <div class="close2"></div>
-                            </div>
-
-                        </td>
-                    </tr>
-                    <tr class="rem3">
-                        <td class="invert">3</td>
-                        <td class="invert-image"><a href="#"><img src="images/2.png" alt=" " class="img-responsive"></a>
-                        </td>
-                        <td class="invert">
-                            <div class="quantity">
-                                <div class="quantity-select">
-                                    <div class="entry value-minus">&nbsp;</div>
-                                    <div class="entry value"><span>1</span></div>
-                                    <div class="entry value-plus active">&nbsp;</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="invert">Pepsi Soft Drink (2 Ltr)</td>
-
-                        <td class="invert">$15.00</td>
-                        <td class="invert">
-                            <div class="rem">
-                                <div class="close3"></div>
-                            </div>
-
-                        </td>
-                    </tr>
-
+@endforeach
                     </tbody>
                 </table>
             </div>
