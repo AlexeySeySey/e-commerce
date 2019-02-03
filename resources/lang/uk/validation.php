@@ -53,6 +53,7 @@ return [
     ],
 
     'other' => [
+        'delivery'=>'Час Доставки',
         'sign up for our newsletter'                                                                                   => 'Підпишіться на нашу розсилку',
         'Shop Now'                                                                                                     => 'Скупитися',
         'add to cart'                                                                                                  => 'Додати до Кошику',

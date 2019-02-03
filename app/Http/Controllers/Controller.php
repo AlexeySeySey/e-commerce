@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Traits\Requester;
+use App\Http\Traits\Helper;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -14,7 +14,7 @@ use App\Models\Good;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, Requester;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, Helper;
 
     private $MailKey = 'JQ1ZvLdjlM5IB0OoszCOAQ';
     private $baseURI = 'https://mandrillapp.com/api/1.0/';

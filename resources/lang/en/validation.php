@@ -54,6 +54,7 @@ return [
     ],
 
     'other' => [
+        'delivery'=>'Delivery Time',
         'sign up for our newsletter'                                                                                   => 'sign up for our newsletter',
         'Shop Now'                                                                                                     => 'Shop Now',
         'add to cart'                                                                                                  => 'add to cart',

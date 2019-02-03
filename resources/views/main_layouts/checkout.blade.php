@@ -121,10 +121,22 @@
             type="text"
             name="address"
             placeholder="Beckerside Apt. 165"
+            onchange="deliveryShow()"
             required>
-          <br>
+          
                                     </div>
-
+                                    <br>
+                                    <div class="controls">
+                                    <label class="control-label">@lang('validation.other.delivery'):</label>
+          <input id="deliveryTimeInput"
+            class="form-control"
+            type="text"
+            disabled
+            onload="this.disabled=true">
+          <br>
+          
+                                    </div>
+<br>
 
                                 </div>
                                 <button class="btn btn-primary" type="submit">{{ __('validation.other.'.'Delivery to this Address') }}</button>

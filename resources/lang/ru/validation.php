@@ -55,6 +55,7 @@ return [
     ],
 
     'other' => [
+        'delivery'=>'Время Доставки',
         'sign up for our newsletter'                                                                                   => 'Подпишитесь на нашу рассылку',
         'Shop Now'                                                                                                     => 'Скупиться',
         'add to cart'                                                                                                  => 'Добавить в Корзину',

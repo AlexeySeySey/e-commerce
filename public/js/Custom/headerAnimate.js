@@ -39,7 +39,7 @@ function sumProducts(elem, price, id, salePrice) {
     } else {
         document.getElementById('#' + 'good-count' + id).innerHTML = Math.round(elem.value * price) + "$";
     }
-    document.getElementById('#' + 'getPrice' + id).value = Math.round(salePrice);
+    document.getElementById('#' + 'getPrice' + id).value = salePrice;
 }
 
 setTimeout(function () {
@@ -175,4 +175,27 @@ function dropFromCart(good, user, cnt){
     })
 }
 
+function randomDate(start, end) {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+}
 
+function dateReadability(today){
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; 
+    var yyyy = today.getFullYear();
+    
+    if (dd < 10) {
+      dd = '0' + dd;
+    }
+    
+    if (mm < 10) {
+      mm = '0' + mm;
+    }
+    
+    today = mm + '/' + dd + '/' + yyyy;
+    return today
+}
+
+function deliveryShow(){
+        document.getElementById('deliveryTimeInput').value = dateReadability(randomDate(new Date(), new Date(2090, 0, 1))) 
+}

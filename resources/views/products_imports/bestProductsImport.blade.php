@@ -147,8 +147,7 @@
                                                                                     @endif
                                                                                     <div class="alert alert-info">
                                                                                         @if($key->sale)
-                                                                                        <span>{{
-                                                                                            (($key->price)-((($key->price)/100)*(($key->sale)->percentages))).'$'}}
+                                                                                        <span>{{(($key->price)-((($key->price)/100)*(($key->sale)->percentages)))}}</span>
                                                                                             @else
                                                                                             <span>{{$key->price.'$'}}
                                                                                                 @endif

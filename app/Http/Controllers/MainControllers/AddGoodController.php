@@ -14,11 +14,10 @@ class AddGoodController extends Controller
 
     public function add(Request $request)
     {
-
         $user_id = Auth::id();
 
-        $count = intval($request->goods_count);
-        $price = intval($request->price);
+        $count = $request->goods_count;
+        $price = $request->price;
 
         if ($count == 0) {
             abort(500, 'Count is null');
