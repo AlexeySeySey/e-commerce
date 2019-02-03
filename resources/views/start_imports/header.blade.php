@@ -28,11 +28,6 @@
                         @else
                             {{ ucfirst(__('validation.other.In the cart')).':' }}
                             <b>{{ $checkoutCount }}</b> @lang('validation.other.parties').
-                        <br>
-                            {{ ucfirst(__('validation.other.In the cart')).':' }}
-                            <b>{{ $checkoutAllCount }}</b> @lang('validation.other.units').
-                        <br>
-                            @lang('validation.other.Summary Price'): <b>{{ $checkoutPrice }}$</b>
                             @endif
                         <hr>
                             <button class="text-left btn btn-info"><a style="color: white" href="{{ route('checkout') }}"><i class="fa fa-sign-in"></i></a></button>

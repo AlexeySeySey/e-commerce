@@ -34,9 +34,9 @@ Route::middleware(['auth', 'lang','cart-info'])->group(function () {
     Route::get('/mail',['uses'=>'MainControllers\MailController@show','as'=>'mail']);
     Route::post('/sendMail',['uses'=>'MainControllers\MailController@send']);
 
-    Route::get('/checkout',['uses'=>'MainControllers\CheckoutController@show','as'=>'checkout']);//HERE
+    Route::get('/checkout',['uses'=>'MainControllers\CheckoutController@show','as'=>'checkout']);
 
-    Route::get('/payment',['uses'=>'MainControllers\PayController@show','as'=>'payment']);//HERE
+    Route::post('/payment',['uses'=>'MainControllers\PayController@do','as'=>'payment']);
 
 
 
@@ -57,6 +57,8 @@ Route::middleware(['auth', 'lang','cart-info'])->group(function () {
     Route::post('/letterMember', ['uses' => 'SecondaryControllers\LetterController@new']);
 
     Route::get('/search', ['uses' => 'MainControllers\SearchController@search']);
+
+    Route::post('/dropFromCart', ['uses'=>'SecondaryControllers\SelfCartController@drop']);
 
 });
 
@@ -102,7 +104,6 @@ Route::group([
     Route::get('/admin-sales',['uses'=>'AdminControllers\AdminSalesController@show','as'=>'sales']);
 
 });
-
 
 
 

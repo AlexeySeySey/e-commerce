@@ -15,18 +15,20 @@
     @parent
 @endsection
 
+@section('top-brands')
+@endsection
+
 @section('slider-brands')
     <div class="w3l_banner_nav_right">
         <!-- about -->
+        @if(count($goodsIn)>0)
         <div class="privacy about">
             <h3>@lang('validation.sections.Checkout')</h3>
-
             <div class="checkout-right">
                 <h4>{{ __('validation.other.'.'Products count in your shopping cart') }}</h4>
                 <table class="timetable_sub">
                     <thead>
                     <tr>
-                        <th>№</th>
                         <th>{{ __('validation.other.'.'Product') }}</th>
                         <th>{{ __('validation.other.'.'Amount') }}</th>
                         <th>{{ __('validation.other.'.'Name') }}</th>
@@ -35,30 +37,32 @@
                     </tr>
                     </thead>
                     <tbody>
- @foreach($goods as $good)
-                    <tr class="rem1">
-                        <td class="invert">{{ $loop->count }}</td>
-                        <td class="invert-image"><a href="#"><img src="{{ $good['good']->image }}" alt=" " class="img-responsive"></a>
+@foreach($goodsIn as $good)
+@if(count($good['good'])>0)
+                     <tr class="rem1">
+                        <td class="invert-image">
+                            <a href="#">
+                            <img src="{{ $good['good'][0]['image'] }}" alt=" " class="img-responsive">
+                            </a>
                         </td>
                         <td class="invert">
                             <div class="quantity">
                                 <div class="quantity-select">
-                                    <div class="entry value-minus">&nbsp;</div>
-                                    <div class="entry value"><span>{{ $good['']-> }}</span></div>
-                                    <div class="entry value-plus active">&nbsp;</div>
+                                    <div class="entry value"><span>{{ $good['good_count'] }}</span></div>
                                 </div>
                             </div>
                         </td>
-                        <td class="invert">{{ $good->name }}</td>
+                        <td class="invert">{{ $good['good'][0]['name']  }}</td>
 
-                        <td class="invert">${{ $good->price }}</td>
+                        <td class="invert">${{ $good['good'][0]['price'] }}</td>
                         <td class="invert">
-                            <div class="rem">
+                            <div class="rem" onclick="dropFromCart({{ $good['good'][0]['id'] }}, {{ Auth::id() }}, {{ $good['good_count'] }})">
                                 <div class="close1"></div>
                             </div>
 
                         </td>
                     </tr>
+@endif
 @endforeach
                     </tbody>
                 </table>
@@ -67,16 +71,15 @@
                 <div class="col-md-4 checkout-left-basket">
                     <h4>{{ __('validation.other.'.'Continue to basket') }}</h4>
                     <ul>
-                        <li>{{ __('validation.other.'.'Product') }}1 <i>-</i> <span>$15.00 </span></li>
-                        <li>{{ __('validation.other.'.'Product') }}2 <i>-</i> <span>$25.00 </span></li>
-                        <li>{{ __('validation.other.'.'Product') }}3 <i>-</i> <span>$29.00 </span></li>
-                        <li>{{ __('validation.other.'.'Total Service Charges') }} <i>-</i> <span>$15.00</span></li>
-                        <li>{{ __('validation.other.'.'Total') }} <i>-</i> <span>$84.00</span></li>
+                        @foreach($goodsIn as $good)
+                        <li>{{ __('validation.other.'.'Product') }} "{{ $good['good'][0]['name'] }}" : <span>{{ $good['price'] }}</span></li>
+                        @endforeach
+                        <li>{{ __('validation.other.'.'Total') }} <i>:</i> <span><b>{{ $total }}$</b></span></li>
                     </ul>
                 </div>
                 <div class="col-md-8 address_form_agile">
                     <h4>{{ __('validation.other.'.'Add a new Details') }}</h4>
-                    <form action="{{ URL::to('/payments') }}" method="post" class="creditly-card-form agileinfo_form">
+                    <form action="{{ route('payment') }}" method="post" class="creditly-card-form agileinfo_form" id="cartFormSend">
                         @csrf
                         <section class="creditly-wrapper wthree, w3_agileits_wrapper">
                             <div class="information-wrapper">
@@ -84,7 +87,7 @@
                                     <div class="controls">
                                         <label class="control-label">{{ __('validation.other.'.'Full name') }}: </label>
                                         <input class="billing-address-name form-control" type="text" name="name"
-                                               placeholder="{{ __('validation.other.'.'Full name') }}">
+                                               placeholder="{{ __('validation.other.'.'Full name') }}" required>
                                     </div>
                                     <div class="w3_agileits_card_number_grids">
                                         <div class="w3_agileits_card_number_grid_left">
@@ -92,7 +95,7 @@
                                                 <label class="control-label">{{ __('validation.other.'.'Mobile number') }}
                                                     :</label>
                                                 <input class="form-control" type="text"
-                                                       placeholder="{{ __('validation.other.'.'Mobile number') }}">
+                                                       placeholder="{{ __('validation.other.'.'Mobile number') }}" required>
                                             </div>
                                         </div>
                                         <div class="clear"></div>
@@ -100,29 +103,51 @@
                                     <div class="controls">
                                         <label class="control-label">{{ __('validation.other.'.'Locality') }}: </label>
                                         <input class="form-control" type="text"
-                                               placeholder="{{ __('validation.other.'.'Locality') }}">
+                                               placeholder="{{ __('validation.other.'.'Locality') }}" required>
                                     </div>
                                     <div class="controls">
                                         <label class="control-label">{{ __('validation.other.'.'Address type') }}
                                             : </label>
-                                        <select class="form-control option-w3ls">
+                                        <select class="form-control option-w3ls" style="height:120% !important;">
                                             <option>{{ __('validation.other.'.'Office') }}</option>
                                             <option>{{ __('validation.other.'.'Home') }}</option>
                                             <option>{{ __('validation.other.'.'Commercial') }}</option>
                                         </select>
                                     </div>
+
+                                    <div class="controls">
+                                    <label class="control-label">@lang('validation.other.Address'):</label>
+          <input class="form-control"
+            type="text"
+            name="address"
+            placeholder="Beckerside Apt. 165"
+            required>
+          <br>
+                                    </div>
+
+
                                 </div>
-                                <button class="submit check_out">{{ __('validation.other.'.'Delivery to this Address') }}</button>
+                                <button class="btn btn-primary" type="submit">{{ __('validation.other.'.'Delivery to this Address') }}</button>
                             </div>
                         </section>
+                        
+<input type="hidden" name="goods" value="{{ (json_encode($goodsIn)) }}">
+
                     </form>
-                    <div class="checkout-right-basket">
+                    {{--
+                        <div class="checkout-right-basket">
                         <a href="{{ route('payment') }}">{{ __('validation.other.'.'Make a Payment') }}</a>
                     </div>
+                    --}}
                 </div>
                 <div class="clearfix"></div>
             </div>
         </div>
+        @else
+            <div class="alert alert-danger text-center">
+                No products in cart...
+            </div>
+            @endif
     </div>
     <div class="clearfix"></div>
     </div>
@@ -130,4 +155,3 @@
 
 @section('content')
 @endsection
-

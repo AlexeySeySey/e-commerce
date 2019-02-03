@@ -18,6 +18,7 @@ class CreateGoodsTable extends Migration
             $table->integer('sale_id');
             $table->integer('characteristic_id');
             $table->integer('categorie_id');
+            $table->integer("stock");
             $table->string('name');
             $table->string('image');
             $table->double('weight',8,2);

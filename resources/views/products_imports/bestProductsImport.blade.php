@@ -20,17 +20,19 @@
 <table>
     <tr>
         @foreach($goods as $key)
-        <td style="padding: 50px !important;">
+        <td style="padding: 50px !important; max-width:300px !important;">
+        <div class="alert alert-danget">  
+    </div>
             <div onmouseover="SaleText({{$key->id}})"
                 onmouseout="HideSaleText({{$key->id}})">
                 <div>
-                  @if (($key->characteristic)["stock"] == 0)
+                  @if ($key->stock == 0)
                   <div class="alert alert-danger">
                   @lang("validation.other.No products available")
                   </div>
                   @else 
                   <div class="alert alert-success">
-                     {{__('validation.other.Available').': '.($key->characteristic)['stock'].' '. __('validation.other.units') }}
+                     {{__('validation.other.Available').' '.$key->stock.'  '.__('validation.other.units') }}
                    </div>
                   @endif
                     <div class="alert-secondary">
@@ -113,6 +115,7 @@
                                                         <div class="modal-header">
                                                             <h5 class="modal-title"
                                                                 id="exampleModalLabel">{{ ucfirst($key->name) }}</h5>
+
                                                             <button style="padding-right: 200px !important;"
                                                                 type="button"
                                                                 class="close"
@@ -129,10 +132,8 @@
                                                                             <tr style="height: 100px;"></tr>
                                                                             <tr>
                                                                                 <td>
-                                                                                    {{ ($key->characteristic)['stock']}}
-
-                                                                                    @if(($key->characteristic)['stock'])
-                                                                                    @if((($key->characteristic)['stock']==0)||(($key->characteristic)['stock']==null))
+                                                                                    @if($key->stock)
+                                                                                    @if(($key->stock==0)||($key->stock==null))
                                                                                     <div class="alert alert-danger">
                                                                                         @lang('validation.other.No
                                                                                         products available')
@@ -140,7 +141,7 @@
                                                                                     @else
                                                                                     <div class="alert alert-success">
                                                                                         {{__('validation.other.Available').':
-                                                                                        '.($key->characteristic)['stock'].' '. __('validation.other.units') }}
+                                                                                        '.$key->stock.' '. __('validation.other.units') }}
                                                                                     </div>
                                                                                     @endif
                                                                                     @endif
@@ -164,12 +165,11 @@
                                                                             <form method="POST"
                                                                                 action="{{URL::to('/addToCart')}}">
                                                                                 @csrf
-                                                                                @if(($key->characteristic)['stock'])
+                                                                                @if($key->stock)
                                                                                 <input type="number"
                                                                                     name="goods_count"
                                                                                     min="1"
-                                                                                    max="{{ ($key->characteristic)['stock']
-                                                                                    }}"
+                                                                                    max="{{ $key->stock }}"
                                                                                     placeholder="0"
                                                                                     required
                                                                                     oninput="sumProducts(this,{{$key->price}},{{$key->id}},{{
@@ -179,8 +179,8 @@
                                                                                 <div class="alert alert-secondary">Empty
                                                                                     stock</div>
                                                                                 @endif
-                                                                                @if(($key->characteristic)['stock'])
-                                                                                @if((($key->characteristic)['stock']==0)||(($key->characteristic)['stock']==null))
+                                                                                @if($key->stock)
+                                                                                @if(($key->stock==0) || ($key->stock==null))
                                                                                 @else
                                                                                 <button type="reset"
                                                                                     class="btn btn-danger">
@@ -193,13 +193,11 @@
                                                                                     <tr>
 
                                                                                         <td>
-                                                                                            @if(($key->characteristic)['stock'])
-                                                                                            @if((($key->characteristic)['stock']==0)||(($key->characteristic)['stock']==null))
+                                                                                            @if(($key->stock==0)||($key->stock==null))
                                                                                             @else
                                                                                             <input type="submit"
                                                                                                 class="btn btn-primary"
                                                                                                 value="{{__('validation.other.Add to card')}}">
-                                                                                            @endif
                                                                                             @endif
                                                                                         </td>
 
@@ -251,7 +249,7 @@
                 </div>
             </div>
         </td>
-        @if($loop->iteration%3==0)
+        @if($loop->iteration%4==0)
     </tr>
     <tr>
         @endif

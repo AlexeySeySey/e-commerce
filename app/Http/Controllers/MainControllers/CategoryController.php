@@ -24,6 +24,7 @@ class CategoryController extends Controller
             ->where('categorie_id', $id)
             ->orderBy('updated_at', 'desc')
             ->paginate(6);
+            
 
         switch (App::getLocale()){
             case 'ru':

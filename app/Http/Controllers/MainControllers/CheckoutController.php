@@ -11,21 +11,31 @@ use App\Models\Info;
 class CheckoutController extends Controller
 {
 
-
     public function show()
     {
         $goods = [];
-        $orders = Cart::select(['goods_count','good_id'])->where('user_id',\Auth::id())->get();
+        $total = 0;
 
-      
-        foreach($orders->toArray() as $order){
+        $orders = Cart::where('user_id',\Auth::id())->get()->toArray();
+ 
+        foreach($orders as $order){
+          $placeholder = Good::where('id',$order['good_id'])->get()->toArray();
+          $count = $order['goods_count'];
           $goods[] = [
-                     "good" => Good::where('id',$order['good_id'])->get(),
-                     "good_count" => $order['goods_count']
+                     "good" => $placeholder,
+                     "good_count" => $count,
+                     "price" => $placeholder[0]['price'] * $count
            ];
          }
-   
-        return view('main_layouts.checkout')->with('goods', $goods);
+
+        foreach($goods as $good){
+            $total += $good['price'];
+        }      
+
+        return view('main_layouts.checkout',[
+            'goodsIn' => $goods,
+            'total' => $total
+        ]);
     }
 
 }

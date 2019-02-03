@@ -7,6 +7,7 @@ $factory->define(App\Models\Good::class, function (Faker $faker) {
         'categorie_id' => $faker->numberBetween($min = 1, $max = 12),
         'sale_id' => $faker->numberBetween($min = 1, $max = 50),
         'characteristic_id' =>  $faker->numberBetween($min = 1, $max = 50),
+        'stock'      => $faker->numberBetween($min = 1, $max = 800),
         'name' => $faker->word,
         'image'=>'/images/15.png',
         'weight' => $faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 500.0),

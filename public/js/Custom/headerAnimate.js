@@ -154,6 +154,25 @@ function addLetterMemeber(id) {
     });
 }
 
-
+function dropFromCart(good, user, cnt){
+    $.ajax({
+         headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') 
+         },
+         url: '/dropFromCart',
+         type: 'post',
+         data: {
+                 user_id: user,
+                 good_id: good,
+                 count: cnt
+        },
+        success: ()=>{
+            location.reload()
+        }, 
+        error: (err)=>{
+            alert(err.responseText)
+        }
+    })
+}
 
 

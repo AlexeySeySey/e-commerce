@@ -42,12 +42,8 @@ class AdminGoodsController extends Controller
         $good->price = $request->price;
         $good->rating = $request->rating;
         $good->weight_type = $request->w_type;
+        $good->stock = $request->stock;
         $good->save();
-
-        $charcterstc = (Characteristic::where('goods_id',$request->good)->get())[0]['id'];
-        $characteristic = Characteristic::find($charcterstc);
-        $characteristic->stock = $request->stock;
-        $characteristic->save();
 
         return redirect()->back();
     }

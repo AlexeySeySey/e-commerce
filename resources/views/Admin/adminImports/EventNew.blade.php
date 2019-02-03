@@ -77,6 +77,7 @@
           @if(count($followers) > 0)
       @foreach($followers as $follower)
          <li class="btn-group"><input name="followers[]" value="{{ $follower->email }}" class="form-group" type="checkbox" checked>{{ $follower->email }}</li>
+         <br>
       @endforeach  
       @else
     <div class="alert alert-warning">

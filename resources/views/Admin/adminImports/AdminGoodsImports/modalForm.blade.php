@@ -205,7 +205,7 @@
                                           type="text"
                                           class="form-control"
                                           name="stock"
-                                          value="{{ $good->characteristic ? ($good->characteristic)->stock : '' }}"/>
+                                          value="{{ $good->characteristic ? $good->stock : '' }}"/>
                                             </div>
                                           </div>
                                         </div>
