@@ -15,7 +15,3 @@ DB_PASSWORD=...
 ```
 *Run database migrations and* **php artisan db:seed** command.
 > If something goes wrong with **composer install**, try run **composer install --no-dev**.
-
-TODO: 
-1) payment systems integrations (Stripe, PayPal, Braintree)
-2) authentication via social networks (Google, Facebook, Instagram, Github, Slack)
