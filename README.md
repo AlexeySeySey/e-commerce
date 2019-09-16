@@ -18,4 +18,4 @@ DB_PASSWORD=...
 
 TODO: 
 1) payment systems integrations (Stripe, PayPal, Braintree)
-2) authentication via social networks (Google, Facebook, Instagram, Github)
+2) authentication via social networks (Google, Facebook, Instagram, Github, Slack)
